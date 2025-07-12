@@ -1,0 +1,164 @@
+{
+  "voices": [
+    {
+      "id": "vi-female-0",
+      "name": "bot",
+      "gender": "female",
+      "language": "vietnamese",
+      "accent": "Miền Bắc",
+      "description": "Giọng nữ trẻ trung, tự nhiên, phù hợp cho nội dung sản phẩm thời trang, làm đẹp",
+      "demo": "demo-linh.mp3",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Linh&backgroundColor=b6e3f4&clothesColor=262e33&eyeType=happy&eyebrowType=default&facialHairColor=auburn&facialHairType=blank&hairColor=auburn&hatColor=black&mouthType=smile&skinColor=light&topType=longHairStraight2",
+      "speed_range": [0.5, 2.0],
+      "pitch_range": [-10, 10],
+      "quality": "premium",
+      "tags": ["tự nhiên", "trẻ trung", "thân thiện"]
+    },
+    {
+      "id": "vi-female-1",
+      "name": "Linh",
+      "gender": "female",
+      "language": "vietnamese",
+      "accent": "Miền Bắc",
+      "description": "Giọng nữ trẻ trung, tự nhiên, phù hợp cho nội dung sản phẩm thời trang, làm đẹp",
+      "demo": "demo-linh.mp3",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Linh&backgroundColor=b6e3f4&clothesColor=262e33&eyeType=happy&eyebrowType=default&facialHairColor=auburn&facialHairType=blank&hairColor=auburn&hatColor=black&mouthType=smile&skinColor=light&topType=longHairStraight2",
+      "speed_range": [0.5, 2.0],
+      "pitch_range": [-10, 10],
+      "quality": "premium",
+      "tags": ["tự nhiên", "trẻ trung", "thân thiện"]
+    },
+    {
+      "id": "vi-male-1",
+      "name": "Nam",
+      "gender": "male",
+      "language": "vietnamese",
+      "accent": "Miền Nam",
+      "description": "Giọng nam ấm áp, đáng tin cậy, phù hợp cho nội dung giáo dục, công nghệ",
+      "demo": "demo-nam.mp3",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Nam&backgroundColor=c0aede&clothesColor=3c4f5c&eyeType=default&eyebrowType=default&facialHairColor=black&facialHairType=blank&hairColor=black&hatColor=red&mouthType=default&skinColor=tanned&topType=shortHairShortFlat",
+      "speed_range": [0.5, 2.0],
+      "pitch_range": [-15, 5],
+      "quality": "premium",
+      "tags": ["ấm áp", "đáng tin", "chuyên nghiệp"]
+    },
+    {
+      "id": "vi-female-2",
+      "name": "Hương",
+      "gender": "female",
+      "language": "vietnamese",
+      "accent": "Miền Trung",
+      "description": "Giọng nữ dịu dàng, sang trọng, phù hợp cho nội dung cao cấp, luxury",
+      "demo": "demo-huong.mp3",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Huong&backgroundColor=ffd5dc&clothesColor=262e33&eyeType=default&eyebrowType=defaultNatural&facialHairColor=auburn&facialHairType=blank&hairColor=black&hatColor=blue01&mouthType=smile&skinColor=light&topType=longHairStraight",
+      "speed_range": [0.5, 1.8],
+      "pitch_range": [-5, 15],
+      "quality": "premium",
+      "tags": ["dịu dàng", "sang trọng", "elegance"]
+    },
+    {
+      "id": "en-female-1",
+      "name": "Sarah",
+      "gender": "female",
+      "language": "english",
+      "accent": "American",
+      "description": "Clear American English voice, perfect for international products and global audience",
+      "demo": "demo-sarah.mp3",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=b6e3f4&clothesColor=3c4f5c&eyeType=happy&eyebrowType=default&facialHairColor=auburn&facialHairType=blank&hairColor=blonde&hatColor=black&mouthType=smile&skinColor=light&topType=longHairStraight2",
+      "speed_range": [0.6, 2.0],
+      "pitch_range": [-8, 12],
+      "quality": "premium",
+      "tags": ["clear", "professional", "international"]
+    },
+    {
+      "id": "en-male-1",
+      "name": "John",
+      "gender": "male",
+      "language": "english",
+      "accent": "British",
+      "description": "Sophisticated British English voice, ideal for premium and luxury products",
+      "demo": "demo-john.mp3",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=c0aede&clothesColor=262e33&eyeType=default&eyebrowType=default&facialHairColor=brown&facialHairType=blank&hairColor=brown&hatColor=black&mouthType=default&skinColor=light&topType=shortHairShortFlat",
+      "speed_range": [0.5, 1.8],
+      "pitch_range": [-12, 8],
+      "quality": "premium",
+      "tags": ["sophisticated", "luxury", "authoritative"]
+    },
+    {
+      "id": "vi-male-2",
+      "name": "Minh",
+      "gender": "male",
+      "language": "vietnamese",
+      "accent": "Miền Bắc",
+      "description": "Giọng nam trẻ, năng động, phù hợp cho nội dung thể thao, giải trí",
+      "demo": "demo-minh.mp3",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Minh&backgroundColor=ffdfbf&clothesColor=3c4f5c&eyeType=default&eyebrowType=default&facialHairColor=black&facialHairType=blank&hairColor=black&hatColor=blue01&mouthType=smile&skinColor=tanned&topType=shortHairShortRound",
+      "speed_range": [0.7, 2.2],
+      "pitch_range": [-8, 12],
+      "quality": "standard",
+      "tags": ["năng động", "trẻ trung", "vui vẻ"]
+    },
+    {
+      "id": "vi-female-3",
+      "name": "Thu",
+      "gender": "female",
+      "language": "vietnamese",
+      "accent": "Miền Nam",
+      "description": "Giọng nữ ngọt ngào, dễ thương, phù hợp cho nội dung gia đình, trẻ em",
+      "demo": "demo-thu.mp3",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Thu&backgroundColor=ffd5dc&clothesColor=pastelOrange&eyeType=happy&eyebrowType=default&facialHairColor=auburn&facialHairType=blank&hairColor=black&hatColor=red&mouthType=smile&skinColor=light&topType=longHairBun",
+      "speed_range": [0.6, 1.9],
+      "pitch_range": [0, 18],
+      "quality": "standard",
+      "tags": ["ngọt ngào", "dễ thương", "gia đình"]
+    },
+    {
+      "id": "en-female-2",
+      "name": "Emma",
+      "gender": "female",
+      "language": "english",
+      "accent": "Australian",
+      "description": "Friendly Australian English voice, great for casual and lifestyle products",
+      "demo": "demo-emma.mp3",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Emma&backgroundColor=b6e3f4&clothesColor=pastelBlue&eyeType=happy&eyebrowType=default&facialHairColor=auburn&facialHairType=blank&hairColor=auburn&hatColor=black&mouthType=smile&skinColor=light&topType=longHairCurly",
+      "speed_range": [0.6, 2.0],
+      "pitch_range": [-5, 15],
+      "quality": "standard",
+      "tags": ["friendly", "casual", "lifestyle"]
+    }
+  ],
+  "voice_settings": {
+    "speed": {
+      "min": 0.5,
+      "max": 2.2,
+      "default": 1.0,
+      "step": 0.1
+    },
+    "pitch": {
+      "min": -20,
+      "max": 20,
+      "default": 0,
+      "step": 1
+    },
+    "volume": {
+      "min": 0,
+      "max": 100,
+      "default": 80,
+      "step": 5
+    }
+  },
+  "supported_languages": [
+    {
+      "code": "vi",
+      "name": "Tiếng Việt",
+      "flag": "🇻🇳",
+      "accents": ["Miền Bắc", "Miền Trung", "Miền Nam"]
+    },
+    {
+      "code": "en",
+      "name": "English",
+      "flag": "🇺🇸",
+      "accents": ["American", "British", "Australian", "Canadian"]
+    }
+  ]
+}

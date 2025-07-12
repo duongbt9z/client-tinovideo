@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh toán - VietQR</title>
+    <link rel="stylesheet" href="./css/styles_payment.css" />
+</head>
+
+<body>
+    <button onclick="window.history.back()" class="exit-btn" aria-label="Thoát">
+        ✕
+    </button>
+    <!-- <div class="payment-notice">
+        <h2>Hãy Thanh Toán để sử dụng dịch vụ</h2>
+    </div> -->
+    <header class="header">
+        <h1>Chọn gói phù hợp nhất với bạn!</h1>
+        <p>So sánh và lựa chọn gói theo nhu cầu</p>
+    </header>
+    <div class="container">
+
+        <!-- PHẦN THANH TOÁN -->
+        <div class="payment-section">
+            <div class="payment-info">
+                <div class="section-header">
+                    <span class="icon">💳</span>
+                    <h2>Thông tin thanh toán</h2>
+                </div>
+
+                <div class="payment-method">
+                    <h3>Phương thức thanh toán</h3>
+                    <div class="method-selector">
+                        <div class="method-option selected">
+                            <div class="method-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                                    <line x1="1" y1="10" x2="23" y2="10" />
+                                </svg>
+                            </div>
+                            <div class="method-details">
+                                <div class="method-name">Chuyển khoản VietQR</div>
+                                <div class="method-desc">Quét mã để chuyển nhanh</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MÃ QR -->
+                <div class="qr-section">
+                    <h3>Quét mã QR để thanh toán</h3>
+                    <div class="qr-container hidden"> <!-- thêm .hidden -->
+                        <img id="qr" src="" alt="QR VietQR">
+                    </div>
+
+                    <div class="payment-details">
+                        <div class="detail-row">
+                            <span class="label">Số tiền:</span>
+                            <span class="value amount">100.000 đ</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Nội dung:</span>
+                            <span class="value reference">KH4T7LQR&M1</span>
+                        </div>
+                    </div>
+
+                    <div class="security-notice">
+                        <div class="notice-icon">🛡️</div>
+                        <div class="notice-content">
+                            <div class="notice-title">Bảo mật thanh toán</div>
+                            <div class="notice-text">Thông tin của bạn được mã hóa qua SSL 256-bit</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHẦN ĐƠN HÀNG -->
+        <div class="order-summary">
+            <h3>Tóm tắt đơn hàng</h3>
+            <div class="course-item">
+                <div class="course-image">
+                    <div class="html-badge">Max</div>
+                </div>
+                <div class="course-details">
+                    <div class="course-title">Max</div>
+                    <div class="course-subtitle">Phiên bản không giới hạn </div>
+                </div>
+            </div>
+
+            <div class="price-breakdown">
+                <div class="price-row">
+                    <span>Giá gốc</span><span>100.000 đ</span>
+                </div>
+                <div class="price-row total">
+                    <span>Tổng cộng:</span><span class="total-amount">100.000 đ</span>
+                </div>
+            </div>
+
+            <div class="benefits">
+                <h4>Bạn sẽ nhận được:</h4>
+                <ul class="features">
+                    <li>✓ Không giới hạn credit mỗi tháng</li>
+                    <li>✓ Sử dụng không giới hạn voice elevenlabs</li>
+                    <li>✓ Sử dụng không giới hạn Mẫu AI</li>
+                    <li>✓ Tạo video chất lượng 1080p</li>
+                    <li>✓ Thời lượng video tối đa 60 giây</li>
+                    <li>✓ Hàng đợi tối đa 5 tác vụ</li>
+                    <li>✓ Cho phép chạy đồng thời 2 tác vụ</li>
+                    <li>✓ Xoá watermark</li>
+                </ul>
+            </div>
+
+            <div class="guarantee">
+                <span class="guarantee-icon">🛡️</span>
+                <span class="guarantee-text">Đảm bảo hoàn tiền trong 30 ngày</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/payment.js">
+        paymentsection.forEach((card) => {
+            card.addEventListener("mouseenter", function () {
+                this.style.boxShadow = "0 20px 40px rgba(139, 92, 246, 0.3)"
+            })
+
+            card.addEventListener("mouseleave", function () {
+                this.style.boxShadow = "none"
+            })
+        })
+        const ordersummary = document.querySelectorAll(".order-summary")
+
+        ordersummary.forEach((card) => {
+            card.addEventListener("mouseenter", function () {
+                this.style.boxShadow = "0 20px 40px rgba(139, 92, 246, 0.3)"
+            })
+
+            card.addEventListener("mouseleave", function () {
+                this.style.boxShadow = "none"
+            })
+        })
+    </script>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        /* class ẩn đơn giản */
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,647 @@
+/* Custom Styles for Tinovideo */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom background gradients */
+.bg-gradient-dark {
+    background: linear-gradient(135deg, #1a1b2e 0%, #16213e 50%, #0f172a 100%);
+}
+
+/* ========== Tech-style Gradient Palette ========== */
+.gradient-ai-blue {
+    background: linear-gradient(135deg, #4169E1, #6495ED) !important;
+    border-color: #3b82f6 !important;
+}
+
+.gradient-ai-purple {
+    background: linear-gradient(135deg, #EE82EE, #D8BFD8) !important;
+    border-color: #d8b4fe !important;
+}
+
+.gradient-ai-cyan {
+    background: linear-gradient(135deg, #0891b2, #67e8f9) !important;
+    border-color: #67e8f9 !important;
+}
+
+.gradient-ai-green {
+    background: linear-gradient(135deg, #48D1CC, #98FB98) !important;
+    border-color: #6ee7b7 !important;
+}
+
+.gradient-ai-indigo {
+    background: linear-gradient(135deg, #720e9e, #DDA0DD) !important;
+    border-color: #818cf8 !important;
+}
+
+/* Tùy chọn: reset padding/bo góc chung cho .prompt-card */
+.prompt-card {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: box-shadow .2s;
+}
+.border-btn{
+    border:#ffffff35 1px solid;
+}
+.prompt-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.mr-6{
+    margin-right: 60px !important;
+}
+
+
+
+
+
+/* Animation classes */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Animated elements */
+.animate-slide-up {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Hover effects */
+.hover-glow:hover {
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+}
+
+/* Language switcher */
+.lang-btn.active {
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    color: white;
+}
+
+.lang-btn:not(.active) {
+    background: transparent;
+    color: #9CA3AF;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1F2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4B5563;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6B7280;
+}
+
+/* Glassmorphism effect */
+.glass {
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+/* Loading animation */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #374151;
+    border-top: 4px solid #3B82F6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Progress bar styles */
+.progress-bar {
+    height: 4px;
+    background: #374151;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}
+
+/* Step indicator */
+.step-indicator {
+    position: relative;
+}
+
+.step-indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -50%;
+    width: 100%;
+    height: 2px;
+    background: #374151;
+    transform: translateY(-50%);
+}
+
+.step-indicator.active::after {
+    background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+}
+
+.step-indicator:last-child::after {
+    display: none;
+}
+
+/* Form styles */
+.form-input {
+    background: rgba(31, 41, 55, 0.5);
+    border: 2px solid #374151;
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+/* File upload area */
+.upload-area {
+    border: 2px dashed #4B5563;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: #3B82F6;
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.upload-area.dragover {
+    border-color: #3B82F6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Voice selection grid */
+.voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.voice-card {
+    background: rgba(31, 41, 55, 0.5);
+    border: 2px solid #374151;
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.voice-card:hover {
+    border-color: #3B82F6;
+    transform: translateY(-2px);
+}
+
+.voice-card.selected {
+    border-color: #3B82F6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Template gallery */
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.template-card {
+    background: rgba(31, 41, 55, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.template-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar navigation */
+.sidebar {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid #374151;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    margin: 4px 16px;
+    border-radius: 8px;
+    color: #9CA3AF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar-item:hover {
+    background: rgba(75, 85, 99, 0.3);
+    color: white;
+}
+
+.sidebar-item.active {
+    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+    color: white;
+}
+
+/* Tab navigation */
+.tab-nav {
+    display: flex;
+    background: rgba(31, 41, 55, 0.5);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    color: #9CA3AF;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    color: white;
+}
+
+/* Platform badges */
+.platform-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 20px;
+    color: #3B82F6;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 4px;
+}
+
+/* Preview area */
+.preview-area {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Quality selector */
+.quality-options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.quality-option {
+    padding: 8px 16px;
+    background: rgba(31, 41, 55, 0.5);
+    border: 2px solid #374151;
+    border-radius: 8px;
+    color: #9CA3AF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quality-option:hover {
+    border-color: #3B82F6;
+    color: white;
+}
+
+.quality-option.selected {
+    border-color: #3B82F6;
+    background: rgba(59, 130, 246, 0.1);
+    color: #3B82F6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #sidebar {
+        display: none;
+    } 
+    .steps {
+        display: none;
+    }
+
+    .text-gray-300 {
+        display: none;
+    }
+ .btn_nextStep {
+        margin-left: 15px;
+    }
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .template-grid,
+    .voice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tab-nav {
+        flex-direction: column;
+    }
+
+    .quality-options {
+        justify-content: center;
+    }
+}
+
+/* Dark mode enhancements */
+.dark-card {
+    background: rgba(31, 41, 55, 0.8);
+    border: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.dark-card:hover {
+    background: rgba(31, 41, 55, 0.9);
+    border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* Success and error states */
+.success {
+    color: #10B981;
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.error {
+    color: #EF4444;
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Loading states */
+.skeleton {
+    background: linear-gradient(90deg, #374151 25%, #4B5563 50%, #374151 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Tooltip styles */
+.tooltip {
+    position: relative;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}
+
+/* Custom buttons */
+.btn-gradient {
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #3B82F6;
+    color: #3B82F6;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: #3B82F6;
+    color: white;
+}
+
+@media (max-width: 1279px) {
+
+    /* grid → 1 cột  (Payment-info trên, Order-summary dưới) */
+    .container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px;
+    }
+
+    /* block “Phương thức thanh toán” full-width */
+    .payment-section,
+    .order-summary {
+        width: 100%;
+    }
+
+    /* Ảnh QR lớn hơn một chút cho tablet */
+    .qr-container img {
+        width: 65%;
+        max-width: 260px;
+    }
+
+    /* Giảm padding để vừa màn 11-inch */
+    .payment-info,
+    .order-summary {
+        padding: 24px;
+    }
+}
+
+/* ============================
+   📱  < 640 px  (Smart-phone)
+   ============================ */
+@media (max-width:639px) {
+    #sidebar {
+        display: none;
+    }
+
+    .block {
+        display: block;
+
+    }
+
+    #analyze-btn {
+        margin-top: 10px;
+    }
+
+    /* 1️⃣ KHÔNG ẩn toàn bộ .relative nữa  ─────────────────── */
+    /*  Bỏ hẳn hoặc ghi chú dòng này:  `.relative{display:none}`  */
+    /* .relative{display:none;} */
+
+    /* 2️⃣ Chỉnh lưới danh sách nhân vật cho màn nhỏ ────────── */
+    #character-list {
+        /* 2 cột cho màn ≤ 639 px để thẻ lớn, dễ bấm */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        /* khoảng cách vừa đủ */
+        padding: 0 8px;
+        /* mép hai bên thoáng */
+    }
+
+    .btn_nextStep {
+        margin-left: 15px;
+    }
+
+    .resetForm {
+        height: 100px;
+    }
+
+    /* 3️⃣ Tối ưu thẻ nhân vật (giả sử class .character-card) */
+    .character-card {
+        aspect-ratio: 3/4;
+        /* giữ tỷ lệ dọc */
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        /* vẫn dùng “relative” cho icon overlay */
+        transition: transform .2s;
+    }
+
+    .character-card:active {
+        transform: scale(.97);
+        /* hiệu ứng nhấn nhẹ */
+    }
+
+    /* ───🔸 FIX select #intro-select ───────────────────── */
+    #intro-select {
+        width: 100%;
+        /* luôn bám 100 % container */
+        max-width: 100vw;
+        /* không vượt quá chiều rộng màn */
+        box-sizing: border-box;
+
+        /* Hiển thị ngắn gọn khi CHƯA mở */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    /* 2️⃣ Khi dropdown mở, để option xuống dòng
+        (một số browser bỏ qua style option,
+        nhưng vẫn hiệu quả trên Chrome/Edge Android) */
+    #intro-select option {
+        white-space: normal;
+        /* cho phép wrap */
+        word-break: break-word;
+        line-height: 1.35;
+    }
+
+    /* 4️⃣ Ẩn bớt thành phần rườm rà khác nếu cần */
+    .steps {
+        display: none;
+    }
+
+    /* ví dụ thanh step dài */
+    /* … các điều chỉnh mobile khác vẫn giữ nguyên */
+}

@@ -1,0 +1,324 @@
+{
+  "templates": [
+    {
+      "id": "modern-corporate-1",
+      "name": "Modern Corporate",
+      "category": "business",
+      "description": "Thiết kế hiện đại, chuyên nghiệp cho doanh nghiệp",
+      "thumbnail": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop",
+      "preview_video": "preview-modern-corporate.mp4",
+      "duration_range": [15, 120],
+      "aspect_ratios": ["16:9", "9:16", "1:1"],
+      "features": ["Animated text", "Logo placement", "Background music", "Smooth transitions"],
+      "suitable_for": ["B2B products", "Services", "Technology", "Professional"],
+      "color_scheme": ["#1a1b2e", "#16213e", "#3b82f6", "#ffffff"],
+      "difficulty": "easy",
+      "popularity": 95,
+      "tags": ["corporate", "professional", "modern", "clean"]
+    },
+    {
+      "id": "social-media-trendy",
+      "name": "Social Media Trendy",
+      "category": "social",
+      "description": "Template năng động cho mạng xã hội, TikTok, Instagram",
+      "thumbnail": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=300&fit=crop",
+      "preview_video": "preview-social-trendy.mp4",
+      "duration_range": [5, 60],
+      "aspect_ratios": ["9:16", "1:1"],
+      "features": ["Quick cuts", "Trending effects", "Text animations", "Music sync"],
+      "suitable_for": ["Fashion", "Food", "Lifestyle", "Entertainment"],
+      "color_scheme": ["#ff6b6b", "#4ecdc4", "#45b7d1", "#ffffff"],
+      "difficulty": "easy",
+      "popularity": 92,
+      "tags": ["trendy", "social", "vibrant", "youth"]
+    },
+    {
+      "id": "product-showcase-pro",
+      "name": "Product Showcase Pro",
+      "category": "product",
+      "description": "Trưng bày sản phẩm chuyên nghiệp với góc quay đẹp",
+      "thumbnail": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop",
+      "preview_video": "preview-product-showcase.mp4",
+      "duration_range": [20, 90],
+      "aspect_ratios": ["16:9", "9:16", "1:1"],
+      "features": ["3D rotations", "Zoom effects", "Product highlights", "Feature callouts"],
+      "suitable_for": ["E-commerce", "Product launches", "Retail", "Reviews"],
+      "color_scheme": ["#2c3e50", "#ecf0f1", "#e74c3c", "#f39c12"],
+      "difficulty": "medium",
+      "popularity": 88,
+      "tags": ["product", "showcase", "3d", "professional"]
+    },
+    {
+      "id": "minimal-clean",
+      "name": "Minimal Clean",
+      "category": "minimal",
+      "description": "Thiết kế tối giản, sạch sẽ, tập trung vào nội dung",
+      "thumbnail": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=300&fit=crop",
+      "preview_video": "preview-minimal-clean.mp4",
+      "duration_range": [10, 180],
+      "aspect_ratios": ["16:9", "9:16", "1:1", "4:5"],
+      "features": ["Subtle animations", "Typography focus", "White space", "Elegant transitions"],
+      "suitable_for": ["Premium brands", "Healthcare", "Education", "Consulting"],
+      "color_scheme": ["#ffffff", "#f8f9fa", "#6c757d", "#343a40"],
+      "difficulty": "easy",
+      "popularity": 85,
+      "tags": ["minimal", "clean", "elegant", "simple"]
+    },
+    {
+      "id": "dynamic-motion",
+      "name": "Dynamic Motion",
+      "category": "dynamic",
+      "description": "Hiệu ứng chuyển động mạnh mẽ, thu hút ánh nhìn",
+      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop",
+      "preview_video": "preview-dynamic-motion.mp4",
+      "duration_range": [8, 45],
+      "aspect_ratios": ["9:16", "16:9", "1:1"],
+      "features": ["Kinetic typography", "Particle effects", "Dynamic transitions", "Energy bursts"],
+      "suitable_for": ["Sports", "Gaming", "Music", "Energy drinks"],
+      "color_scheme": ["#1a1a1a", "#ff0080", "#00ff80", "#0080ff"],
+      "difficulty": "hard",
+      "popularity": 78,
+      "tags": ["dynamic", "energetic", "motion", "impactful"]
+    },
+    {
+      "id": "elegant-luxury",
+      "name": "Elegant Luxury",
+      "category": "luxury",
+      "description": "Phong cách sang trọng, cao cấp cho thương hiệu luxury",
+      "thumbnail": "https://images.unsplash.com/photo-1615800001171-b0c79473c816?w=400&h=300&fit=crop",
+      "preview_video": "preview-elegant-luxury.mp4",
+      "duration_range": [20, 120],
+      "aspect_ratios": ["16:9", "1:1"],
+      "features": ["Gold accents", "Smooth parallax", "Premium typography", "Sophisticated animations"],
+      "suitable_for": ["Jewelry", "Fashion", "Watches", "High-end products"],
+      "color_scheme": ["#000000", "#d4af37", "#ffffff", "#c0c0c0"],
+      "difficulty": "medium",
+      "popularity": 82,
+      "tags": ["luxury", "elegant", "premium", "sophisticated"]
+    },
+    {
+      "id": "food-delicious",
+      "name": "Food & Beverage",
+      "category": "food",
+      "description": "Template chuyên dụng cho đồ ăn, đồ uống hấp dẫn",
+      "thumbnail": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop",
+      "preview_video": "preview-food-delicious.mp4",
+      "duration_range": [10, 60],
+      "aspect_ratios": ["9:16", "1:1", "4:5"],
+      "features": ["Appetite appeal", "Steam effects", "Color enhancement", "Recipe callouts"],
+      "suitable_for": ["Restaurants", "Food delivery", "Recipes", "Cooking shows"],
+      "color_scheme": ["#8b4513", "#ffa500", "#ff6347", "#32cd32"],
+      "difficulty": "easy",
+      "popularity": 89,
+      "tags": ["food", "delicious", "appetite", "colorful"]
+    },
+    {
+      "id": "tech-innovation",
+      "name": "Tech Innovation",
+      "category": "technology",
+      "description": "Thiết kế công nghệ cao, futuristic cho sản phẩm tech",
+      "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop",
+      "preview_video": "preview-tech-innovation.mp4",
+      "duration_range": [15, 90],
+      "aspect_ratios": ["16:9", "9:16"],
+      "features": ["Circuit animations", "Holographic effects", "Data visualization", "Sci-fi elements"],
+      "suitable_for": ["Software", "Apps", "Electronics", "AI products"],
+      "color_scheme": ["#0a0a0a", "#00ffff", "#ff00ff", "#ffff00"],
+      "difficulty": "hard",
+      "popularity": 76,
+      "tags": ["technology", "futuristic", "innovation", "digital"]
+    },
+    {
+      "id": "health-wellness",
+      "name": "Health & Wellness",
+      "category": "health",
+      "description": "Template nhẹ nhàng, tích cực cho sản phẩm sức khỏe",
+      "thumbnail": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop",
+      "preview_video": "preview-health-wellness.mp4",
+      "duration_range": [20, 120],
+      "aspect_ratios": ["16:9", "9:16", "1:1"],
+      "features": ["Calming animations", "Nature elements", "Breathing effects", "Positive vibes"],
+      "suitable_for": ["Healthcare", "Fitness", "Wellness", "Medical"],
+      "color_scheme": ["#e8f5e8", "#4caf50", "#81c784", "#ffffff"],
+      "difficulty": "easy",
+      "popularity": 81,
+      "tags": ["health", "wellness", "calm", "positive"]
+    },
+    {
+      "id": "education-learning",
+      "name": "Education & Learning",
+      "category": "education",
+      "description": "Template giáo dục, học tập với infographic sinh động",
+      "thumbnail": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop",
+      "preview_video": "preview-education-learning.mp4",
+      "duration_range": [30, 300],
+      "aspect_ratios": ["16:9", "4:3"],
+      "features": ["Infographics", "Step-by-step", "Knowledge trees", "Interactive elements"],
+      "suitable_for": ["Online courses", "Tutorials", "Educational content", "Training"],
+      "color_scheme": ["#1976d2", "#ff9800", "#4caf50", "#ffffff"],
+      "difficulty": "medium",
+      "popularity": 73,
+      "tags": ["education", "learning", "infographic", "tutorial"]
+    },
+    {
+      "id": "fashion-style",
+      "name": "Fashion & Style",
+      "category": "fashion",
+      "description": "Template thời trang, phong cách cho ngành may mặc",
+      "thumbnail": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop",
+      "preview_video": "preview-fashion-style.mp4",
+      "duration_range": [10, 60],
+      "aspect_ratios": ["9:16", "4:5", "1:1"],
+      "features": ["Runway effects", "Color transitions", "Style showcase", "Trend highlights"],
+      "suitable_for": ["Clothing", "Accessories", "Beauty", "Style blogs"],
+      "color_scheme": ["#000000", "#ffffff", "#ff69b4", "#dda0dd"],
+      "difficulty": "medium",
+      "popularity": 87,
+      "tags": ["fashion", "style", "trendy", "chic"]
+    },
+    {
+      "id": "travel-adventure",
+      "name": "Travel & Adventure",
+      "category": "travel",
+      "description": "Template du lịch, khám phá với cảnh đẹp tự nhiên",
+      "thumbnail": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop",
+      "preview_video": "preview-travel-adventure.mp4",
+      "duration_range": [20, 180],
+      "aspect_ratios": ["16:9", "9:16", "1:1"],
+      "features": ["Panoramic views", "Map animations", "Journey paths", "Destination reveals"],
+      "suitable_for": ["Tourism", "Hotels", "Travel agencies", "Adventure gear"],
+      "color_scheme": ["#87ceeb", "#32cd32", "#f4a460", "#ffffff"],
+      "difficulty": "easy",
+      "popularity": 79,
+      "tags": ["travel", "adventure", "nature", "exploration"]
+    }
+  ],
+  "categories": [
+    {
+      "id": "business",
+      "name": "Doanh nghiệp",
+      "icon": "fas fa-briefcase",
+      "color": "#3b82f6",
+      "description": "Template chuyên nghiệp cho doanh nghiệp"
+    },
+    {
+      "id": "social",
+      "name": "Mạng xã hội",
+      "icon": "fas fa-share-alt",
+      "color": "#e91e63",
+      "description": "Template năng động cho social media"
+    },
+    {
+      "id": "product",
+      "name": "Sản phẩm",
+      "icon": "fas fa-box",
+      "color": "#ff9800",
+      "description": "Trưng bày sản phẩm chuyên nghiệp"
+    },
+    {
+      "id": "minimal",
+      "name": "Tối giản",
+      "icon": "fas fa-circle",
+      "color": "#607d8b",
+      "description": "Thiết kế sạch sẽ, tối giản"
+    },
+    {
+      "id": "dynamic",
+      "name": "Năng động",
+      "icon": "fas fa-bolt",
+      "color": "#ff5722",
+      "description": "Hiệu ứng mạnh mẽ, năng động"
+    },
+    {
+      "id": "luxury",
+      "name": "Cao cấp",
+      "icon": "fas fa-crown",
+      "color": "#ffc107",
+      "description": "Phong cách sang trọng, luxury"
+    },
+    {
+      "id": "food",
+      "name": "Ẩm thực",
+      "icon": "fas fa-utensils",
+      "color": "#795548",
+      "description": "Chuyên dụng cho đồ ăn, đồ uống"
+    },
+    {
+      "id": "technology",
+      "name": "Công nghệ",
+      "icon": "fas fa-microchip",
+      "color": "#00bcd4",
+      "description": "Thiết kế công nghệ cao"
+    },
+    {
+      "id": "health",
+      "name": "Sức khỏe",
+      "icon": "fas fa-heartbeat",
+      "color": "#4caf50",
+      "description": "Template cho ngành y tế, sức khỏe"
+    },
+    {
+      "id": "education",
+      "name": "Giáo dục",
+      "icon": "fas fa-graduation-cap",
+      "color": "#2196f3",
+      "description": "Học tập và giáo dục"
+    },
+    {
+      "id": "fashion",
+      "name": "Thời trang",
+      "icon": "fas fa-tshirt",
+      "color": "#9c27b0",
+      "description": "Template thời trang, phong cách"
+    },
+    {
+      "id": "travel",
+      "name": "Du lịch",
+      "icon": "fas fa-plane",
+      "color": "#009688",
+      "description": "Du lịch và khám phá"
+    }
+  ],
+  "aspect_ratios": [
+    {
+      "ratio": "16:9",
+      "name": "Landscape",
+      "description": "Phù hợp cho YouTube, Facebook, website",
+      "width": 1920,
+      "height": 1080,
+      "platforms": ["YouTube", "Facebook", "Website"]
+    },
+    {
+      "ratio": "9:16",
+      "name": "Vertical",
+      "description": "Tối ưu cho TikTok, Instagram Stories, Reels",
+      "width": 1080,
+      "height": 1920,
+      "platforms": ["TikTok", "Instagram Stories", "YouTube Shorts"]
+    },
+    {
+      "ratio": "1:1",
+      "name": "Square",
+      "description": "Hoàn hảo cho Instagram Posts, Facebook",
+      "width": 1080,
+      "height": 1080,
+      "platforms": ["Instagram Posts", "Facebook", "LinkedIn"]
+    },
+    {
+      "ratio": "4:5",
+      "name": "Portrait",
+      "description": "Tối ưu cho Instagram Posts, Pinterest",
+      "width": 1080,
+      "height": 1350,
+      "platforms": ["Instagram Posts", "Pinterest"]
+    },
+    {
+      "ratio": "4:3",
+      "name": "Standard",
+      "description": "Chuẩn cho màn hình máy tính, giáo dục",
+      "width": 1024,
+      "height": 768,
+      "platforms": ["Education", "Presentations"]
+    }
+  ]
+}

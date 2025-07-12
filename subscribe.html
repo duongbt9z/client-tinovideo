@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gói dịch vụ</title>
+  <link rel="stylesheet" href="./css/styles_subscribe.css" />
+</head>
+
+<body>
+  <button onclick="window.history.back()" class="exit-btn" aria-label="Thoát">
+    ✕
+  </button>
+
+  <div class="container">
+    <header class="header">
+      <h1>Chọn gói phù hợp nhất với bạn!</h1>
+      <p>So sánh và lựa chọn gói theo nhu cầu</p>
+    </header>
+
+    <!-- Toggle loại thanh toán -->
+    <div class="billing-toggle">
+      <button class="billing-btn active" data-billing="monthly">Theo tháng</button>
+      <button class="billing-btn " data-billing="yearly">Theo năm</button>
+
+    </div>
+
+    <p class="invitation-code">Bạn có mã mời?</p>
+
+    <!-- Danh sách gói -->
+    <div class="pricing-grid">
+      <!-- Max Plan -->
+      <div class="pricing-card">
+        <div class="plan-header">
+          <span class="new-badge">✨ Mới !</span>
+          <h3>Max</h3>
+        </div>
+        <div class="price">
+          <span class="amount" data-yearly="5.400.000VNĐ" data-monthly="500.000VNĐ">450.000VNĐ</span>
+          <span class="period">/Năm</span>
+        </div>
+        <button class="subscribe-btn">Đăng ký</button>
+        <div class="billed-amount" data-yearly="450.000VNĐ mỗi tháng" data-monthly=" ">450.000VNĐ Mỗi Tháng</div>
+        <ul class="features">
+          <li>✓ Không giới hạn credit mỗi tháng</li>
+          <li>✓ Sử dụng không giới hạn voice elevenlabs</li>
+          <li>✓ Sử dụng không giới hạn Mẫu AI</li>
+          <li>✓ Tạo video chất lượng 1080p</li>
+          <li>✓ Thời lượng video tối đa 60 giây</li>
+          <li>✓ Hàng đợi tối đa 5 tác vụ</li>
+          <li>✓ Cho phép chạy đồng thời 2 tác vụ</li>
+          <li>✓ Xoá watermark</li>
+        </ul>
+      </div>
+
+      <!-- Standard Plan -->
+      <div class="pricing-card">
+        <div class="plan-header">
+          <h3>Standard</h3>
+          <span class="discount">Giảm 47%</span>
+        </div>
+        <div class="original-price" data-yearly="200.000VNĐ" data-monthly="14.000VNĐ">14.000VNĐ</div>
+        <div class="price">
+          <span class="amount" data-yearly="1.920.000VNĐ" data-monthly="200.000VNĐ">200.000VNĐ</span>
+          <span class="period">/Năm</span>
+        </div>
+        <button class="subscribe-btn">Đăng ký</button>
+        <div class="billed-amount" data-yearly="160.000VNĐ mỗi tháng" data-monthly="  ">95.000VNĐ mỗi năm
+        </div>
+        <ul class="features">
+          <li>✓ 1.000 credit mỗi tháng</li>
+          <li>✓ Tạo video 1080p</li>
+          <li>✓ Thời lượng video tối đa 15 giây</li>
+          <!-- <li>✓ Hàng đợi tối đa 5 tác vụ</li> -->
+          <!-- <li>✓ Chạy 1 tác vụ mỗi lần</li> -->
+          <!-- <li>✓ Xoá watermark</li> -->
+        </ul>
+      </div>
+
+      <!-- Pro Plan -->
+      <div class="pricing-card">
+        <div class="plan-header">
+          <h3>Pro</h3>
+          <span class="discount">Giảm 49%</span>
+        </div>
+        <div class="original-price" data-yearly="54.000VNĐ" data-monthly="300.000VNĐ">350.000VNĐ</div>
+        <div class="price">
+          <span class="amount" data-yearly="3.840.000VNĐ" data-monthly="400.000VNĐ">350.000VNĐ</span>
+          <span class="period">/Năm</span>
+        </div>
+        <button class="subscribe-btn">Đăng ký</button>
+        <div class="billed-amount" data-yearly="320.000VNĐ mỗi tháng" data-monthly=" ">335.000VNĐ mỗi
+          năm</div>
+        <ul class="features">
+          <li>✓ 5.000 credit mỗi tháng</li>
+          <li>✓ Tạo video chất lượng 1080p</li>
+          <li>✓ Sử dụng 10 Mẫu AI</li>
+          <li>✓ Thời lượng video tối đa 30 giây</li>
+          <li>✓ Hàng đợi tối đa 5 tác vụ</li>
+          <li>✓ Chạy đồng thời 2 tác vụ</li>
+          <li>✓ Xoá watermark</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/subscribe.js"></script>
+</body>
+
+</html>

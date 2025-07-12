@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Tinovideo</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-900 text-white font-sans overflow-hidden">
+
+    <!-- Language Switcher -->
+    <div class="fixed top-4 right-4 z-50 steps">
+        <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
+            <button onclick="switchLanguage('vi')"
+                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi">🇻🇳 VI</button>
+            <button onclick="switchLanguage('en')"
+                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="en">🇺🇸 EN</button>
+        </div>
+    </div>
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class=" w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+            <!-- Logo -->
+            <div class="p-6 border-b border-gray-700">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <!-- <i class="fas fa-video text-white text-lg"></i> -->
+                        <img src="./images/logo.png">
+                    </div>
+                    <h1
+                        class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                        Tinovideo
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 py-6">
+
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="sidebar-item" onclick="showSection('dashboard')">
+                            <i class="fas fa-chart-pie w-5 mr-3"></i>
+                            <span data-key="nav-dashboard">Bảng điều khiển</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item active" onclick="showSection('create')">
+                            <i class="fas fa-plus-circle w-5 mr-3"></i>
+                            <span data-key="nav-create">Tạo Video Mới</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item" onclick="showSection('projects')">
+                            <i class="fas fa-folder w-5 mr-3"></i>
+                            <span data-key="nav-projects">Dự Án Của Tôi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item" onclick="showSection('templates')">
+                            <i class="fas fa-th-large w-5 mr-3"></i>
+                            <span data-key="nav-templates">Mẫu Thư Viện</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item" onclick="showSection('affiliate')">
+                            <i class="fa-brands fa-affiliatetheme w-5 mr-3"></i>
+                            <span data-key="nav-affiliate">Affiliate</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item" onclick="showSection('settings')">
+                            <i class="fas fa-cog w-5 mr-3"></i>
+                            <span data-key="nav-settings">Cài Đặt</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item" onclick="showSection('help')">
+                            <i class="fas fa-question-circle w-5 mr-3"></i>
+                            <span data-key="nav-help">Trợ giúp</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- User Info -->
+            <div class="p-6 border-t border-gray-700">
+                <div class="flex items-center mb-4">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
+                        <span class="text-white font-bold text-sm">DU</span>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm" data-key="user-name">Demo Người dùng</div>
+                        <div class="text-xs text-gray-400" data-key="user-plan">Chuyên Nghiệp</div>
+                    </div>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-3 mb-3">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-300" data-key="credits-remaining">Credits còn lại:</span>
+                        <span class="text-lg font-bold text-blue-400" data-key="point">100</span>
+                    </div>
+                    <div class="w-full bg-gray-600 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70%">
+                        </div>
+                    </div>
+                </div>
+                <button
+                    class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+                    <i class="fas fa-crown mr-2"></i><span data-key="upgrade-btn">Nâng cấp</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <button id="sidebar-toggle" class="sidebar-toggle hidden-desktop" aria-label="Toggle menu">
+                        ☰
+                    </button>
+                    <div class="flex items-center space-x-4">
+                        <h2 class="text-2xl font-bold" data-key="main-title">Tạo Video AI</h2>
+                        <span class="text-gray-400">|</span>
+                        <span class="text-gray-300" data-key="project-subtitle">Dự án mới - Nhập Nội Dung</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative steps">
+                            <input type="text" placeholder="Tìm kiếm..."
+                                class="bg-gray-700 text-white px-4 py-2 pl-10 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                        <button class="p-2 text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-bell text-lg"></i>
+                        </button>
+                        <button
+                            class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
+                            <i class="fas fa-plus mr-2"></i><span data-key="new-video-btn"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto">
+                <!-- Create Video Section -->
+                <div id="create-section" class="p-6">
+                    <!-- Progress Steps -->
+                    <div class="mb-8">
+                        <div class="steps flex items-center justify-center space-x-8">
+                            <div class="flex items-center step-progress step-active" data-step="1">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                                    1
+                                </div>
+                                <span class="ml-3 font-semibold" data-key="step-1-title">Nhập Nội Dung</span>
+                            </div>
+                            <div class="w-16 h-1 bg-gray-700 rounded"></div>
+                            <div class="flex items-center step-progress" data-step="2">
+                                <div
+                                    class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-gray-400 font-bold text-lg">
+                                    2
+                                </div>
+                                <span class="ml-3 text-gray-400" data-key="step-2-title">Chọn Giọng Đọc AI</span>
+                            </div>
+                            <div class="w-16 h-1 bg-gray-700 rounded"></div>
+                            <div class="flex items-center step-progress" data-step="3">
+                                <div
+                                    class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-gray-400 font-bold text-lg">
+                                    3
+                                </div>
+                                <span class="ml-3 text-gray-400" data-key="step-3-title">Tạo Kịch Bản</span>
+                            </div>
+                            <div class="w-16 h-1 bg-gray-700 rounded"></div>
+                            <div class="flex items-center step-progress" data-step="4">
+                                <div
+                                    class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-gray-400 font-bold text-lg">
+                                    4
+                                </div>
+                                <span class="ml-3 text-gray-400" data-key="step-4-title">Tạo Video</span>
+                            </div>
+                            <div class="w-16 h-1 bg-gray-700 rounded"></div>
+                            <div class="flex items-center step-progress" data-step="5">
+                                <div
+                                    class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-gray-400 font-bold text-lg">
+                                    5
+                                </div>
+                                <span class="ml-3 text-gray-400" data-key="step-5-title">Xuất Video</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step Content -->
+                    <div class="max-w-4xl mx-auto">
+                        <!-- Step 1: Input Content -->
+                        <div id="step-1-content" class="step-content">
+                            <div class="bg-gray-800 rounded-xl p-8">
+                                <h3 class="text-2xl font-bold mb-2" data-key="step-1-main-title">Bước 1: Nhập Nội Dung
+                                    Sản Phẩm</h3>
+                                <p class="text-gray-400 mb-6" data-key="step-1-description">Nhập URL sản phẩm hoặc văn
+                                    bản nội dung để tạo video</p>
+
+                                <!-- Tab Navigation -->
+                                <!-- <div class="tab-nav mb-6">
+                                    <button class="tab-btn active" onclick="switchTab('url')" data-key="tab-url">URL Sản
+                                        phẩm</button>
+                                    <button class="tab-btn" onclick="switchTab('text')" data-key="tab-text">Nội dung
+                                        Text</button>
+                                </div> -->
+
+                                <!-- URL Input Tab -->
+                                <div id="url-tab" class="tab-content">
+                                    <div class="mb-6">
+                                        <label class="block text-sm font-medium mb-2" data-key="url-label">URL Sản
+                                            phẩm</label>
+                                        <div class="flex space-x-3 block ">
+                                            <input type="url" id="product-url" placeholder="https://shopee.vn/..."
+                                                class="form-input flex-1" data-key="url-placeholder">
+                                            <button id="analyze-btn" onclick="analyzeUrl()"
+                                                class="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-semibold transition-colors">
+                                                <i class="fas fa-search mr-2"></i><span data-key="analyze-btn">Phân
+                                                    tích</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Supported Platforms -->
+                                    <div class="mb-6">
+                                        <p class="text-sm text-gray-400 mb-3" data-key="supported-platforms">Nền tảng
+                                            được hỗ trợ:</p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="platform-badge"><i class="fab fa-tiktok mr-2"></i>TikTok
+                                                Shop</span>
+                                            <span class="platform-badge"><i
+                                                    class="fas fa-shopping-bag mr-2"></i>Shopee</span>
+                                            <span class="platform-badge"><i class="fas fa-store mr-2"></i>Lazada</span>
+                                            <span class="platform-badge"><i class="fab fa-amazon mr-2"></i>Amazon</span>
+                                            <span class="platform-badge"><i
+                                                    class="fas fa-shopping-cart mr-2"></i>Sendo</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Image Upload Section -->
+                                    <div class="mb-6">
+                                        <label class="block text-sm font-medium mb-2" data-key="images-label">Hình ảnh
+                                            bổ sung (tuỳ chọn)</label>
+                                        <div class="upload-area"
+                                            onclick="document.getElementById('image-upload').click()">
+                                            <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                                            <p class="text-lg font-medium mb-2" data-key="upload-title">Kéo thả hoặc
+                                                nhấp để tải lên</p>
+                                            <p class="text-gray-400" data-key="upload-desc">Hỗ trợ JPG, PNG, WEBP. Tối
+                                                đa 10 hình.</p>
+                                            <input type="file" id="image-upload" multiple accept="image/*"
+                                                class="hidden" onchange="handleImageUpload(event)">
+                                        </div>
+
+                                        <!-- Image Preview Grid -->
+                                        <h2 id="product-title" class="text-xl font-bold mt-4"></h2>
+                                        <p id="product-price" class="text-green-400 font-semibold"></p>
+                                        <div id="image-preview" class="mt-4 grid grid-cols-4 gap-4 hidden">
+                                            <!-- Preview images will be added here -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Text Input Tab -->
+                                <div id="text-tab" class="tab-content hidden">
+                                    <div class="mb-6">
+                                        <label class="block text-sm font-medium mb-2" data-key="text-label">Nội dung văn
+                                            bản</label>
+                                        <textarea id="product-text" rows="8"
+                                            placeholder="Nhập mô tả sản phẩm của bạn..."
+                                            class="form-input w-full resize-none"
+                                            data-key="text-placeholder"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="flex justify-between">
+                                    <button onclick="resetForm()" class="btn-outline px-6 py-3 rounded-lg ">
+                                        <i class="fas fa-undo mr-2"></i><span data-key="reset-btn">Đặt lại</span>
+                                    </button>
+                                    <div class="space-x-3">
+                                        <!-- <button onclick="saveProject()"
+                                            class="bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors">
+                                            <i class="fas fa-save mr-2"></i><span data-key="save-btn">Lưu dự án</span>
+                                        </button> -->
+                                        <button onclick="nextStep()"
+                                            class="btn-gradient px-8 py-3 rounded-lg btn_nextStep resetForm">
+                                            <span data-key="next-btn">Tiếp theo: Chọn giọng đọc</span> <i
+                                                class="fas fa-arrow-right ml-2"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Voice Selection -->
+                        <div id="step-2-content" class="step-content hidden">
+                            <div class="bg-gray-800 rounded-xl p-8">
+                                <h3 class="text-2xl font-bold mb-2" data-key="step-2-main-title">Bước 2: Chọn Giọng Đọc
+                                    AI</h3>
+                                <p class="text-gray-400 mb-6" data-key="step-2-description">Lựa chọn giọng đọc phù hợp
+                                    cho video của bạn</p>
+
+                                <!-- Voice Categories -->
+                                <div class="mb-6">
+                                    <div class="flex space-x-4 mb-4 block">
+                                        <button class="voice-category-btn active" onclick="filterVoices('all')"
+                                            data-key="all-voices">Tất cả</button>
+                                        <button class="voice-category-btn" onclick="filterVoices('male')"
+                                            data-key="male-voices">Giọng Nam</button>
+                                        <button class="voice-category-btn" onclick="filterVoices('female')"
+                                            data-key="female-voices">Giọng Nữ</button>
+                                        <button class="voice-category-btn" onclick="filterVoices('vietnamese')"
+                                            data-key="vietnamese-voices">Tiếng Việt</button>
+                                        <button class="voice-category-btn" onclick="filterVoices('english')"
+                                            data-key="english-voices">Tiếng Anh</button>
+                                    </div>
+                                </div>
+
+                                <!-- Voice Grid -->
+                                <div class="voice-grid mb-8" id="voice-grid">
+                                    <!-- Voice cards will be generated here -->
+                                </div>
+                                <div class="space-y-6 mb-4">
+                                    <!-- Background Music -->
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2" data-key="background-music">Nhạc
+                                            nền</label>
+                                        <select id="music-select" class="form-input w-full">
+                                            <option value="none" data-key="no-music">Không có nhạc</option>
+                                            <option value="upbeat_corporate.mp3">Upbeat Corporate</option>
+                                            <option value="inspiring_piano.mp3">Inspiring Piano</option>
+                                            <option value="tech_innovation.mp3">Tech Innovation</option>
+                                            <option value="modern_pop.mp3">Modern Pop</option>
+                                        </select>
+                                    </div>
+                                    <!-- Transitions -->
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2" data-key="transitions">Hiệu
+                                            ứng chuyển cảnh</label>
+                                        <select id="transition-select" class="form-input w-full">
+                                            <option value="fade" data-key="fade">Fade</option>
+                                            <option value="slide" data-key="slide">Slide</option>
+                                            <option value="zoom" data-key="zoom">Zoom</option>
+                                            <option value="dissolve" data-key="dissolve">Dissolve</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label class="block text-sm font-medium mb-2" data-key="video-duration">Thời lượng
+                                        video</label>
+                                    <div class="flex space-x-3">
+                                        <button class="duration-btn active" data-duration="15">15s</button>
+                                        <button class="duration-btn" data-duration="30">30s</button>
+                                        <button class="duration-btn" data-duration="60">60s</button>
+                                        <!-- <button class="duration-btn" data-duration="custom">Tùy
+                                                        chỉnh</button> -->
+                                    </div>
+                                </div>
+                                <!-- Voice Settings -->
+
+                                <!-- Sample Text -->
+                                <!-- <div class="bg-gray-700 rounded-lg p-6 mb-6">
+                                    <h4 class="text-lg font-semibold mb-4" data-key="sample-text-title">Điền Văn bản
+                                        chèn vào video</h4>
+                                    <textarea id="sample-text" rows="3" class="form-input w-full mb-4"
+                                        data-key="sample-text-placeholder">Cảm ơn bạn đã lựa chọn dịch vụ của chúng tôi. Đây là giọng đọc AI từ phần mềm Ti Nô Video, được thiết kế nhằm mang đến trải nghiệm nghe tự nhiên và dễ chịu nhất.</textarea>
+                                    <button onclick="previewVoice()"
+                                        class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg">
+                                        <i class="fas fa-play mr-2"></i><span data-key="preview-voice">Nghe thử</span>
+                                    </button>
+                                </div> -->
+
+                                <!-- Action Buttons -->
+                                <div class="flex justify-between">
+                                    <button onclick="previousStep()" class="btn-outline px-6 py-3 rounded-lg">
+                                        <i class="fas fa-arrow-left mr-2"></i><span data-key="previous-btn">Quay
+                                            lại</span>
+                                    </button>
+                                    <button onclick="nextStep()" class="btn-gradient px-8 py-3 rounded-lg btn_nextStep">
+                                        <span data-key="next-create-btn">Tiếp theo: Tạo Kịch Bản video</span> <i
+                                            class="fas fa-arrow-right ml-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="step-3-content" class="step-content hidden">
+                            <div class="bg-gray-800 rounded-xl p-8">
+                                <h3 class="text-2xl font-bold mb-2" data-key="prompt-main-title">Bước 3: Chọn Kịch Bản
+                                </h3>
+                                <p class="text-gray-400 mb-6" data-key="prompt-desc">Chọn mẫu kịch bản phù hợp hoặc tạo
+                                    mới để AI dựng video</p>
+
+                                <!-- Prompt Category Filter -->
+                                <div class="flex flex-wrap gap-3 mb-6">
+                                    <button class="prompt-cat-btn active" data-cat="all"
+                                        onclick="filterPrompts('all')">Tất cả</button>
+                                    <button class="prompt-cat-btn" data-cat="ads"
+                                        onclick="filterPrompts('ads')">Quảng cáo</button>
+                                    <button class="prompt-cat-btn" data-cat="review"
+                                        onclick="filterPrompts('review')">Đánh giá</button>
+                                    <button class="prompt-cat-btn" data-cat="story"
+                                        onclick="filterPrompts('story')">Kể chuyện</button>
+                                    <button class="prompt-cat-btn" data-cat="tip"
+                                        onclick="filterPrompts('tip')">Mẹo nhanh</button>
+                                </div>
+
+                                <!-- Prompt Grid -->
+                                <div id="prompt-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                </div> <!-- Sample Text -->
+                                <div class="bg-gray-700 rounded-lg p-6 mb-6 mt-6">
+                                    <h4 class="text-lg font-semibold mb-4" data-key="sample-text-title">Mô Tả về sản
+                                        phẩm</h4>
+                                    <textarea id="sample-text" rows="3" class="form-input w-full mb-4"
+                                        data-key="sample-text-placeholder">Cảm ơn bạn đã lựa chọn dịch vụ của chúng tôi. Đây là giọng đọc AI từ phần mềm Ti Nô Video, được thiết kế nhằm mang đến trải nghiệm nghe tự nhiên và dễ chịu nhất.</textarea>
+
+                                    <button onclick="generateScript()"
+                                        class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg">
+                                        <i class="fas fa-play mr-2"></i><span data-key="preview-voice">Tạo kịch
+                                            bản</span>
+                                    </button>
+                                    <h4 class="text-lg font-semibold mb-4 mt-6" data-key="sample-text-title">Kịch bản
+                                        của bạn
+                                    </h4>
+                                    <textarea id="script-text" rows="3" class="form-input w-full mb-4"
+                                        data-key="sample-text-placeholder" placeholder="Kịch Bạn của bạn !"></textarea>
+                                    <!-- <button onclick="previewVoice()"
+                                        class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg">
+                                        <i class="fas fa-play mr-2"></i><span data-key="preview-voice">Nghe thử</span>
+                                    </button> -->
+                                </div>
+
+                                <!-- Action buttons -->
+                                <div class="flex justify-between mt-8">
+                                    <button onclick="previousStep()" class="btn-outline px-6 py-3 rounded-lg"><i
+                                            class="fas fa-arrow-left mr-2"></i><span data-key="previous-btn">Quay
+                                            lại</span></button>
+                                    <button onclick="nextStep()"
+                                        class="btn-gradient px-8 py-3 rounded-lg btn_nextStep"><span
+                                            data-key="next-create-btn">Tiếp theo: mở đầu </span><i
+                                            class="fas fa-arrow-right ml-2"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Step 4: Create Video -->
+                        <div id="step-4-content" class="step-content hidden">
+                            <div class="bg-gray-800 rounded-xl p-8 mb-4">
+                                <h3 class="text-2xl font-bold mb-2" data-key="step-3-main-title">Bước 4: Chọn Người Mẫu
+                                    mở đầu
+                                    Video</h3>
+                                <!-- Video Customization -->
+                                <div>
+
+                                </div>
+                                <label class="block text-sm font-medium mb-2 mt-4" data-key="transitions">Chọn cảm xúc
+                                    bạn muốn hoặc dùng AI tìm phiên bản tốt nhất
+                                </label>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Giới tính</label>
+                                        <select id="filter-gender" class="form-input w-full">
+                                            <option value="">Tất cả</option>
+                                            <option value="male">Nam</option>
+                                            <option value="female">Nữ</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Cảm xúc</label>
+                                        <select id="filter-emotion" class="form-input w-full">
+                                            <option value="">Tất cả</option>
+                                            <option value="happy">Vui vẻ</option>
+                                            <option value="suspicious">nghi ngờ</option>
+                                            <option value="sorrowful">buồn bã</option>
+                                            <option value="urgent">cấp bách</option>
+                                            <option value="surprised">Wow</option>
+                                            <option value="frustrated">Tức tối</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="character-list" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                                </div>
+                            </div>
+                            <!-- Action Buttons -->
+                            <div class="flex justify-between">
+                                <button onclick="previousStep()" class="btn-outline px-6 py-3 rounded-lg">
+                                    <i class="fas fa-arrow-left mr-2"></i><span data-key="previous-btn">Quay
+                                        lại</span>
+                                </button>
+                                <button onclick="nextStep()" class="btn-gradient px-8 py-3 rounded-lg btn_nextStep"
+                                    id="step4-next">
+                                    <span data-key="next-export-btn">Tiếp theo:Tạo Lời mở đầu</span> <i
+                                        class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="step-5-content" class="step-content hidden">
+                            <div class="bg-gray-800 rounded-xl p-8 mb-4">
+                                <h3 class="text-2xl font-bold mb-2" data-key="step-3-main-title">Bước 4: Tạo Câu mở đầu
+                                    ấn tượng</h3>
+                                <!-- Video Customization -->
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4" data-key="customization">Gợi ý mở đầu ấn
+                                        tượng
+                                    </h4>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2" data-key="intro-sentence">Câu mở
+                                            đầu</label>
+                                        <select id="intro-select" class="form-input w-full mb-3">
+                                            <option value="">-- Chọn câu mở đầu --</option>
+                                            <option value="Chào bạn! Đây là sản phẩm đang rất hot trên thị trường.">Chào
+                                                bạn! Đây là sản phẩm đang rất hot trên thị trường.</option>
+                                            <option
+                                                value="Bạn đang tìm một giải pháp hiệu quả? Hãy xem ngay sản phẩm này!">
+                                                Bạn đang tìm một giải pháp hiệu quả? Hãy xem ngay sản phẩm này!</option>
+                                            <option value="Hôm nay mình sẽ review một sản phẩm cực kỳ đáng chú ý.">Hôm
+                                                nay mình sẽ review một sản phẩm cực kỳ đáng chú ý.</option>
+                                            <option value="Cùng khám phá điều đặc biệt ở sản phẩm này nhé!">Cùng khám
+                                                phá điều đặc biệt ở sản phẩm này nhé!</option>
+                                            <option value="Đừng bỏ lỡ, đây có thể là thứ bạn đang cần!">Đừng bỏ lỡ, đây
+                                                có thể là thứ bạn đang cần!</option>
+                                        </select>
+                                        <label class="block text-sm font-medium mb-2" data-key="intro-sentence">Sửa Câu
+                                            mở
+                                            đầu theo ý của riêng bạn</label>
+                                        <input id="intro-input" type="text"
+                                            placeholder="Câu mở đầu sẽ hiển thị ở đây..." class="form-input w-full" />
+                                    </div>
+                                    <!-- Video Preview -->
+                                    <!-- <div id="step5-video-container" class="mt-6">
+                                        <h4 class="text-lg font-semibold mb-2 text-white">Video mẫu</h4>
+                                        <video id="step5-video-preview" class="w-full rounded shadow" controls>
+                                            <source src="video/intro-preview.mp4" type="video/mp4">
+                                            Trình duyệt của bạn không hỗ trợ video.
+                                        </video>
+                                    </div> -->
+                                    <div class="flex justify-center">
+                                        <video id="step5-video-preview" controls class="rounded-lg shadow mt-4"
+                                            style="width: 300px; height: 500px; object-fit: cover;">
+                                            <source src="" type="video/mp4">
+                                            Trình duyệt của bạn không hỗ trợ video.
+                                        </video>
+                                    </div>
+                                </div>
+
+                                <div id="character-list" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                                </div>
+                            </div>
+                            <!-- Action Buttons -->
+                            <div class="flex justify-between">
+                                <button onclick="previousStep()" class="btn-outline px-6 py-3 rounded-lg">
+                                    <i class="fas fa-arrow-left mr-2"></i><span data-key="previous-btn">Quay
+                                        lại</span>
+                                </button>
+                                <button onclick="nextStep()" class="btn-gradient px-8 py-3 rounded-lg btn_nextStep"
+                                    id="step5-next">
+                                    <span data-key="next-export-btn">Tiếp theo:Tạo Video AI</span> <i
+                                        class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Create Video -->
+                    <div id="step-6-content" class="step-content hidden">
+                        <div class="bg-gray-800 rounded-xl p-8">
+                            <h3 class="text-2xl font-bold mb-2" data-key="step-3-main-title">Bước 5: Tạo AI Video
+                            </h3>
+                            <!-- Video Customization -->
+
+                            <!-- Preview Area -->
+
+                            <div>
+                                <h4 class="text-lg font-semibold mb-4" data-key="video-preview">Quá trình tạo video
+                                    sẽ mất 2-3 phút
+                                </h4>
+                                <div id="video-wrapper" class="mx-auto max-w-3xl aspect-video flex items-center justify-center
+                overflow-hidden bg-black rounded-xl mb-4">
+                                    <!-- iframe sẽ được JS chèn vào đây -->
+                                </div>
+                            </div>
+
+                            <!-- Customization Options -->
+                            <div>
+                                <!-- <h4 class="text-lg font-semibold mb-4" data-key="customization">Tạo Kịch Bản
+                                    </h4> -->
+                                <div class="space-y-6">
+
+                                </div>
+                            </div>
+
+
+                            <!-- Generate Video Button -->
+                            <div class="text-center mb-8 mt-2">
+                                <button onclick="generateVideo()"
+                                    class="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 px-12 py-4 rounded-lg text-lg font-bold transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-magic mr-2"></i><span data-key="generate-video">Tạo Video
+                                        AI</span>
+                                </button>
+                                <p class="text-gray-400 mt-2" data-key="generation-time">Quá trình tạo video sẽ mất
+                                    2-3 phút</p>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex justify-between">
+                                <button onclick="previousStep()" class="btn-outline px-6 py-3 rounded-lg">
+                                    <i class="fas fa-arrow-left mr-2"></i><span data-key="previous-btn">Quay
+                                        lại</span>
+                                </button>
+                                <button onclick="nextStep()" class="btn-gradient px-8 py-3 rounded-lg btn_nextStep "
+                                    id="step6-next">
+                                    <span data-key="next-export-btn">Tiếp theo: Xuất video</span> <i
+                                        class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 4: Export Video -->
+                    <div id="step-7-content" class="step-content hidden">
+                        <div class="bg-gray-800 rounded-xl p-8">
+                            <h3 class="text-2xl font-bold mb-2" data-key="step-4-main-title">Bước 5: Xuất Video</h3>
+                            <p class="text-gray-400 mb-6" data-key="step-4-description">Tùy chỉnh chất lượng và tải
+                                xuống video của bạn</p>
+
+                            <!-- Video Ready -->
+                            <div class="text-center mb-8">
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-check text-3xl text-white"></i>
+                                </div>
+                                <h4 class="text-2xl font-bold mb-2" data-key="video-ready">Video đã sẵn sàng!</h4>
+                                <p class="text-gray-400" data-key="video-ready-desc">Video AI của bạn đã được tạo
+                                    thành công</p>
+                            </div>
+
+                            <!-- Export Options -->
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                                <!-- Final Preview -->
+                                <!-- <div>
+                                        <h4 class="text-lg font-semibold mb-4" data-key="final-preview">Xem trước cuối
+                                            cùng</h4>
+                                        <div class="preview-area bg-black rounded-lg">
+                                            <div class="text-center">
+                                                <i class="fas fa-play-circle text-6xl text-green-400 mb-4"></i>
+                                                <p class="text-lg" data-key="final-video-ready">Video đã hoàn thành</p>
+                                                <button
+                                                    class="bg-green-500 hover:bg-green-600 px-6 py-2 rounded-lg mt-4">
+                                                    <i class="fas fa-play mr-2"></i><span data-key="play-video">Phát
+                                                        video</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                <!-- Export Settings -->
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4" data-key="export-settings">Cài đặt xuất
+                                    </h4>
+                                    <div class="space-y-6">
+                                        <!-- Quality -->
+                                        <div>
+                                            <label class="block text-sm font-medium mb-3" data-key="video-quality">Chất
+                                                lượng video</label>
+                                            <div class="quality-options">
+                                                <div class="quality-option" data-quality="720p">
+                                                    HD 720p
+                                                    <span class="block text-xs text-gray-400">1280x720</span>
+                                                </div>
+                                                <div class="quality-option selected" data-quality="1080p">
+                                                    Full HD 1080p
+                                                    <span class="block text-xs text-gray-400">1920x1080</span>
+                                                </div>
+                                                <div class="quality-option" data-quality="4k">
+                                                    4K Ultra HD
+                                                    <span class="block text-xs text-gray-400">3840x2160</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Format -->
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2" data-key="video-format">Định
+                                                dạng</label>
+                                            <select class="form-input w-full">
+                                                <option value="mp4">MP4 (Khuyến nghị)</option>
+                                                <option value="mov">MOV</option>
+                                                <option value="avi">AVI</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Thumbnail -->
+                                        <!-- <div>
+                                            <label class="block text-sm font-medium mb-2"
+                                                data-key="thumbnail">Thumbnail</label>
+                                            <div class="grid grid-cols-3 gap-3">
+                                                <div class="thumbnail-option active">
+                                                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'><rect width='100' height='60' fill='%23374151'/><text x='50' y='35' text-anchor='middle' fill='white' font-size='12'>Khung 1</text></svg>"
+                                                        class="w-full rounded">
+                                                </div>
+                                                <div class="thumbnail-option">
+                                                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'><rect width='100' height='60' fill='%234B5563'/><text x='50' y='35' text-anchor='middle' fill='white' font-size='12'>Khung 2</text></svg>"
+                                                        class="w-full rounded">
+                                                </div>
+                                                <div class="thumbnail-option">
+                                                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'><rect width='100' height='60' fill='%236B7280'/><text x='50' y='35' text-anchor='middle' fill='white' font-size='12'>Khung 3</text></svg>"
+                                                        class="w-full rounded">
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Download Options -->
+                            <div class="bg-gray-700 rounded-lg p-6 mb-8">
+                                <h4 class="text-lg font-semibold mb-4" data-key="download-options">Tùy chọn tải
+                                    xuống</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <button onclick="downloadVideo()"
+                                        class="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-semibold transition-colors">
+                                        <i class="fas fa-download mr-2"></i><span data-key="download-video">Tải
+                                            Video</span>
+                                    </button>
+                                    <button onclick="shareVideo()"
+                                        class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg font-semibold transition-colors">
+                                        <i class="fas fa-share mr-2"></i><span data-key="share-video">Chia sẻ</span>
+                                    </button>
+                                    <!-- <button onclick="saveToCloud()"
+                                        class="bg-purple-500 hover:bg-purple-600 px-6 py-3 rounded-lg font-semibold transition-colors">
+                                        <i class="fas fa-cloud mr-2"></i><span data-key="save-cloud">Lưu
+                                            Cloud</span>
+                                    </button> -->
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex justify-between">
+                                <button onclick="previousStep()" class="btn-outline px-6 py-3 rounded-lg">
+                                    <i class="fas fa-arrow-left mr-2"></i><span data-key="previous-btn">Quay
+                                        lại</span>
+                                </button>
+                                <button onclick="createNewVideo()" class="btn-gradient px-8 py-3 rounded-lg">
+                                    <i class="fas fa-plus mr-2"></i><span data-key="create-new">Tạo video mới</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Other Sections (placeholders) -->
+        <div id="dashboard-section" class="p-6 hidden">
+            <h2 class="text-3xl font-bold mb-6" data-key="dashboard-title">Bảng điều khiển</h2>
+            <!-- Dashboard content would go here -->
+        </div>
+
+        <div id="projects-section" class="p-6 hidden">
+            <h2 class="text-3xl font-bold mb-6" data-key="projects-title">Dự Án Của Tôi</h2>
+            <!-- Projects content would go here -->
+        </div>
+
+        <div id="templates-section" class="p-6 hidden">
+            <h2 class="text-3xl font-bold mb-6" data-key="templates-title">Mẫu Thư Viện</h2>
+            <!-- Templates content would go here -->
+        </div>
+
+        <div id="settings-section" class="p-6 hidden">
+            <h2 class="text-3xl font-bold mb-6" data-key="settings-title">Cài Đặt</h2>
+            <!-- Settings content would go here -->
+        </div>
+
+        <div id="help-section" class="p-6 hidden">
+            <h2 class="text-3xl font-bold mb-6" data-key="help-title">Trợ giúp</h2>
+            <!-- Help content would go here -->
+        </div>
+        </main>
+    </div>
+    </div>
+
+    <!-- Modals and Overlays -->
+
+    <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 rounded-xl p-8 text-center">
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <h3 class="text-xl font-bold mb-2" data-key="processing">Đang xử lý...</h3>
+            <p class="text-gray-400" id="processing-desc" data-key="processing-desc">AI đang tạo video cho bạn</p>
+        </div>
+    </div>
+    <!-- <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 rounded-xl p-8 text-center">
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <h3 class="text-xl font-bold mb-2" data-key="processing">Đang xử lý...</h3>
+            <p class="text-gray-400" data-key="processing-desc">AI đang tạo kịch bản cho bạn</p>
+        </div>
+    </div> -->
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+
+    <style>
+        /* .prompt-card {
+            cursor: pointer;
+            background: #374151;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            transition: transform .2s;
+        } */
+
+        .prompt-card:hover {
+            transform: scale(1.03);
+        }
+
+        #minimax-floating-ball {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 12px;
+            background: #222222;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            color: #F8F8F8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #minimax-floating-ball:hover {
+            transform: translateY(-2px);
+            background: #383838;
+        }
+
+        .minimax-ball-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .minimax-logo-wave {
+            width: 26px;
+            height: 22px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='22' viewBox='0 0 26 22' fill='none'%3E%3Cg clip-path='url(%23clip0_3442_102412)'%3E%3Cpath d='M12.8405 14.6775C12.8405 14.9897 13.0932 15.2424 13.4055 15.2424C13.7178 15.2424 13.9705 14.9897 13.9705 14.6775V2.98254C13.9705 1.88957 13.0809 1 11.9879 1C10.895 1 10.0054 1.88957 10.0054 2.98254V11.566V17.1068C10.0054 17.5773 9.62327 17.9594 9.1528 17.9594C8.68233 17.9594 8.30021 17.5773 8.30021 17.1068V8.04469C8.30021 6.95172 7.41063 6.06215 6.31767 6.06215C5.22471 6.06215 4.33513 6.95172 4.33513 8.04469V11.8855C4.33513 12.3559 3.953 12.7381 3.48254 12.7381C3.01207 12.7381 2.62994 12.3559 2.62994 11.8855V10.4936C2.62994 10.1813 2.37725 9.92861 2.06497 9.92861C1.7527 9.92861 1.5 10.1813 1.5 10.4936V11.8855C1.5 12.9784 2.38957 13.868 3.48254 13.868C4.5755 13.868 5.46508 12.9784 5.46508 11.8855V8.04469C5.46508 7.57422 5.8472 7.19209 6.31767 7.19209C6.78814 7.19209 7.17026 7.57422 7.17026 8.04469V17.1068C7.17026 18.1998 8.05984 19.0894 9.1528 19.0894C10.2458 19.0894 11.1353 18.1998 11.1353 17.1068V2.98254C11.1353 2.51207 11.5175 2.12994 11.9879 2.12994C12.4584 2.12994 12.8405 2.51207 12.8405 2.98254V14.6775Z' fill='%23F8F8F8'/%3E%3Cpath d='M23.3278 6.06215C22.2348 6.06215 21.3452 6.95172 21.3452 8.04469V15.6143C21.3452 16.0847 20.9631 16.4669 20.4926 16.4669C20.0222 16.4669 19.6401 16.0847 19.6401 15.6143V2.98254C19.6401 1.88957 18.7505 1 17.6575 1C16.5645 1 15.675 1.88957 15.675 2.98254V19.0175C15.675 19.4879 15.2928 19.8701 14.8224 19.8701C14.3519 19.8701 13.9698 19.4879 13.9698 19.0175V17.0329C13.9698 16.7206 13.7171 16.4679 13.4048 16.4679C13.0925 16.4679 12.8398 16.7206 12.8398 17.0329V19.0175C12.8398 20.1104 13.7294 21 14.8224 21C15.9153 21 16.8049 20.1104 16.8049 19.0175V2.98254C16.8049 2.51207 17.187 2.12994 17.6575 2.12994C18.128 2.12994 18.5101 2.51207 18.5101 2.98254V15.6143C18.5101 16.7072 19.3997 17.5968 20.4926 17.5968C21.5856 17.5968 22.4752 16.7072 22.4752 15.6143V8.04469C22.4752 7.57422 22.8573 7.19209 23.3278 7.19209C23.7982 7.19209 24.1804 7.57422 24.1804 8.04469V14.6775C24.1804 14.9897 24.4331 15.2424 24.7453 15.2424C25.0576 15.2424 25.3103 14.9897 25.3103 14.6775V8.04469C25.3103 6.95172 24.4207 6.06215 23.3278 6.06215Z' fill='%23F8F8F8'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3442_102412'%3E%3Crect width='25' height='22' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .minimax-ball-text {
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .minimax-close-icon {
+            margin-left: 8px;
+            font-size: 16px;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .minimax-close-icon:hover {
+            opacity: 1;
+        }
+
+        .prompt-cat-btn {
+            padding: 8px 16px;
+            background: rgba(31, 41, 55, 0.5);
+            border: 2px solid #374151;
+            border-radius: 8px;
+            color: #9CA3AF;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .prompt-cat-btn:hover {
+            border-color: #3B82F6;
+            color: white;
+        }
+
+        .prompt-cat-btn.active {
+            border-color: #3B82F6;
+            background: rgba(59, 130, 246, 0.1);
+            color: #3B82F6;
+        }
+    </style>
+    <!-- <div id="minimax-floating-ball">
+        <div class="minimax-ball-content">
+            <div class="minimax-logo-wave"></div>
+            <span class="minimax-ball-text">Created by MiniMax Agent</span>
+        </div>
+        <div class="minimax-close-icon">×</div>
+    </div> -->
+    <script>
+        // Initialize floating ball functionality
+        function initFloatingBall() {
+            const ball = document.getElementById('minimax-floating-ball');
+            if (!ball) return;
+
+            // Initial animation
+            ball.style.opacity = '0';
+            ball.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                ball.style.opacity = '1';
+                ball.style.transform = 'translateY(0)';
+            }, 500);
+
+            // Handle logo click
+            const ballContent = ball.querySelector('.minimax-ball-content');
+            ballContent.addEventListener('click', function (e) {
+                e.stopPropagation();
+                window.open('https://agent.minimax.io/agent', '_blank');
+                ball.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    ball.style.transform = 'scale(1)';
+                }, 100);
+            });
+
+            // Handle close button click
+            const closeIcon = ball.querySelector('.minimax-close-icon');
+            closeIcon.addEventListener('click', function (e) {
+                e.stopPropagation();
+                ball.style.opacity = '0';
+                ball.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    ball.style.display = 'none';
+                }, 300);
+            });
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', initFloatingBall);
+
+        let userFetched = false;
+
+        window.addEventListener("DOMContentLoaded", async () => {
+            if (userFetched) return; // ✅ Đã gọi rồi thì thôi
+            userFetched = true;
+
+            const user = await getUserInfoOnce();
+            if (user) {
+                const nameEl = document.getElementById("user-name");
+                const avatarEl = document.getElementById("user-avatar");
+                const pointEl = document.getElementById("user-point");
+
+                if (nameEl) nameEl.textContent = user.name || user.email || "Người dùng";
+                if (avatarEl) avatarEl.src = user.avatar || "default-avatar.jpg";
+                if (pointEl) pointEl.textContent = `Điểm: ${user.point ?? 0}`;
+            }
+
+
+            function showToast(message, type = "warning") {
+                const bg = type === "error" ? "bg-red-500" : type === "success" ? "bg-green-500" : "bg-yellow-500";
+
+                const toast = document.createElement("div");
+                toast.textContent = message;
+                toast.className = `fixed top-6 right-6 z-50 text-white px-4 py-2 rounded-lg shadow-lg ${bg}`;
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.remove();
+                }, 2500);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

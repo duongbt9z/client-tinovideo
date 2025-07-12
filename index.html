@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinovideo - Tạo Video AI Chuyên Nghiệp</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+
+    <!-- Language Switcher -->
+
+    <div class="fixed top-4 right-4 z-50 steps">
+
+        <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
+            <button onclick="switchLanguage('vi')"
+                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi">🇻🇳 VI</button>
+            <button onclick="switchLanguage('en')"
+                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="en">🇺🇸 EN</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-gray-900/95 backdrop-blur-sm z-40 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <!-- <i class="fas fa-video text-white text-lg"></i> -->
+                        <img src="images/logo.png">
+                    </div>
+                    <h1
+                        class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                        Tinovideo
+                    </h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                     <a href="#features" class="nav-link text-gray-300 hover:text-blue-400 transition-colors"
+                        data-key="nav-features">Affilate</a>
+                    <a href="#features" class="nav-link text-gray-300 hover:text-blue-400 transition-colors"
+                        data-key="nav-features">Tính năng</a>
+                    <a href="#process" class="nav-link text-gray-300 hover:text-blue-400 transition-colors"
+                        data-key="nav-process">Quy trình</a>
+
+                    <a href="#testimonials" class="nav-link text-gray-300 hover:text-blue-400 transition-colors"
+                        data-key="nav-testimonials">Đánh giá</a>
+                    <a href="dashboard.html"
+                        class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg transition-colors mr-6 btn-create-video"
+                        data-key="nav-login">Đăng nhập</a>
+                </div>
+
+                <button class="md:hidden text-white">
+                    <a href="dashboard.html"
+                        class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg transition-colors "
+                        data-key="nav-login">Đăng nhập</a>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-20 pb-16 min-h-screen flex items-center">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    <span data-key="hero-title-1">Tạo Video</span>
+                    <span class="text-blue-400" data-key="hero-title-2">AI Chuyên Nghiệp</span><br>
+                    <span data-key="hero-title-3">chỉ trong vài phút</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed" data-key="hero-description">
+                    Chuyển đổi URL sản phẩm thành video quảng cáo ấn tượng với AI.<br>
+                    Giọng đọc tự nhiên, hiệu ứng chuyên nghiệp, template đa dạng.
+                </p>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                    <div class="bg-gray-800/50 rounded-lg p-6 backdrop-blur-sm">
+                        <div class="text-3xl font-bold text-blue-400 mb-2">10K+</div>
+                        <div class="text-gray-300" data-key="stat-videos">Video đã tạo</div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-6 backdrop-blur-sm">
+                        <div class="text-3xl font-bold text-blue-400 mb-2">5K+</div>
+                        <div class="text-gray-300" data-key="stat-customers">Khách hàng hài lòng</div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-6 backdrop-blur-sm">
+                        <div class="text-3xl font-bold text-blue-400 mb-2">20+</div>
+                        <div class="text-gray-300" data-key="stat-templates">Template đa dạng</div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-6 backdrop-blur-sm">
+                        <div class="text-3xl font-bold text-blue-400 mb-2">99%</div>
+                        <div class="text-gray-300" data-key="stat-satisfaction">Độ hài lòng</div>
+                    </div>
+                </div>
+
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <!-- <a href="dashboard.html" -->
+                    <button
+                        class="btn-create-video bg-blue-500 hover:bg-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                        data-key="cta-create">
+                        <i class="fas fa-play mr-2"></i>Bắt Đầu Tạo Video
+                    </button>
+                    <button onclick="playDemo()"
+                        class="border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
+                        data-key="cta-demo">
+                        <i class="fas fa-eye mr-2"></i>Xem Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-800/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-key="features-title">
+                    Tại sao chọn <span class="text-blue-400">AI Video Creator</span>?
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-key="features-subtitle">
+                    Nền tảng tiên tiến nhất để tạo video quảng cáo chuyên nghiệp từ URL sản phẩm
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1: AI Tự Động -->
+                <div
+                    class="bg-gray-800/50 rounded-xl p-8 hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-robot text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center" data-key="feature-ai-title">AI Tự Động</h3>
+                    <p class="text-gray-300 text-center" data-key="feature-ai-desc">
+                        Tạo nội dung video từ URL sản phẩm một cách tự động và thông minh
+                    </p>
+                </div>
+
+                <!-- Feature 2: Nhanh Chóng -->
+                <div
+                    class="bg-gray-800/50 rounded-xl p-8 hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-lightning-bolt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center" data-key="feature-speed-title">Nhanh Chóng</h3>
+                    <p class="text-gray-300 text-center" data-key="feature-speed-desc">
+                        Tạo video chuyên nghiệp chỉ trong vài phút thay vì hàng giờ
+                    </p>
+                </div>
+
+                <!-- Feature 3: Hiệu Ứng Đẹp -->
+                <div
+                    class="bg-gray-800/50 rounded-xl p-8 hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-magic text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center" data-key="feature-effects-title">Hiệu Ứng Đẹp</h3>
+                    <p class="text-gray-300 text-center" data-key="feature-effects-desc">
+                        Nhiều hiệu ứng chuyên nghiệp và template thiết kế đẹp mắt
+                    </p>
+                </div>
+
+                <!-- Feature 4: Đa Nền Tảng -->
+                <div
+                    class="bg-gray-800/50 rounded-xl p-8 hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-share-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center" data-key="feature-platforms-title">Đa Nền Tảng</h3>
+                    <p class="text-gray-300 text-center" data-key="feature-platforms-desc">
+                        Tối ưu cho TikTok, Instagram, YouTube và nhiều nền tảng khác
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="process" class="py-20">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6" >
+                Kho Mẫu <span class="text-blue-400">AI</span> để tạo video chuyên nghiệp
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-key="process-subtitle">
+                Quy trình đơn giản và hiệu quả để tạo video AI chất lượng cao
+            </p>
+        </div>
+
+
+        <div id="profile-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
+            <!-- CARD -->
+            <div class="card group relative overflow-hidden rounded-2xl shadow-lg border border-gray-800">
+                <!-- Ảnh cover -->
+                <img src="images/models/anh-tuyet.png" alt="Profile 1"
+                    class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0">
+
+                <!-- Video cùng tỷ lệ, phủ lên trên -->
+                <video src="sample/anh-tuyet.mp4" muted loop playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </video>
+            </div>
+            <div class="card group relative overflow-hidden rounded-2xl shadow-lg border border-gray-800">
+                <!-- Ảnh cover -->
+                <img src="images/models/anh-vien.png" alt="Profile 1"
+                    class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0">
+
+                <!-- Video cùng tỷ lệ, phủ lên trên -->
+                <video src="sample/anh-vien.mp4" muted loop playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </video>
+            </div>
+            <div class="card group relative overflow-hidden rounded-2xl shadow-lg border border-gray-800">
+                <!-- Ảnh cover -->
+                <img src="images/models/tuong-vy.png" alt="Profile 1"
+                    class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0">
+
+                <!-- Video cùng tỷ lệ, phủ lên trên -->
+                <video src="sample/tuong-vy.mp4" muted loop playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </video>
+            </div>
+            <div class="card group relative overflow-hidden rounded-2xl shadow-lg border border-gray-800">
+                <!-- Ảnh cover -->
+                <img src="images/models/thuy-chi.png" alt="Profile 1"
+                    class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0">
+
+                <!-- Video cùng tỷ lệ, phủ lên trên -->
+                <video src="sample/thuy-chi.mp4" muted loop playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </video>
+            </div>
+            <div class="card group relative overflow-hidden rounded-2xl shadow-lg border border-gray-800">
+                <!-- Ảnh cover -->
+                <img src="images/models/thu-thuy.png" alt="Profile 1"
+                    class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0">
+
+                <!-- Video cùng tỷ lệ, phủ lên trên -->
+                <video src="sample/thu-thuy.mp4" muted loop playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </video>
+            </div>
+            <div class="card group relative overflow-hidden rounded-2xl shadow-lg border border-gray-800">
+                <!-- Ảnh cover -->
+                <img src="images/models/ngoc-anh.png" alt="Profile 1"
+                    class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0">
+
+                <!-- Video cùng tỷ lệ, phủ lên trên -->
+                <video src="sample/ngoc-anh.mp4" muted loop playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </video>
+            </div>
+            <div class="card group relative overflow-hidden rounded-2xl shadow-lg border border-gray-800">
+                <!-- Ảnh cover -->
+                <img src="images/models/van-anh.png" alt="Profile 1"
+                    class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0">
+
+                <!-- Video cùng tỷ lệ, phủ lên trên -->
+                <video src="sample/van-anh.mp4" muted loop playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </video>
+            </div>
+            <div class="card group relative overflow-hidden rounded-2xl shadow-lg border border-gray-800">
+                <!-- Ảnh cover -->
+                <img src="images/models/ngoc-linh.png" alt="Profile 1"
+                    class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0">
+
+                <!-- Video cùng tỷ lệ, phủ lên trên -->
+                <video src="sample/ngoc-linh.mp4" muted loop playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </video>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Process Section -->
+    <section id="process" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-key="process-title">
+                    Chỉ cần <span class="text-blue-400">4 bước</span> để có video chuyên nghiệp
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-key="process-subtitle">
+                    Quy trình đơn giản và hiệu quả để tạo video AI chất lượng cao
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <!-- Step 1 -->
+                <!-- <div class="text-center group">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-2xl font-bold text-white">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4" data-key="step-1-title">Nhập URL</h3>
+                    <p class="text-gray-300" data-key="step-1-desc">Dán link sản phẩm từ Shopee, TikTok Shop, Lazada...
+                    </p>
+                </div> -->
+
+                <!-- Step 2 -->
+                <!-- <div class="text-center group">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-2xl font-bold text-white">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4" data-key="step-2-title">Chọn Giọng</h3>
+                    <p class="text-gray-300" data-key="step-2-desc">Lựa chọn giọng đọc AI phù hợp từ bộ sưu tập đa dạng
+                    </p>
+                </div> -->
+
+                <!-- Step 3 -->
+                <!-- <div class="text-center group">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-2xl font-bold text-white">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4" data-key="step-3-title">Tùy Chỉnh</h3>
+                    <p class="text-gray-300" data-key="step-3-desc">Chọn template, hiệu ứng và tùy chỉnh theo ý muốn</p>
+                </div> -->
+
+                <!-- Step 4 -->
+                <!-- <div class="text-center group">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-2xl font-bold text-white">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4" data-key="step-4-title">Xuất Video</h3>
+                    <p class="text-gray-300" data-key="step-4-desc">Tải video chất lượng cao và chia sẻ ngay lập tức</p>
+                </div> -->
+            </div>
+
+            <!-- Process Flow Arrows -->
+            <!-- <div class="hidden lg:block mt-16">
+                <div class="flex justify-center items-center space-x-12">
+                    <i class="fas fa-arrow-right text-blue-400 text-2xl"></i>
+                    <div class="w-32"></div>
+                    <i class="fas fa-arrow-right text-blue-400 text-2xl"></i>
+                    <div class="w-32"></div>
+                    <i class="fas fa-arrow-right text-blue-400 text-2xl"></i>
+                </div>
+            </div> -->
+        </div>
+    </section>
+    <!-- PROCESS CARDS ----------------------------------------------------- -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-none mx-auto px-8 xl:px-12">
+
+        <!-- STEP 01 ---------------------------------------------------- -->
+        <div
+            class="border-btn bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-lg group overflow-hidden transition hover:ring-1 hover:ring-blue-400">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="/images/steps/step1.png" alt="Add URL"
+                    class="w-full h-full object-cover transition group-hover:scale-105">
+            </div>
+
+            <div class="p-8">
+                <span class="inline-block bg-blue-600/10 text-blue-400 font-semibold px-5 py-1.5 rounded-full mb-4">
+                    Bước 1
+                </span>
+
+                <h3 class="text-2xl font-bold mb-3" data-key="step-1-title">Nhập URL sản phẩm</h3>
+
+                <p class="text-gray-400 leading-relaxed" data-key="step-1-desc">
+                    Dán link sản phẩm từ Shopee, TikTok Shop, Lazada...
+                </p>
+            </div>
+        </div>
+
+        <!-- STEP 02 ---------------------------------------------------- -->
+        <div
+            class="border-btn bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-lg group overflow-hidden transition hover:ring-1 hover:ring-green-400">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="/images/steps/step2.png" alt="Select Voice & Script"
+                    class="w-full h-full object-cover transition group-hover:scale-105">
+            </div>
+
+            <div class="p-8">
+                <span class="inline-block bg-green-600/10 text-green-400 font-semibold px-5 py-1.5 rounded-full mb-4">
+                    Bước 2
+                </span>
+
+                <h3 class="text-2xl font-bold mb-3" data-key="step-2-title">Chọn giọng & soạn kịch bản</h3>
+
+                <p class="text-gray-400 leading-relaxed" data-key="step-2-desc">
+                    Lựa chọn giọng đọc AI cùng kịch bản hấp dẫn được gợi ý.
+                </p>
+            </div>
+        </div>
+
+        <!-- STEP 03 ---------------------------------------------------- -->
+        <div
+            class="border-btn bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-lg group overflow-hidden transition hover:ring-1 hover:ring-purple-400">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="/images/steps/step3.png" alt="Select Template"
+                    class="w-full h-full object-cover transition group-hover:scale-105">
+            </div>
+
+            <div class="p-8">
+                <span class="inline-block bg-purple-600/10 text-purple-400 font-semibold px-5 py-1.5 rounded-full mb-4">
+                    Bước 3
+                </span>
+
+                <h3 class="text-2xl font-bold mb-3" data-key="step-3-title">Chọn mẫu AI</h3>
+
+                <p class="text-gray-400 leading-relaxed" data-key="step-3-desc">
+                    Lựa template & hiệu ứng, thêm câu hook mở đầu thu hút.
+                </p>
+            </div>
+        </div>
+
+        <!-- STEP 04 ---------------------------------------------------- -->
+        <div
+            class="border-btn bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-lg group overflow-hidden transition hover:ring-1 hover:ring-orange-400">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="/images/steps/step4.png" alt="Choose Avatar"
+                    class="w-full h-full object-cover transition group-hover:scale-105">
+            </div>
+
+            <div class="p-8">
+                <span class="inline-block bg-orange-600/10 text-orange-400 font-semibold px-5 py-1.5 rounded-full mb-4">
+                    Bước 4
+                </span>
+
+                <h3 class="text-2xl font-bold mb-3">Chọn Mẫu diễn viên AI</h3>
+
+                <p class="text-gray-400 leading-relaxed">
+                    Thư viện 100+ Mẫu AI sẵn sàng cho thương hiệu của bạn.
+                </p>
+            </div>
+        </div>
+
+        <!-- STEP 05 ---------------------------------------------------- -->
+        <div
+            class="border-btn bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-lg group overflow-hidden transition hover:ring-1 hover:ring-teal-400">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="/images/steps/step5.png" alt="Export & Launch"
+                    class="w-full h-full object-cover transition group-hover:scale-105">
+            </div>
+
+            <div class="p-8">
+                <span class="inline-block bg-teal-600/10 text-teal-400 font-semibold px-5 py-1.5 rounded-full mb-4">
+                    Bước 5
+                </span>
+
+                <h3 class="text-2xl font-bold mb-3" data-key="step-5-title">Xuất & Ra mắt</h3>
+
+                <p class="text-gray-400 leading-relaxed" data-key="step-5-desc">
+                    Tải video chất lượng cao hoặc đẩy thẳng sang TikTok/Meta Ads.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <!-- END PROCESS CARDS ------------------------------------------------- -->
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-800/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-key="testimonials-title">
+                    Khách hàng nói gì về chúng tôi?
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-key="testimonials-subtitle">
+                    Hơn 5,000 khách hàng đã tin tưởng và sử dụng Tinovideo
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-800/50 rounded-xl p-8 hover:bg-gray-800/70 transition-all duration-300">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6" data-key="testimonial-1-content">
+                        "Tinovideo đã giúp tôi tăng doanh số bán hàng gấp 3 lần. Video AI tạo ra rất chuyên nghiệp và ấn
+                        tượng!"
+                    </p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">AN</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold" data-key="testimonial-1-name">Anh Nguyễn</div>
+                            <div class="text-gray-400 text-sm" data-key="testimonial-1-role">Chủ shop online</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-800/50 rounded-xl p-8 hover:bg-gray-800/70 transition-all duration-300">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6" data-key="testimonial-2-content">
+                        "Rất dễ sử dụng và tiết kiệm thời gian. Chỉ vài phút là có video marketing cực đẹp cho sản
+                        phẩm."
+                    </p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">LT</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold" data-key="testimonial-2-name">Linh Tran</div>
+                            <div class="text-gray-400 text-sm" data-key="testimonial-2-role">Marketing Manager</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-800/50 rounded-xl p-8 hover:bg-gray-800/70 transition-all duration-300">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6" data-key="testimonial-3-content">
+                        "AI voice tự nhiên quá! Khách hàng của tôi thường xuyên hỏi ai là người lồng tiếng cho video."
+                    </p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">MC</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold" data-key="testimonial-3-name">Minh Châu</div>
+                            <div class="text-gray-400 text-sm" data-key="testimonial-3-role">Content Creator</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-key="final-cta-title">
+                    Sẵn sàng tạo video <span class="text-blue-400">ấn tượng</span>?
+                </h2>
+                <p class="text-xl text-gray-300 mb-8" data-key="final-cta-subtitle">
+                    Bắt đầu miễn phí ngay hôm nay - Không cần thẻ tín dụng
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="dashboard.html"
+                        class="btn-create-video bg-blue-500 hover:bg-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                        data-key="final-cta-free">
+                        <i class="fas fa-rocket mr-2"></i>Bắt Đầu Miễn Phí
+                    </a>
+                    <a href="subscribe.html"
+                        class="text-blue-400 hover:text-blue-300 px-8 py-4 text-lg font-semibold transition-colors"
+                        data-key="final-cta-pricing">
+                        Xem Bảng Giá <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-video text-white text-lg"></i>
+                        </div>
+                        <h3
+                            class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                            Tinovideo
+                        </h3>
+                    </div>
+                    <p class="text-gray-400" data-key="footer-description">
+                        Nền tảng tạo video AI hàng đầu từ URL thương mại điện tử
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-key="footer-product">Sản phẩm</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-features">Tính
+                                năng</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors"
+                                data-key="footer-templates">Templates</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-pricing">Bảng
+                                giá</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-api">API</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-key="footer-support">Hỗ trợ</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-help">Trợ
+                                giúp</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-docs">Tài
+                                liệu</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-contact">Liên
+                                hệ</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-community">Cộng
+                                đồng</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-key="footer-company">Công ty</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-about">Về chúng
+                                tôi</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-blog">Blog</a>
+                        </li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-careers">Tuyển
+                                dụng</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors" data-key="footer-privacy">Chính
+                                sách</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p data-key="footer-copyright">© 2025 Tinovideo. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 rounded-xl p-8 max-w-4xl mx-4 relative">
+            <button onclick="closeDemoModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h3 class="text-2xl font-bold mb-4" data-key="demo-title">Demo Video - Tinovideo AI</h3>
+            <div class="bg-gray-700 rounded-lg aspect-video flex items-center justify-center">
+                <div class="text-center">
+                    <i class="fas fa-play-circle text-6xl text-blue-400 mb-4"></i>
+                    <p class="text-xl" data-key="demo-placeholder">Video demo sẽ được phát ở đây</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+
+    <style>
+        #minimax-floating-ball {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 12px;
+            background: #222222;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            color: #F8F8F8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #minimax-floating-ball:hover {
+            transform: translateY(-2px);
+            background: #383838;
+        }
+
+        .minimax-ball-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .minimax-logo-wave {
+            width: 26px;
+            height: 22px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='22' viewBox='0 0 26 22' fill='none'%3E%3Cg clip-path='url(%23clip0_3442_102412)'%3E%3Cpath d='M12.8405 14.6775C12.8405 14.9897 13.0932 15.2424 13.4055 15.2424C13.7178 15.2424 13.9705 14.9897 13.9705 14.6775V2.98254C13.9705 1.88957 13.0809 1 11.9879 1C10.895 1 10.0054 1.88957 10.0054 2.98254V11.566V17.1068C10.0054 17.5773 9.62327 17.9594 9.1528 17.9594C8.68233 17.9594 8.30021 17.5773 8.30021 17.1068V8.04469C8.30021 6.95172 7.41063 6.06215 6.31767 6.06215C5.22471 6.06215 4.33513 6.95172 4.33513 8.04469V11.8855C4.33513 12.3559 3.953 12.7381 3.48254 12.7381C3.01207 12.7381 2.62994 12.3559 2.62994 11.8855V10.4936C2.62994 10.1813 2.37725 9.92861 2.06497 9.92861C1.7527 9.92861 1.5 10.1813 1.5 10.4936V11.8855C1.5 12.9784 2.38957 13.868 3.48254 13.868C4.5755 13.868 5.46508 12.9784 5.46508 11.8855V8.04469C5.46508 7.57422 5.8472 7.19209 6.31767 7.19209C6.78814 7.19209 7.17026 7.57422 7.17026 8.04469V17.1068C7.17026 18.1998 8.05984 19.0894 9.1528 19.0894C10.2458 19.0894 11.1353 18.1998 11.1353 17.1068V2.98254C11.1353 2.51207 11.5175 2.12994 11.9879 2.12994C12.4584 2.12994 12.8405 2.51207 12.8405 2.98254V14.6775Z' fill='%23F8F8F8'/%3E%3Cpath d='M23.3278 6.06215C22.2348 6.06215 21.3452 6.95172 21.3452 8.04469V15.6143C21.3452 16.0847 20.9631 16.4669 20.4926 16.4669C20.0222 16.4669 19.6401 16.0847 19.6401 15.6143V2.98254C19.6401 1.88957 18.7505 1 17.6575 1C16.5645 1 15.675 1.88957 15.675 2.98254V19.0175C15.675 19.4879 15.2928 19.8701 14.8224 19.8701C14.3519 19.8701 13.9698 19.4879 13.9698 19.0175V17.0329C13.9698 16.7206 13.7171 16.4679 13.4048 16.4679C13.0925 16.4679 12.8398 16.7206 12.8398 17.0329V19.0175C12.8398 20.1104 13.7294 21 14.8224 21C15.9153 21 16.8049 20.1104 16.8049 19.0175V2.98254C16.8049 2.51207 17.187 2.12994 17.6575 2.12994C18.128 2.12994 18.5101 2.51207 18.5101 2.98254V15.6143C18.5101 16.7072 19.3997 17.5968 20.4926 17.5968C21.5856 17.5968 22.4752 16.7072 22.4752 15.6143V8.04469C22.4752 7.57422 22.8573 7.19209 23.3278 7.19209C23.7982 7.19209 24.1804 7.57422 24.1804 8.04469V14.6775C24.1804 14.9897 24.4331 15.2424 24.7453 15.2424C25.0576 15.2424 25.3103 14.9897 25.3103 14.6775V8.04469C25.3103 6.95172 24.4207 6.06215 23.3278 6.06215Z' fill='%23F8F8F8'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3442_102412'%3E%3Crect width='25' height='22' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .minimax-ball-text {
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .minimax-close-icon {
+            margin-left: 8px;
+            font-size: 16px;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .minimax-close-icon:hover {
+            opacity: 1;
+        }
+    </style>
+    <!-- <div id="minimax-floating-ball">
+        <div class="minimax-ball-content">
+            <div class="minimax-logo-wave"></div>
+            <span class="minimax-ball-text">Created by MiniMax Agent</span>
+        </div>
+        <div class="minimax-close-icon">×</div>
+    </div> -->
+    <script>
+        // Initialize floating ball functionality
+        function initFloatingBall() {
+            const ball = document.getElementById('minimax-floating-ball');
+            if (!ball) return;
+
+            // Initial animation
+            ball.style.opacity = '0';
+            ball.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                ball.style.opacity = '1';
+                ball.style.transform = 'translateY(0)';
+            }, 500);
+
+            // Handle logo click
+            const ballContent = ball.querySelector('.minimax-ball-content');
+            ballContent.addEventListener('click', function (e) {
+                e.stopPropagation();
+                window.open('https://agent.minimax.io/agent', '_blank');
+                ball.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    ball.style.transform = 'scale(1)';
+                }, 100);
+            });
+
+            // Handle close button click
+            const closeIcon = ball.querySelector('.minimax-close-icon');
+            closeIcon.addEventListener('click', function (e) {
+                e.stopPropagation();
+                ball.style.opacity = '0';
+                ball.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    ball.style.display = 'none';
+                }, 300);
+            });
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener("DOMContentLoaded", () => {
+            initFloatingBall();
+            // Lặp tất cả .card
+            document.querySelectorAll(".card").forEach(card => {
+                const video = card.querySelector("video");
+
+                // Hover vào: play
+                card.addEventListener("mouseenter", () => {
+                    video.play();
+                });
+
+                // Rời chuột: pause & reset
+                card.addEventListener("mouseleave", () => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+            });
+        });
+        // document.addEventListener('DOMContentLoaded', initFloatingBall); 
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="dashboard.js"></script> -->
+</body>
+
+</html>

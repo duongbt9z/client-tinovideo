@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Viện Template - Tinovideo</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    
+    <!-- Language Switcher -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
+            <button onclick="switchLanguage('vi')" class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi">🇻🇳 VI</button>
+            <button onclick="switchLanguage('en')" class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="en">🇺🇸 EN</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-800 border-b border-gray-700 px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-video text-white text-lg"></i>
+                    </div>
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                        Tinovideo
+                    </h1>
+                </a>
+                <span class="text-gray-400">|</span>
+                <h2 class="text-xl font-semibold" data-key="template-library">Thư Viện Template</h2>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="dashboard.html" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
+                    <i class="fas fa-plus mr-2"></i><span data-key="create-video">Tạo video</span>
+                </a>
+                <a href="dashboard.html" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-th-large mr-2"></i><span data-key="dashboard">Dashboard</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4" data-key="templates-title">
+                Thư Viện <span class="text-blue-400">Template</span> Chuyên Nghiệp
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-key="templates-subtitle">
+                Hơn 100+ template đa dạng cho mọi ngành nghề và mục đích sử dụng
+            </p>
+        </div>
+
+        <!-- Filters and Search -->
+        <div class="bg-gray-800 rounded-xl p-6 mb-8">
+            <div class="flex flex-col lg:flex-row gap-6">
+                <!-- Search -->
+                <div class="flex-1">
+                    <div class="relative">
+                        <input type="text" id="template-search" placeholder="Tìm kiếm template..." class="w-full bg-gray-700 text-white px-4 py-3 pl-12 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+                        <i class="fas fa-search absolute left-4 top-4 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Category Filter -->
+                <div class="lg:w-64">
+                    <select id="category-filter" class="w-full bg-gray-700 text-white px-4 py-3 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+                        <option value="all" data-key="all-categories">Tất cả danh mục</option>
+                        <option value="business" data-key="category-business">Doanh nghiệp</option>
+                        <option value="social" data-key="category-social">Mạng xã hội</option>
+                        <option value="product" data-key="category-product">Sản phẩm</option>
+                        <option value="minimal" data-key="category-minimal">Tối giản</option>
+                        <option value="dynamic" data-key="category-dynamic">Năng động</option>
+                        <option value="luxury" data-key="category-luxury">Cao cấp</option>
+                        <option value="food" data-key="category-food">Ẩm thực</option>
+                        <option value="technology" data-key="category-technology">Công nghệ</option>
+                        <option value="health" data-key="category-health">Sức khỏe</option>
+                        <option value="education" data-key="category-education">Giáo dục</option>
+                        <option value="fashion" data-key="category-fashion">Thời trang</option>
+                        <option value="travel" data-key="category-travel">Du lịch</option>
+                    </select>
+                </div>
+                
+                <!-- Sort -->
+                <div class="lg:w-48">
+                    <select id="sort-filter" class="w-full bg-gray-700 text-white px-4 py-3 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+                        <option value="popularity" data-key="sort-popularity">Phổ biến nhất</option>
+                        <option value="newest" data-key="sort-newest">Mới nhất</option>
+                        <option value="name" data-key="sort-name">Tên A-Z</option>
+                        <option value="difficulty" data-key="sort-difficulty">Độ khó</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Quick Filters -->
+        <div class="flex flex-wrap gap-3 mb-8">
+            <button class="category-quick-filter active" data-category="all">
+                <i class="fas fa-th mr-2"></i><span data-key="all">Tất cả</span>
+            </button>
+            <button class="category-quick-filter" data-category="business">
+                <i class="fas fa-briefcase mr-2"></i><span data-key="business">Doanh nghiệp</span>
+            </button>
+            <button class="category-quick-filter" data-category="social">
+                <i class="fas fa-share-alt mr-2"></i><span data-key="social">Mạng xã hội</span>
+            </button>
+            <button class="category-quick-filter" data-category="product">
+                <i class="fas fa-box mr-2"></i><span data-key="product">Sản phẩm</span>
+            </button>
+            <button class="category-quick-filter" data-category="minimal">
+                <i class="fas fa-circle mr-2"></i><span data-key="minimal">Tối giản</span>
+            </button>
+            <button class="category-quick-filter" data-category="luxury">
+                <i class="fas fa-crown mr-2"></i><span data-key="luxury">Cao cấp</span>
+            </button>
+        </div>
+
+        <!-- Templates Grid -->
+        <div id="templates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+            
+            <!-- Template cards will be generated here by JavaScript -->
+            
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center">
+            <button id="load-more" class="bg-gray-700 hover:bg-gray-600 px-8 py-3 rounded-lg font-semibold transition-colors">
+                <i class="fas fa-plus mr-2"></i><span data-key="load-more">Tải thêm template</span>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Template Preview Modal -->
+    <div id="template-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 rounded-xl max-w-4xl mx-4 w-full max-h-screen overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-700">
+                <h3 id="modal-title" class="text-2xl font-bold">Template Preview</h3>
+                <button onclick="closeTemplateModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Preview Video -->
+                    <div>
+                        <div id="modal-preview" class="aspect-video bg-gray-700 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-play-circle text-6xl text-blue-400"></i>
+                        </div>
+                        <div class="flex gap-2 mb-4">
+                            <button class="aspect-ratio-btn active" data-ratio="16:9">16:9</button>
+                            <button class="aspect-ratio-btn" data-ratio="9:16">9:16</button>
+                            <button class="aspect-ratio-btn" data-ratio="1:1">1:1</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Template Info -->
+                    <div>
+                        <div class="mb-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span id="modal-category" class="category-badge">Business</span>
+                                <span id="modal-difficulty" class="difficulty-badge">Dễ</span>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span id="modal-rating">4.8</span>
+                                </div>
+                            </div>
+                            <p id="modal-description" class="text-gray-300 mb-4">
+                                Template mô tả sẽ hiển thị ở đây
+                            </p>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3" data-key="features">Tính năng</h4>
+                            <div id="modal-features" class="flex flex-wrap gap-2">
+                                <!-- Features will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Suitable For -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3" data-key="suitable-for">Phù hợp cho</h4>
+                            <div id="modal-suitable" class="flex flex-wrap gap-2">
+                                <!-- Suitable items will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Actions -->
+                        <div class="flex gap-3">
+                            <button onclick="useTemplate()" class="flex-1 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-semibold transition-colors">
+                                <i class="fas fa-rocket mr-2"></i><span data-key="use-template">Sử dụng template</span>
+                            </button>
+                            <button onclick="previewTemplate()" class="px-6 py-3 border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white rounded-lg font-semibold transition-colors">
+                                <i class="fas fa-play mr-2"></i><span data-key="preview">Xem trước</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Styles -->
+    <style>
+        .category-quick-filter {
+            padding: 8px 16px;
+            background: rgba(31, 41, 55, 0.5);
+            border: 2px solid #374151;
+            border-radius: 20px;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .category-quick-filter:hover {
+            border-color: #3b82f6;
+            color: white;
+        }
+        
+        .category-quick-filter.active {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+        
+        .template-card {
+            background: rgba(31, 41, 55, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+        
+        .template-thumbnail {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #374151, #4b5563);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .template-thumbnail:hover .play-overlay {
+            opacity: 1;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .category-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        
+        .difficulty-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .difficulty-badge.easy {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+        
+        .difficulty-badge.medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+        
+        .difficulty-badge.hard {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        .aspect-ratio-btn {
+            padding: 6px 12px;
+            background: rgba(31, 41, 55, 0.5);
+            border: 2px solid #374151;
+            border-radius: 6px;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+        }
+        
+        .aspect-ratio-btn:hover {
+            border-color: #3b82f6;
+            color: white;
+        }
+        
+        .aspect-ratio-btn.active {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+        
+        .feature-tag, .suitable-tag {
+            padding: 4px 8px;
+            background: rgba(75, 85, 99, 0.5);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #d1d5db;
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Template data (simplified version)
+        const templateData = [
+            {
+                id: 'modern-corporate-1',
+                name: 'Modern Corporate',
+                category: 'business',
+                description: 'Thiết kế hiện đại, chuyên nghiệp cho doanh nghiệp',
+                thumbnail: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop',
+                difficulty: 'easy',
+                popularity: 95,
+                rating: 4.8,
+                features: ['Animated text', 'Logo placement', 'Background music', 'Smooth transitions'],
+                suitable_for: ['B2B products', 'Services', 'Technology', 'Professional']
+            },
+            {
+                id: 'social-media-trendy',
+                name: 'Social Media Trendy',
+                category: 'social',
+                description: 'Template năng động cho mạng xã hội, TikTok, Instagram',
+                thumbnail: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=300&fit=crop',
+                difficulty: 'easy',
+                popularity: 92,
+                rating: 4.7,
+                features: ['Quick cuts', 'Trending effects', 'Text animations', 'Music sync'],
+                suitable_for: ['Fashion', 'Food', 'Lifestyle', 'Entertainment']
+            },
+            {
+                id: 'product-showcase-pro',
+                name: 'Product Showcase Pro',
+                category: 'product',
+                description: 'Trưng bày sản phẩm chuyên nghiệp với góc quay đẹp',
+                thumbnail: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop',
+                difficulty: 'medium',
+                popularity: 88,
+                rating: 4.9,
+                features: ['3D rotations', 'Zoom effects', 'Product highlights', 'Feature callouts'],
+                suitable_for: ['E-commerce', 'Product launches', 'Retail', 'Reviews']
+            },
+            {
+                id: 'minimal-clean',
+                name: 'Minimal Clean',
+                category: 'minimal',
+                description: 'Thiết kế tối giản, sạch sẽ, tập trung vào nội dung',
+                thumbnail: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=300&fit=crop',
+                difficulty: 'easy',
+                popularity: 85,
+                rating: 4.6,
+                features: ['Subtle animations', 'Typography focus', 'White space', 'Elegant transitions'],
+                suitable_for: ['Premium brands', 'Healthcare', 'Education', 'Consulting']
+            },
+            {
+                id: 'dynamic-motion',
+                name: 'Dynamic Motion',
+                category: 'dynamic',
+                description: 'Hiệu ứng chuyển động mạnh mẽ, thu hút ánh nhìn',
+                thumbnail: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop',
+                difficulty: 'hard',
+                popularity: 78,
+                rating: 4.5,
+                features: ['Kinetic typography', 'Particle effects', 'Dynamic transitions', 'Energy bursts'],
+                suitable_for: ['Sports', 'Gaming', 'Music', 'Energy drinks']
+            },
+            {
+                id: 'elegant-luxury',
+                name: 'Elegant Luxury',
+                category: 'luxury',
+                description: 'Phong cách sang trọng, cao cấp cho thương hiệu luxury',
+                thumbnail: 'https://images.unsplash.com/photo-1615800001171-b0c79473c816?w=400&h=300&fit=crop',
+                difficulty: 'medium',
+                popularity: 82,
+                rating: 4.8,
+                features: ['Gold accents', 'Smooth parallax', 'Premium typography', 'Sophisticated animations'],
+                suitable_for: ['Jewelry', 'Fashion', 'Watches', 'High-end products']
+            }
+        ];
+        
+        let currentTemplates = [...templateData];
+        
+        // Initialize templates page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved language preference
+            const savedLanguage = localStorage.getItem('tinovideo-language') || 'vi';
+            switchLanguage(savedLanguage);
+            
+            // Render initial templates
+            renderTemplates(currentTemplates);
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            console.log('Templates page initialized successfully!');
+        });
+        
+        function setupEventListeners() {
+            // Search functionality
+            document.getElementById('template-search').addEventListener('input', filterTemplates);
+            document.getElementById('category-filter').addEventListener('change', filterTemplates);
+            document.getElementById('sort-filter').addEventListener('change', filterTemplates);
+            
+            // Quick filter buttons
+            document.querySelectorAll('.category-quick-filter').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.category-quick-filter').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    document.getElementById('category-filter').value = category;
+                    filterTemplates();
+                });
+            });
+            
+            // Load more button
+            document.getElementById('load-more').addEventListener('click', loadMoreTemplates);
+        }
+        
+        function renderTemplates(templates) {
+            const grid = document.getElementById('templates-grid');
+            
+            grid.innerHTML = templates.map(template => `
+                <div class="template-card" onclick="openTemplateModal('${template.id}')">
+                    <div class="template-thumbnail">
+                        <img src="${template.thumbnail}" alt="${template.name}" class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play-circle text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-semibold truncate">${template.name}</h3>
+                            <div class="flex items-center text-yellow-400 text-sm">
+                                <i class="fas fa-star mr-1"></i>
+                                <span>${template.rating}</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-3 line-clamp-2">${template.description}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="category-badge">${getCategoryName(template.category)}</span>
+                            <span class="difficulty-badge ${template.difficulty}">${getDifficultyName(template.difficulty)}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function filterTemplates() {
+            const search = document.getElementById('template-search').value.toLowerCase();
+            const category = document.getElementById('category-filter').value;
+            const sort = document.getElementById('sort-filter').value;
+            
+            let filtered = [...templateData];
+            
+            // Filter by search
+            if (search) {
+                filtered = filtered.filter(template => 
+                    template.name.toLowerCase().includes(search) ||
+                    template.description.toLowerCase().includes(search)
+                );
+            }
+            
+            // Filter by category
+            if (category !== 'all') {
+                filtered = filtered.filter(template => template.category === category);
+            }
+            
+            // Sort
+            switch (sort) {
+                case 'popularity':
+                    filtered.sort((a, b) => b.popularity - a.popularity);
+                    break;
+                case 'newest':
+                    // Simulate newest first
+                    filtered.reverse();
+                    break;
+                case 'name':
+                    filtered.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'difficulty':
+                    const difficultyOrder = { easy: 1, medium: 2, hard: 3 };
+                    filtered.sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]);
+                    break;
+            }
+            
+            currentTemplates = filtered;
+            renderTemplates(currentTemplates);
+        }
+        
+        function loadMoreTemplates() {
+            // Simulate loading more templates
+            showToast('Đã tải tất cả template', 'info');
+        }
+        
+        function openTemplateModal(templateId) {
+            const template = templateData.find(t => t.id === templateId);
+            if (!template) return;
+            
+            // Populate modal content
+            document.getElementById('modal-title').textContent = template.name;
+            document.getElementById('modal-category').textContent = getCategoryName(template.category);
+            document.getElementById('modal-difficulty').textContent = getDifficultyName(template.difficulty);
+            document.getElementById('modal-difficulty').className = `difficulty-badge ${template.difficulty}`;
+            document.getElementById('modal-rating').textContent = template.rating;
+            document.getElementById('modal-description').textContent = template.description;
+            
+            // Features
+            document.getElementById('modal-features').innerHTML = template.features.map(feature => 
+                `<span class="feature-tag">${feature}</span>`
+            ).join('');
+            
+            // Suitable for
+            document.getElementById('modal-suitable').innerHTML = template.suitable_for.map(item => 
+                `<span class="suitable-tag">${item}</span>`
+            ).join('');
+            
+            // Show modal
+            document.getElementById('template-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeTemplateModal() {
+            document.getElementById('template-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function useTemplate() {
+            // Redirect to dashboard with selected template
+            const templateId = document.getElementById('modal-title').textContent;
+            localStorage.setItem('selectedTemplate', templateId);
+            window.location.href = 'dashboard.html';
+        }
+        
+        function previewTemplate() {
+            showToast('Đang tải preview...', 'info');
+        }
+        
+        function getCategoryName(category) {
+            const categoryNames = {
+                business: 'Doanh nghiệp',
+                social: 'Mạng xã hội',
+                product: 'Sản phẩm',
+                minimal: 'Tối giản',
+                dynamic: 'Năng động',
+                luxury: 'Cao cấp',
+                food: 'Ẩm thực',
+                technology: 'Công nghệ',
+                health: 'Sức khỏe',
+                education: 'Giáo dục',
+                fashion: 'Thời trang',
+                travel: 'Du lịch'
+            };
+            return categoryNames[category] || category;
+        }
+        
+        function getDifficultyName(difficulty) {
+            const difficultyNames = {
+                easy: 'Dễ',
+                medium: 'Trung bình',
+                hard: 'Khó'
+            };
+            return difficultyNames[difficulty] || difficulty;
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('template-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTemplateModal();
+            }
+        });
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTemplateModal();
+            }
+        });
+    </script>
+
+<style>
+#minimax-floating-ball {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 12px;
+  background: #222222;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  color: #F8F8F8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#minimax-floating-ball:hover {
+  transform: translateY(-2px);
+  background: #383838;
+}
+
+.minimax-ball-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minimax-logo-wave {
+  width: 26px;
+  height: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='22' viewBox='0 0 26 22' fill='none'%3E%3Cg clip-path='url(%23clip0_3442_102412)'%3E%3Cpath d='M12.8405 14.6775C12.8405 14.9897 13.0932 15.2424 13.4055 15.2424C13.7178 15.2424 13.9705 14.9897 13.9705 14.6775V2.98254C13.9705 1.88957 13.0809 1 11.9879 1C10.895 1 10.0054 1.88957 10.0054 2.98254V11.566V17.1068C10.0054 17.5773 9.62327 17.9594 9.1528 17.9594C8.68233 17.9594 8.30021 17.5773 8.30021 17.1068V8.04469C8.30021 6.95172 7.41063 6.06215 6.31767 6.06215C5.22471 6.06215 4.33513 6.95172 4.33513 8.04469V11.8855C4.33513 12.3559 3.953 12.7381 3.48254 12.7381C3.01207 12.7381 2.62994 12.3559 2.62994 11.8855V10.4936C2.62994 10.1813 2.37725 9.92861 2.06497 9.92861C1.7527 9.92861 1.5 10.1813 1.5 10.4936V11.8855C1.5 12.9784 2.38957 13.868 3.48254 13.868C4.5755 13.868 5.46508 12.9784 5.46508 11.8855V8.04469C5.46508 7.57422 5.8472 7.19209 6.31767 7.19209C6.78814 7.19209 7.17026 7.57422 7.17026 8.04469V17.1068C7.17026 18.1998 8.05984 19.0894 9.1528 19.0894C10.2458 19.0894 11.1353 18.1998 11.1353 17.1068V2.98254C11.1353 2.51207 11.5175 2.12994 11.9879 2.12994C12.4584 2.12994 12.8405 2.51207 12.8405 2.98254V14.6775Z' fill='%23F8F8F8'/%3E%3Cpath d='M23.3278 6.06215C22.2348 6.06215 21.3452 6.95172 21.3452 8.04469V15.6143C21.3452 16.0847 20.9631 16.4669 20.4926 16.4669C20.0222 16.4669 19.6401 16.0847 19.6401 15.6143V2.98254C19.6401 1.88957 18.7505 1 17.6575 1C16.5645 1 15.675 1.88957 15.675 2.98254V19.0175C15.675 19.4879 15.2928 19.8701 14.8224 19.8701C14.3519 19.8701 13.9698 19.4879 13.9698 19.0175V17.0329C13.9698 16.7206 13.7171 16.4679 13.4048 16.4679C13.0925 16.4679 12.8398 16.7206 12.8398 17.0329V19.0175C12.8398 20.1104 13.7294 21 14.8224 21C15.9153 21 16.8049 20.1104 16.8049 19.0175V2.98254C16.8049 2.51207 17.187 2.12994 17.6575 2.12994C18.128 2.12994 18.5101 2.51207 18.5101 2.98254V15.6143C18.5101 16.7072 19.3997 17.5968 20.4926 17.5968C21.5856 17.5968 22.4752 16.7072 22.4752 15.6143V8.04469C22.4752 7.57422 22.8573 7.19209 23.3278 7.19209C23.7982 7.19209 24.1804 7.57422 24.1804 8.04469V14.6775C24.1804 14.9897 24.4331 15.2424 24.7453 15.2424C25.0576 15.2424 25.3103 14.9897 25.3103 14.6775V8.04469C25.3103 6.95172 24.4207 6.06215 23.3278 6.06215Z' fill='%23F8F8F8'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3442_102412'%3E%3Crect width='25' height='22' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.minimax-ball-text {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.minimax-close-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.minimax-close-icon:hover {
+  opacity: 1;
+}
+</style>
+<div id="minimax-floating-ball">
+  <div class="minimax-ball-content">
+    <div class="minimax-logo-wave"></div>
+    <span class="minimax-ball-text">Created by MiniMax Agent</span>
+  </div>
+  <div class="minimax-close-icon">×</div>
+</div>
+<script>
+// Initialize floating ball functionality
+function initFloatingBall() {
+  const ball = document.getElementById('minimax-floating-ball');
+  if (!ball) return;
+
+  // Initial animation
+  ball.style.opacity = '0';
+  ball.style.transform = 'translateY(20px)';
+
+  setTimeout(() => {
+    ball.style.opacity = '1';
+    ball.style.transform = 'translateY(0)';
+  }, 500);
+
+  // Handle logo click
+  const ballContent = ball.querySelector('.minimax-ball-content');
+  ballContent.addEventListener('click', function (e) {
+    e.stopPropagation();
+    window.open('https://agent.minimax.io/agent', '_blank');
+    ball.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      ball.style.transform = 'scale(1)';
+    }, 100);
+  });
+
+  // Handle close button click
+  const closeIcon = ball.querySelector('.minimax-close-icon');
+  closeIcon.addEventListener('click', function (e) {
+    e.stopPropagation();
+    ball.style.opacity = '0';
+    ball.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+      ball.style.display = 'none';
+    }, 300);
+  });
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', initFloatingBall); 
+</script>
+
+</body>
+</html>

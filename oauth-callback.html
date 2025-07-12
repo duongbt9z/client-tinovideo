@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<title>Authenticating…</title>
+<script>
+(function () {
+  const qs = new URLSearchParams(location.search);
+  const jwt   = qs.get('jwt');
+  const email = qs.get('email');
+
+  if (window.opener && jwt) {
+    /* Gửi về trang chính rồi đóng */
+    window.opener.postMessage({ jwt, email }, window.location.origin);
+    window.close();
+  } else {
+    document.body.textContent = 'Đăng nhập xong. Bạn có thể đóng cửa sổ này.';
+  }
+})();
+</script>
