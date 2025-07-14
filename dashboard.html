@@ -96,7 +96,8 @@
                 <div class="flex items-center mb-4">
                     <div
                         class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
-                        <span class="text-white font-bold text-sm">DU</span>
+                        <!-- <span class="text-white font-bold text-sm">DU</span> -->
+                        <img src="" class="rounded-full" data-key="user-avatar">
                     </div>
                     <div>
                         <div class="font-semibold text-sm" data-key="user-name">Demo Người dùng</div>
@@ -223,7 +224,8 @@
                                         <label class="block text-sm font-medium mb-2" data-key="url-label">URL Sản
                                             phẩm</label>
                                         <div class="flex space-x-3 block ">
-                                            <input type="url" id="product-url" placeholder="https://shopee.vn/..."
+                                            <input type="url" id="product-url"
+                                                placeholder="https://www.tiktok.com/view/product/...."
                                                 class="form-input flex-1" data-key="url-placeholder">
                                             <button id="analyze-btn" onclick="analyzeUrl()"
                                                 class="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-semibold transition-colors">
@@ -760,35 +762,53 @@
                         </div>
                     </div>
                 </div>
-        </div>
+                <div>
+                    <!-- Other Sections (placeholders) -->
+                    <!-- Dashboard -->
+                    <div id="dashboard-section" class="p-6 hidden">
+                        <h2 class="text-3xl font-bold mb-4">Bảng Điều Khiển</h2>
+                        <p>Thống kê & số liệu chung sẽ hiển thị ở đây.</p>
+                    </div>
 
-        <!-- Other Sections (placeholders) -->
-        <div id="dashboard-section" class="p-6 hidden">
-            <h2 class="text-3xl font-bold mb-6" data-key="dashboard-title">Bảng điều khiển</h2>
-            <!-- Dashboard content would go here -->
-        </div>
+                    <!-- Tạo Video Mới (create) -->
+                    <div id="create-section" class="p-6">
+                        <!-- Đây là phần bạn đã có sẵn wizard tạo video -->
+                    </div>
 
-        <div id="projects-section" class="p-6 hidden">
-            <h2 class="text-3xl font-bold mb-6" data-key="projects-title">Dự Án Của Tôi</h2>
-            <!-- Projects content would go here -->
-        </div>
+                    <!-- Dự Án Của Tôi -->
+                    <div id="projects-section" class="p-6 hidden">
+                        <h2 class="text-3xl font-bold mb-4">Dự Án Của Tôi</h2>
+                        <p>Danh sách các dự án của bạn sẽ hiển thị tại đây.</p>
+                    </div>
 
-        <div id="templates-section" class="p-6 hidden">
-            <h2 class="text-3xl font-bold mb-6" data-key="templates-title">Mẫu Thư Viện</h2>
-            <!-- Templates content would go here -->
-        </div>
+                    <!-- Mẫu Thư Viện -->
+                    <div id="templates-section" class="p-6 hidden">
+                        <h2 class="text-3xl font-bold mb-4">Mẫu Thư Viện</h2>
+                        <p>Chọn từ các mẫu video có sẵn.</p>
+                    </div>
 
-        <div id="settings-section" class="p-6 hidden">
-            <h2 class="text-3xl font-bold mb-6" data-key="settings-title">Cài Đặt</h2>
-            <!-- Settings content would go here -->
-        </div>
+                    <!-- Affiliate -->
+                    <div id="affiliate-section" class="p-6 hidden">
+                        <h2 class="text-3xl font-bold mb-4">Affiliate</h2>
+                        <p>Thông tin chương trình affiliate & link giới thiệu.</p>
+                    </div>
 
-        <div id="help-section" class="p-6 hidden">
-            <h2 class="text-3xl font-bold mb-6" data-key="help-title">Trợ giúp</h2>
-            <!-- Help content would go here -->
+                    <!-- Cài Đặt -->
+                    <div id="settings-section" class="p-6 hidden">
+                        <h2 class="text-3xl font-bold mb-4">Cài Đặt</h2>
+                        <p>Thay đổi tùy chọn cá nhân của bạn ở đây.</p>
+                    </div>
+
+                    <!-- Trợ Giúp -->
+                    <div id="help-section" class="p-6 hidden">
+                        <h2 class="text-3xl font-bold mb-4">Trợ Giúp</h2>
+                        <p>Các câu hỏi thường gặp và hỗ trợ.</p>
+                    </div>
+
+            </main>
         </div>
-        </main>
     </div>
+
     </div>
 
     <!-- Modals and Overlays -->
@@ -904,13 +924,6 @@
             color: #3B82F6;
         }
     </style>
-    <!-- <div id="minimax-floating-ball">
-        <div class="minimax-ball-content">
-            <div class="minimax-logo-wave"></div>
-            <span class="minimax-ball-text">Created by MiniMax Agent</span>
-        </div>
-        <div class="minimax-close-icon">×</div>
-    </div> -->
     <script>
         // Initialize floating ball functionality
         function initFloatingBall() {
