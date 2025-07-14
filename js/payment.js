@@ -1,5 +1,5 @@
 /* ---------------------  payment.js  --------------------- */
-const API_BASE_URL = "http://localhost:5000";
+ const API_MAIN_BASE_URL= 'https://admin.tinovideo.com';
 
 document.addEventListener("DOMContentLoaded", () => {
   /* ===== 1. LẤY & HIỂN THỊ GÓI ===== */

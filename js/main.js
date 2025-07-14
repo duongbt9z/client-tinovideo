@@ -1,6 +1,4 @@
-// Tinovideo Main JavaScript
-
-const API_MAIN_BASE_URL = 'http://localhost:5000';
+ const API_MAIN_BASE_URL= 'https://admin.tinovideo.com';
 // Language translations
 const translations = {
     vi: {

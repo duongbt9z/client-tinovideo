@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinovideo - Blog</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+
+  <!-- ===== 1. Header (copy từ index.html) ===== -->
+  <!-- Language Switcher -->
+
+  <!-- <div class="fixed top-4 right-4 z-50 steps">
+
+        <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
+            <button onclick="switchLanguage('vi')"
+                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi">🇻🇳 VI</button>
+            <button onclick="switchLanguage('en')"
+                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="en">🇺🇸 EN</button>
+        </div>
+    </div> -->
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 bg-gray-900/95 backdrop-blur-sm z-40 border-b border-gray-800 bg-gray-900">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <!-- <i class="fas fa-video text-white text-lg"></i> -->
+            <img src="images/logo.png">
+          </div>
+          <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            Tinovideo
+          </h1>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#features" class="nav-link text-gray-300 hover:text-blue-400 transition-colors"
+            data-key="">Affilate</a>
+          <a href="#features" class="nav-link text-gray-300 hover:text-blue-400 transition-colors"
+            data-key="nav-features">Tính năng</a>
+          <a href="#process" class="nav-link text-gray-300 hover:text-blue-400 transition-colors"
+            data-key="nav-process">Quy trình</a>
+          <a href="blog.html" class="nav-link text-gray-300 hover:text-blue-400 transition-colors" data-key="">Blog</a>
+          <a href="#testimonials" class="nav-link text-gray-300 hover:text-blue-400 transition-colors"
+            data-key="nav-testimonials">Đánh giá</a>
+          <a href="dashboard.html"
+            class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg transition-colors mr-6 btn-create-video"
+            data-key="nav-login">Đăng nhập</a>
+        </div>
+
+        <button class="md:hidden text-white">
+          <a href="dashboard.html" class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg transition-colors "
+            data-key="nav-login">Đăng nhập</a>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="pt-20"></div> <!-- đẩy nội dung xuống dưới navbar -->
+
+  <!-- ===== 2. Main: Danh sách bài viết Blog ===== -->
+  <main class="container mx-auto px-6 py-16">
+    <h2 class="text-4xl font-bold mb-8">Tinovideo Blog</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Ví dụ 1 bài viết -->
+      <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-blue-400/50 transition">
+        <img src="images/blog/avata.jpg" alt="Tiêu đề bài viết" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Tiêu đề bài viết 1</h3>
+          <p class="text-gray-300 mb-4">Đoạn mở đầu ngắn gọn, gây hứng thú cho người đọc...</p>
+          <a href="blog/post1.html" class="text-blue-400 hover:underline font-medium">Đọc tiếp →</a>
+        </div>
+      </article>
+      <!-- Thêm các bài khác tương tự -->
+      <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-blue-400/50 transition">
+        <img src="images/blog/avata.jpg" alt="Tiêu đề bài viết" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Tiêu đề bài viết 1</h3>
+          <p class="text-gray-300 mb-4">Đoạn mở đầu ngắn gọn, gây hứng thú cho người đọc...</p>
+          <a href="blog/post1.html" class="text-blue-400 hover:underline font-medium">Đọc tiếp →</a>
+        </div>
+      </article>
+      <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-blue-400/50 transition">
+        <img src="images/blog/avata.jpg" alt="Tiêu đề bài viết" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Tiêu đề bài viết 1</h3>
+          <p class="text-gray-300 mb-4">Đoạn mở đầu ngắn gọn, gây hứng thú cho người đọc...</p>
+          <a href="blog/post1.html" class="text-blue-400 hover:underline font-medium">Đọc tiếp →</a>
+        </div>
+      </article>
+      <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-blue-400/50 transition">
+        <img src="images/blog/avata.jpg" alt="Tiêu đề bài viết" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Tiêu đề bài viết 1</h3>
+          <p class="text-gray-300 mb-4">Đoạn mở đầu ngắn gọn, gây hứng thú cho người đọc...</p>
+          <a href="blog/post1.html" class="text-blue-400 hover:underline font-medium">Đọc tiếp →</a>
+        </div>
+      </article>
+      <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-blue-400/50 transition">
+        <img src="images/blog/avata.jpg" alt="Tiêu đề bài viết" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Tiêu đề bài viết 1</h3>
+          <p class="text-gray-300 mb-4">Đoạn mở đầu ngắn gọn, gây hứng thú cho người đọc...</p>
+          <a href="blog/post1.html" class="text-blue-400 hover:underline font-medium">Đọc tiếp →</a>
+        </div>
+      </article>
+      <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-blue-400/50 transition">
+        <img src="images/blog/avata.jpg" alt="Tiêu đề bài viết" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Tiêu đề bài viết 1</h3>
+          <p class="text-gray-300 mb-4">Đoạn mở đầu ngắn gọn, gây hứng thú cho người đọc...</p>
+          <a href="blog/post1.html" class="text-blue-400 hover:underline font-medium">Đọc tiếp →</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- ===== 3. Footer (copy từ index.html) ===== -->
+  <footer class="bg-gray-800 border-t border-gray-700 py-12">
+    <div class="container mx-auto px-6 text-gray-400">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- ... nội dung footer giống index.html ... -->
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        © 2025 Tinovideo. Tất cả quyền được bảo lưu.
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

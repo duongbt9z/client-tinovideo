@@ -1,5 +1,4 @@
-
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://admin.tinovideo.com';
 let currentStep = 1;
 let selectedVoice = null;
 let uploadedImages = [];
@@ -326,19 +325,7 @@ function updateStepProgress() {
         }
     });
 }
-// function resetVideoPreview() {
-//     window.latestVideoUrl = null;               // quên link cũ
-//     const videoEl = document.getElementById('videoPreview');
-//     document.getElementById('step3-next').disabled = true; // khoá nút “Next”
 
-//     /* (tuỳ chọn) reset luôn preview bước 4 nếu trước đó đã hiển thị */
-//     const finalPreview = document.querySelector('#step-4-content .preview-area');
-//     if (finalPreview) finalPreview.innerHTML = `
-//       <div class="text-center text-gray-400 py-12">
-//         <i class="fas fa-play-circle text-6xl mb-4"></i><br>
-//         <span data-key="preview-placeholder">Video preview sẽ hiển thị ở đây</span>
-//       </div>`;
-// }
 
 // Select voice
 function selectVoice(voiceId, element) {
@@ -372,21 +359,7 @@ function filterVoices(filter) {
 function updateSpeed(value) {
     projectData.settings.speed = parseFloat(value);
 }
-// let currentAudio = null;
 
-// function playVoiceDemo(filename) {
-//     const url = `/demo-voices/${filename}`;
-//     if (currentAudio) {
-//         currentAudio.pause();
-//         currentAudio = null;
-//     }
-
-//     currentAudio = new Audio(url);
-//     currentAudio.play().catch((err) => {
-//         console.error("Không thể phát giọng đọc:", err);
-//         showToast("Lỗi phát giọng đọc", "error");
-//     });
-// }
 let currentAudio = null;
 let currentBtn = null;
 
@@ -453,31 +426,6 @@ function filterPrompts(cat) {
 }
 
 
-// function nextStep() {
-//     const steps = document.querySelectorAll('.step-content');
-//     if (currentStep < steps.length) {
-//         if (!validateCurrentStep()) return;
-//         steps[currentStep - 1].classList.add('hidden');
-//         steps[currentStep].classList.remove('hidden');
-//         currentStep++;
-//         updateStepProgress();
-//         if (currentStep === 2) initializeVoiceSelection();
-//         if (currentStep === 3) initializePromptGallery();
-//         if (currentStep === 4) renderCharacterList();
-//         if (currentStep === 5) generateIntro();
-//         if (currentStep === 6 && window.latestVideoUrl) {
-//             const finalPreview = document.querySelector('#step-5-content .preview-area');
-//             // Xoá placeholder cũ (nếu chưa xoá)
-//             finalPreview.innerHTML = '';
-//             // Tạo video
-//             const vid = document.createElement('video');
-//             vid.src = window.latestVideoUrl;
-//             vid.controls = true;
-//             vid.className = 'w-full max-w-2xl mx-auto rounded shadow';
-//             finalPreview.appendChild(vid);
-//         }
-//     }
-// }
 function nextStep() {
     const steps = document.querySelectorAll('.step-content');
     if (currentStep >= steps.length) return;
@@ -516,83 +464,7 @@ function previousStep() {
         updateStepProgress();
     }
 }
-// chuyển mà 
-// function validateCurrentStep() {
-//     switch (currentStep) {
-//         case 1:
-//             const url = document.getElementById('product-url').value.trim();
-//             const text = document.getElementById('product-text').value.trim();
-//             // if (!url && !text) {
-//             //     showToast('Vui lòng nhập URL sản phẩm hoặc nội dung text', 'warning');
-//             //     return false;
-//             // }
-//             const previewContainer = document.getElementById('image-preview');
-//             const hasPreview = previewContainer.querySelector('div.relative.group');
-//             // if (!hasPreview) {
-//             //     showToast('Vui lòng thêm hình ảnh để xem trước', 'warning');
-//             //     return false;
-//             // }
-//             projectData.url = url;
-//             projectData.text = text;
-//             break;
-//         case 2:
-//             // if (!selectedVoice) {
-//             //     showToast('Vui lòng chọn giọng đọc AI', 'warning');
-//             //     return false;
-//             // }
-//             projectData.voice = selectedVoice;
-//             break;
-//         case 3:
-//             // const scriptContent = document.getElementById('script-text').value.trim();
 
-
-
-//             // 1) Phải chọn kịch bản
-//             // if (!selectedPrompt) {
-//             //     showToast('Vui lòng chọn kịch bản', 'warning');
-//             //     return false;
-//             // }
-//             // 2) Phải có nội dung trong #script-text
-//             const scriptContent = document.getElementById('script-text').value.trim();
-//             // if (!scriptContent) {
-//             //     showToast('Vui lòng tạo kịch bản trước khi tiếp tục', 'warning');
-//             //     return false;
-//             // }
-//             projectData.prompt = selectedPrompt;
-//             projectData.script = scriptContent;
-//             break;
-//         case 4:
-
-//             // if (!selectedModels) {
-//             //     showToast('Vui lòng chọn template', 'warning');
-//             //     return false;
-//             // }
-//             projectData.template = selectedModels;
-//             break;
-//         case 5:
-//             // if (!selectedModels) {
-//             //     showToast('Vui lòng chọn template', 'warning');
-//             //     return false;
-//             // }
-//             projectData.template = selectedModels;
-//             break;
-//         case 6:
-//             // if (!selectedModels) {
-//             //     showToast('Vui lòng chọn template', 'warning');
-//             //     return false;
-//             // }
-//             projectData.template = selectedModels;
-//             break;
-//         case 7:
-//             // if (!selectedModels) {
-//             //     showToast('Vui lòng chọn template', 'warning');
-//             //     return false;
-//             // }
-//             projectData.template = selectedModels;
-//             break;
-//     }
-//     return true;
-// }
 function validateCurrentStep() {
     switch (currentStep) {
         case 1:
@@ -1470,7 +1342,6 @@ async function generateVideo() {
     overlay.classList.remove('hidden');
     // fix cứng
     let y_offset = 150;
-    let font_path = "arial.ttf";
     let font_size = 48;
     // Tạo payload gửi backend
     const body = {
@@ -1480,7 +1351,7 @@ async function generateVideo() {
         transition,
         text,
         bg_music: music !== 'none' ? music : null,
-        sample, y_offset, font_path, font_size
+        sample, y_offset, font_size
     };
     const token = localStorage.getItem('jwt');
     let data;
@@ -1818,9 +1689,8 @@ async function getUserInfoOnce() {
         const data = await res.json();
         if (data.success) {
             cachedUser = data.user;
-            console.log('name', data.user.name)
-            console.log('name', data.user.avatar)
             localStorage.setItem('userId',data.user.id)
+            localStorage.setItem('free_claimed ',data.user.free_claimed)
             const nameDiv = document.querySelector('[data-key="user-name"]');
             if (nameDiv) nameDiv.textContent = data.user.name;
             const point = document.querySelector('[data-key="point"]');
@@ -1828,12 +1698,11 @@ async function getUserInfoOnce() {
             // (Tùy chọn) Gán ảnh đại diện
             const avatarImg = document.querySelector('[data-key="user-avatar"]');
             if (avatarImg) avatarImg.src = data.user.avatar;
+             const userPlan = document.querySelector('[data-key="user-plan"]');
+            if (userPlan) userPlan.textContent = data.user.plan;
             return cachedUser;
         } else {
-            // if (!user) {
-            //     window.location.href = "login.html";
-            //     return;
-            // }
+           
             console.warn("❌ Không lấy được thông tin user:", data.error);
             return null;
         }
@@ -1842,3 +1711,33 @@ async function getUserInfoOnce() {
         return null;
     }
 }
+const SECTIONS = [
+  "dashboard",
+  "create",
+  "projects",
+  "templates",
+  "affiliate",
+  "settings",
+  "help"
+];
+function showSection(name) {
+  // 1️⃣ Show/Hide section
+  SECTIONS.forEach(sec => {
+    const el = document.getElementById(`${sec}-section`);
+    if (!el) return;
+    if (sec === name) el.classList.remove("hidden");
+    else             el.classList.add("hidden");
+  });
+
+  // 2️⃣ Cập nhật class `.active` cho sidebar-item
+  document.querySelectorAll(".sidebar-item").forEach(item => {
+    const onclick = item.getAttribute("onclick") || "";
+    const isActive = onclick.includes(`showSection('${name}')`);
+    item.classList.toggle("active", isActive);
+  });
+}
+
+// Khởi động mặc định
+document.addEventListener("DOMContentLoaded", () => {
+  showSection("dashboard");
+});

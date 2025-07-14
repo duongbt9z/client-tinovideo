@@ -87,7 +87,7 @@ tinovideo-website/
 
 ## 🌐 Demo trực tuyến
 
-**Website đã được deploy tại**: https://lc7x4swzgh.space.minimax.io
+**Website đã được deploy tại**:https://tinovideo.com/
 
 ### Các trang chính:
 - **Landing page**: `/` - Trang chủ giới thiệu
