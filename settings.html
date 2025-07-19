@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cài Đặt - Tinovideo</title>
+  <link rel="stylesheet" href="css/settings.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-white font-sans overflow-hidden">
+
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div id="sidebar" class=" w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+      <div class="p-6 border-b border-gray-700 flex items-center space-x-3">
+        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+          <img src="./images/logo.png" alt="Logo">
+        </div>
+        <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          Tinovideo
+        </h1>
+      </div>
+      <nav class="flex-1 py-6">
+        <ul class="space-y-2">
+          <li><a href="dashboard.html" class="sidebar-item"><i class="fas fa-chart-pie w-5 mr-3"></i>Dashboard</a>
+          </li>
+          <li><a href="dashboard.html" class="sidebar-item"><i class="fas fa-plus-circle w-5 mr-3"></i>Tạo Video Mới</a>
+          </li>
+          <li><a href="projects.html" class="sidebar-item"><i class="fas fa-folder w-5 mr-3"></i>Dự Án Của Tôi</a></li>
+          <li><a href="#" class="sidebar-item"><i class="fas fa-th-large w-5 mr-3"></i>Mẫu Thư Viện</a></li>
+          <li><a href="affiliate.html" class="sidebar-item"><i
+                class="fa-brands fa-affiliatetheme w-5 mr-3"></i>Affiliate</a></li>
+          <li><a href="settings.html" class="sidebar-item active"><i class="fas fa-cog mr-2"></i>Cài Đặt</a></li>
+          <li><a href="#" class="sidebar-item"><i class="fas fa-question-circle w-5 mr-3"></i>Trợ giúp</a></li>
+        </ul>
+      </nav>
+      <div class="p-6 border-t border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mr-3 overflow-hidden">
+            <img src="" class="rounded-full" data-key="user-avatar">
+          </div>
+          <div>
+            <div class="font-semibold text-sm" data-key="user-name">Demo Người dùng</div>
+            <div class="text-xs text-gray-400" data-key="user-plan-sidebar">Chuyên Nghiệp</div>
+          </div>
+        </div>
+        <div class="bg-gray-700 rounded-lg p-3 mb-3">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-gray-300">Credits còn lại:</span>
+            <span class="text-lg font-bold text-blue-400" data-key="point">100</span>
+          </div>
+          <div class="w-full bg-gray-600 rounded-full h-2">
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70%"></div>
+          </div>
+        </div>
+        <button
+          class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+          <i class="fas fa-crown mr-2"></i>Nâng cấp
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
+        <div class="flex">
+          <button id="sidebar-toggle" class="sidebar-toggle hidden-desktop" aria-label="Toggle menu">
+            ☰
+          </button>
+          <div class="flex items-center space-x-4">
+            <h2 class="text-2xl font-bold ml-4 mr-4">Cài Đặt</h2>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="relative steps">
+              <input type="text" placeholder="Tìm kiếm..."
+                class="bg-gray-700 text-white px-4 py-2 pl-10 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+              <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <button class="p-2 text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-bell text-lg"></i>
+            </button>
+            <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
+              <i class="fas fa-plus mr-2"></i><span data-key="new-video-btn"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <main class="flex-1 p-6 overflow-y-auto">
+
+        <!-- <h2 class="text-2xl font-bold mb-4">Cài Đặt</h2> -->
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab active" data-tab="profile">👤 Hồ sơ</button>
+          <button class="tab" data-tab="billing">💳 Thanh toán</button>
+        </div>
+
+        <!-- Tab Nội dung -->
+        <div id="profile" class="tab-content active">
+          <div class="section">
+            <h3 class="text-lg font-semibold mb-2">Thông tin cá nhân</h3>
+            <div class="flex">
+              <div class="w-1/2">
+                <label>
+                  Họ và tên</label>
+                <input type="text" placeholder="Người dùng Demo" readonly class="form-input flex-1 w-full"
+                  data-key="user-name-i" />
+              </div>
+              <div class="w-1/2">
+                <label>Email</label>
+                <input type="email" placeholder="demo@example.com" readonly class="form-input flex-1 w-full"
+                  data-key="user-email" />
+              </div>
+            </div>
+            <p class="mt-4">Gói hiện tại: <strong data-key="user-plan-main">Pro</strong> <button
+                class="btn-upgrade">Nâng
+                cấp</button></p>
+          </div>
+
+          <!-- <button class="btn-primary">💾 Lưu thay đổi</button> -->
+        </div>
+        <div id="billing" class="tab-content ">
+          <div class="section">
+            <h3 class="text-lg font-semibold mb-2">Gói dịch vụ hiện tại</h3>
+            <div class="plan-box">
+              <div><strong data-key="user-plan-main-payment">Pro Plan</strong>
+                <div> Credits:<p data-key="point-main">100</p>
+                </div>
+              </div>
+              <div><strong>$29/tháng</strong><br /></div>
+            </div>
+            <button class="btn-upgrade">⚡ Nâng cấp Enterprise</button>
+            <button class="btn-upgrade">Mua thêm Credits</button>
+          </div>
+
+          <div class="section">
+            <h3 class="text-lg font-semibold mb-2">Lịch sử thanh toán</h3>
+            <ul class="history">
+              <li>2024-01-01 – Pro Plan – <span class="paid">$29.00</span></li>
+              <li>2023-12-01 – Pro Plan – <span class="paid">$29.00</span></li>
+              <li>2023-11-01 – Pro Plan – <span class="paid">$29.00</span></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+
+
+    </main>
+  </div>
+
+
+  </div>
+
+  <script>
+    let cachedUser = null;
+    const API_BASE_URL = 'https://admin.tinovideo.com/';
+    function fillDataUser(user) {
+      const nameDiv = document.querySelector('[data-key="user-name"]');
+      if (nameDiv) nameDiv.textContent = user.name;
+      const nameInput = document.querySelector('[data-key="user-name-i"]');
+      if (nameInput) nameInput.value = user.name;
+      const point = document.querySelector('[data-key="point"]');
+      if (point) point.textContent = user.point;
+      const paymentPoint = document.querySelector('[data-key="point-main"]');
+      if (paymentPoint) paymentPoint.textContent = user.point;
+
+      const avatarImg = document.querySelector('[data-key="user-avatar"]');
+      if (avatarImg) avatarImg.src = user.avatar;
+
+      const userEmail = document.querySelector('[data-key="user-email"]');
+      if (userEmail) userEmail.value = user.email || "Chưa có gói";
+      const userPlan = document.querySelector('[data-key="user-plan"]');
+      // if (userPlan) userPlan.textContent = user.plan || "Chưa có gói";
+      const claimedPlans = [
+        user.free_claimed && "Free",
+        user.standard_claimed && "Standard",
+        user.pro_claimed && "Pro",
+        user.max_claimed && "Max"
+      ].filter(Boolean);
+
+      let highestPlan = "Chưa có gói";
+      const PLAN_PRIORITY = ["Max", "Pro", "Standard", "Free"];
+      for (const plan of PLAN_PRIORITY) {
+        if (claimedPlans.includes(plan)) {
+          highestPlan = plan;
+          break;
+        }
+      }
+
+      console.log("🥇 Plan cao nhất:", highestPlan);
+      const userPlanMain = document.querySelector('[data-key="user-plan-main"]');
+      if (userPlanMain) userPlanMain.textContent = highestPlan;
+      const userPlanMainPayment = document.querySelector('[data-key="user-plan-main-payment"]');
+      if (userPlanMainPayment) userPlanMainPayment.textContent = highestPlan;
+      const userPlanSidebar = document.querySelector('[data-key="user-plan-sidebar"]');
+      if (userPlanSidebar) userPlanSidebar.textContent = highestPlan;
+      // ✅ Giá tiền + mô tả theo gói
+      const getPlanPrice = (planName) => {
+        switch (planName) {
+          case "Free": return { price: "0đ / Trọn đời", note: "Tặng 50 credit" };
+          case "Standard": return { price: "200.000đ / Năm", note: "Tự động gia hạn" };
+          case "Pro": return { price: "350.000đ / Năm", note: "Tự động gia hạn" };
+          case "Max": return { price: "450.000đ / Năm", note: "Không giới hạn" };
+          default: return { price: "Chưa có", note: "" };
+        }
+      };
+
+      const { price, note } = getPlanPrice(highestPlan);
+
+      // 🔻 Gán vào phần tử kế bên gói (plan-box)
+      const priceEl = document.querySelector(".plan-box strong + br")?.previousElementSibling;
+      if (priceEl) priceEl.textContent = price;
+
+      const noteEl = document.querySelector(".plan-box small");
+      if (noteEl) noteEl.textContent = note;
+
+      console.log("🥇 Gói cao nhất:", highestPlan, "| 💵 Giá:", price, "| ✍️ Mô tả:", note);
+      console.log("✅ User đã fill:", user);
+    }
+
+    async function getUserInfoOnce() {
+      if (cachedUser) return cachedUser;
+
+      const authData = localStorage.getItem("auth_data");
+      if (authData) {
+        cachedUser = JSON.parse(authData);
+        fillDataUser(cachedUser);  // ✅ gọi đúng
+        return cachedUser;
+      }
+
+      const token = localStorage.getItem("jwt");
+      if (!token) return null;
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/user`, {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (data.success) {
+          cachedUser = data.user;
+          localStorage.setItem("auth_data", JSON.stringify(data.user));
+          fillDataUser(cachedUser);  // ✅ truyền đúng user
+          return cachedUser;
+        } else {
+          console.warn("❌ Không lấy được thông tin user:", data.error);
+          return null;
+        }
+      } catch (err) {
+        console.error("❌ Lỗi kết nối:", err);
+        return null;
+      }
+    }
+    document.querySelectorAll('.tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Toggle sidebar on mobile
+    const btn = document.getElementById("sidebar-toggle");
+    const sidebar = document.getElementById("sidebar");
+
+    btn.addEventListener("click", () => {
+      if (sidebar.style.display === "none") {
+        sidebar.style.display = "block"; // Hoặc "flex", tùy bạn muốn hiện như thế nào
+      } else {
+        sidebar.style.display = "none";
+      }
+    });
+    const upgradeButtons = document.querySelectorAll(".btn-upgrade");
+    upgradeButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        window.location.href = "subscribe.html";
+      });
+    });
+    window.addEventListener("DOMContentLoaded", async () => {
+      const user = await getUserInfoOnce();
+      if (user) {
+        // Sau khi fill xong thì lưu userId để chia sẻ link
+        localStorage.setItem("userId", user.id);
+      }
+    });
+
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cài Đặt - Tinovideo</title>
+  <link rel="stylesheet" href="css/affiliate.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-white font-sans overflow-hidden">
+
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div id="sidebar" class=" w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+      <div class="p-6 border-b border-gray-700 flex items-center space-x-3">
+        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+          <img src="./images/logo.png" alt="Logo">
+        </div>
+        <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          Tinovideo
+        </h1>
+      </div>
+      <nav class="flex-1 py-6">
+        <ul class="space-y-2">
+          <li><a href="dashboard.html" class="sidebar-item"><i class="fas fa-chart-pie w-5 mr-3"></i>Dashboard</a>
+          </li>
+          <li><a href="dashboard.html" class="sidebar-item"><i class="fas fa-plus-circle w-5 mr-3"></i>Tạo Video Mới</a>
+          </li>
+          <li><a href="projects.html" class="sidebar-item"><i class="fas fa-folder w-5 mr-3"></i>Dự Án Của Tôi</a></li>
+          <li><a href="#" class="sidebar-item"><i class="fas fa-th-large w-5 mr-3"></i>Mẫu Thư Viện</a></li>
+          <li><a href="#" class="sidebar-item active"><i class="fa-brands fa-affiliatetheme w-5 mr-3"></i>Affiliate</a>
+          </li>
+          <li><a href="settings.html" class="sidebar-item "><i class="fas fa-cog mr-2"></i>Cài Đặt</a></li>
+          <li><a href="#" class="sidebar-item"><i class="fas fa-question-circle w-5 mr-3"></i>Trợ giúp</a></li>
+        </ul>
+      </nav>
+      <div class="p-6 border-t border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mr-3 overflow-hidden">
+            <img src="" class="rounded-full" data-key="user-avatar">
+          </div>
+          <div>
+            <div class="font-semibold text-sm" data-key="user-name">Demo Người dùng</div>
+            <div class="text-xs text-gray-400" data-key="user-plan">Chuyên Nghiệp</div>
+          </div>
+        </div>
+        <div class="bg-gray-700 rounded-lg p-3 mb-3">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-gray-300">Credits còn lại:</span>
+            <span class="text-lg font-bold text-blue-400" data-key="point">100</span>
+          </div>
+          <div class="w-full bg-gray-600 rounded-full h-2">
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70%"></div>
+          </div>
+        </div>
+        <button
+          class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+          <i class="fas fa-crown mr-2"></i>Nâng cấp
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
+        <div class="flex">
+          <button id="sidebar-toggle" class="sidebar-toggle hidden-desktop" aria-label="Toggle menu">
+            ☰
+          </button>
+          <div class="flex items-center space-x-4">
+            <h2 class="text-2xl font-bold ml-4 mr-4">Affilate</h2>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="relative steps">
+              <input type="text" placeholder="Tìm kiếm..."
+                class="bg-gray-700 text-white px-4 py-2 pl-10 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+              <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <button class="p-2 text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-bell text-lg"></i>
+            </button>
+            <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
+              <i class="fas fa-plus mr-2"></i><span data-key="new-video-btn"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <main class="flex-1 p-6 overflow-y-auto">
+        <!-- <div class="rose-card mb-4">
+
+          <div class="plan-header">
+            <h3>Hoa Hồng</h3>
+          </div>
+          <div class="price">
+            <span class="amount">100.000.000 VNĐ</span>
+          </div>          
+        </div> -->
+
+        <div class="flex gap-4 mb-4">
+          <!-- Card Hoa Hồng -->
+          <div class="rose-card flex-1 bg-gray-800 p-4 rounded-lg shadow">
+            <div class="plan-header">
+              <h3>Hoa Hồng</h3>
+            </div>
+            <div class="price">
+              <span class="amount" data-key="user-money">100.000.000 VNĐ</span>
+            </div>
+          </div>
+
+          <!-- Card mới nằm ngang -->
+          <div class="flex-1 bg-gray-800 p-4 rounded-lg shadow">
+            <div class="plan-header">
+              <h3>Giới Thiệu</h3>
+            </div>
+            <div class="price">
+              <span class="amount text-green-400" data-key="user-share">20 người</span>
+            </div>
+          </div>
+        </div>
+        <div class="pricing-card free">
+
+          <div class="plan-header">
+            <h3>Affilate</h3>
+          </div>
+          <div class="price">
+            <span class="amount" data-yearly="Free" data-monthly="Free">Hoa Hồng</span>
+            <span class="period">/Trọn đời</span>
+          </div>
+
+          <!-- gắn data-plan="free" để JS nhận biết -->
+          <button onclick="shareVideo()" class="share-btn" data-plan="free">
+            Chia sẻ Link
+          </button>
+
+          <!-- <div class="billed-amount" data-yearly="Tặng 50 điểm" data-monthly="Tặng 50 điểm">
+            Tặng 50 điểm
+          </div> -->
+          <ul class="features">
+            <li>✓ Nhận ngay 50 credit</li>
+            <li>✓ Nhận hoa hồng lên đến 30% </li>
+          </ul>
+        </div>
+
+    </div>
+
+
+    </main>
+  </div>
+  </div>
+
+  <script>
+    function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-x-full transition-transform duration-300`;
+    switch (type) {
+        case 'success': toast.classList.add('bg-green-500'); break;
+        case 'error': toast.classList.add('bg-red-500'); break;
+        case 'warning': toast.classList.add('bg-yellow-500'); break;
+        default: toast.classList.add('bg-blue-500');
+    }
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.remove('translate-x-full'), 10);
+    setTimeout(() => {
+        toast.classList.add('translate-x-full');
+        setTimeout(() => toast.remove(), 200);
+    }, 2000);
+}
+
+    let cachedUser = null;
+    const API_BASE_URL = 'https://admin.tinovideo.com/';
+    function fillDataUser(user) {
+      const nameDiv = document.querySelector('[data-key="user-name"]');
+      if (nameDiv) nameDiv.textContent = user.name;
+
+      const point = document.querySelector('[data-key="point"]');
+      if (point) point.textContent = user.point;
+
+      const avatarImg = document.querySelector('[data-key="user-avatar"]');
+      if (avatarImg) avatarImg.src = user.avatar;
+
+      const userPlan = document.querySelector('[data-key="user-plan"]');
+      // if (userPlan) userPlan.textContent = user.plan || "Chưa có gói";
+      const claimedPlans = [
+        user.free_claimed && "Free",
+        user.standard_claimed && "Standard",
+        user.pro_claimed && "Pro",
+        user.max_claimed && "Max"
+      ].filter(Boolean);
+
+      let highestPlan = "Chưa có gói";
+      const PLAN_PRIORITY = ["Max", "Pro", "Standard", "Free"];
+      for (const plan of PLAN_PRIORITY) {
+        if (claimedPlans.includes(plan)) {
+          highestPlan = plan;
+          break;
+        }
+      }
+
+      if (userPlan) userPlan.textContent = highestPlan;
+      const userMoney = document.querySelector('[data-key="user-money"]');
+      if (userMoney) if (!user.money) {
+        userMoney.textContent = "Chưa có hoa hồng";
+      } else {
+        userMoney.textContent = user.money + ".000 VNĐ";
+      }
+      const userShare = document.querySelector('[data-key="user-share"]');
+      if (userShare) userShare.textContent = user.user_share + " Người" || "Chưa có người giới thiệu ";
+      console.log("✅ User đã fill:", user);
+    }
+
+    async function getUserInfoOnce() {
+      if (cachedUser) return cachedUser;
+
+      const authData = localStorage.getItem("auth_data");
+      if (authData) {
+        cachedUser = JSON.parse(authData);
+        fillDataUser(cachedUser);  // ✅ gọi đúng
+        return cachedUser;
+      }
+
+      const token = localStorage.getItem("jwt");
+      if (!token) return null;
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/user`, {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (data.success) {
+          cachedUser = data.user;
+          localStorage.setItem("auth_data", JSON.stringify(data.user));
+          fillDataUser(cachedUser);  // ✅ truyền đúng user
+          return cachedUser;
+        } else {
+          console.warn("❌ Không lấy được thông tin user:", data.error);
+          return null;
+        }
+      } catch (err) {
+        console.error("❌ Lỗi kết nối:", err);
+        return null;
+      }
+    }
+    document.querySelectorAll('.tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Toggle sidebar on mobile
+    const btn = document.getElementById("sidebar-toggle");
+    const sidebar = document.getElementById("sidebar");
+
+    btn.addEventListener("click", () => {
+      if (sidebar.style.display === "none") {
+        sidebar.style.display = "block"; // Hoặc "flex", tùy bạn muốn hiện như thế nào
+      } else {
+        sidebar.style.display = "none";
+      }
+    });
+
+
+    // const baseUrl = window.location.origin;
+    // const shareUrl = `${baseUrl}?ref=${userId}`;
+    //  if (!url) {
+    //         showToast('Không tìm thấy video để chia sẻ', 'error');
+    //         return;
+    //     }
+
+    // Copy to clipboard
+    // navigator.clipboard.writeText(shareUrl).then(() => {
+    //   showToast('Đã sao chép liên kết chia sẻ!', 'success');
+    // }).catch(err => {
+    //   console.error(err);
+    //   showToast('Không thể sao chép liên kết', 'error');
+    // });
+    // Sao chép vào clipboard
+    // navigator.clipboard.writeText(shareUrl)
+    //   .then(() => {
+    //     alert("Link giới thiệu:" + shareUrl);
+    //   })
+    //   .catch(err => {
+    //     console.error("Không thể sao chép link:", err);
+    //     alert("Trình duyệt không hỗ trợ sao chép tự động.");
+    //   });
+    function shareVideo() {
+      const userId = localStorage.getItem("userId");
+
+      if (!userId) {
+        alert("❌ Không tìm thấy userId trong localStorage.");
+        return;
+      }
+
+      const baseUrl = window.location.origin;
+      const shareUrl = `${baseUrl}?ref=${userId}`;
+
+      navigator.clipboard.writeText(shareUrl)
+        .then(() => {
+          showToast('✅ Đã sao chép link giới thiệu thành công', 'success');
+          // alert("✅ Đã sao chép link giới thiệu:\n" + shareUrl);
+        })
+        .catch(err => {
+          console.error(err);
+          alert("❌ Không thể sao chép liên kết");
+          showToast('❌ Không thể sao chép liên kết', 'error');
+        });
+    }
+
+
+    window.addEventListener("DOMContentLoaded", async () => {
+      const user = await getUserInfoOnce();
+      if (user) {
+        // Sau khi fill xong thì lưu userId để chia sẻ link
+        localStorage.setItem("userId", user.id);
+      }
+    });
+
+  </script>
+
+
+</body>
+
+</html>

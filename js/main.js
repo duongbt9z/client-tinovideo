@@ -1,6 +1,4 @@
-// Tinovideo Main JavaScript
-
-const API_MAIN_BASE_URL = 'https://admin.tinovideo.com';
+const API_MAIN_BASE_URL = 'https://admin.tinovideo.com/';
 // Language translations
 const translations = {
     vi: {
@@ -235,16 +233,16 @@ function initSmoothScroll() {
     });
 }
 function playDemo() {
-  /* 1️⃣  Xác định section muốn cuộn tới  */
-  const processSection = document.querySelector('#process');
+    /* 1️⃣  Xác định section muốn cuộn tới  */
+    const processSection = document.querySelector('#process');
 
-  /* 2️⃣  Cuộn mượt xuống (nếu tìm thấy)  */
-  if (processSection) {
-    processSection.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  }
+    /* 2️⃣  Cuộn mượt xuống (nếu tìm thấy)  */
+    if (processSection) {
+        processSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
 }
 
 // Intersection Observer for animations
@@ -358,7 +356,28 @@ function loadFromStorage(key) {
         return null;
     }
 }
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
 
+// Lưu vào cookie
+function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Lấy ref và lưu vào cookie nếu có
+//   const refId = getQueryParam("ref");
+//   if (refId) {
+//     setCookie("userId_share", refId, 30); // Lưu trong 30 ngày
+//     console.log("userId_share đã được lưu:", refId);
+
+const urlParams = new URLSearchParams(window.location.search);
+const refId = urlParams.get("ref");
+if (refId) localStorage.setItem("ref_id", refId);
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     /* ────────────────────────────────────────────────────────────── */
@@ -417,11 +436,21 @@ document.addEventListener('DOMContentLoaded', () => {
             return window.location.href = '/dashboard.html';
         }
 
-        const popup = window.open(
-            `${API_MAIN_BASE_URL}/login/google/`,
-            'google_login',
-            'width=500,height=600'
-        );
+
+        // const popup = window.open(
+        //     `${API_MAIN_BASE_URL}/login/google/`,
+        //     'google_login',
+        //     'width=500,height=600'
+        // );
+
+        const ref = localStorage.getItem('userId_share') || '';
+        const state = JSON.stringify({ ref });
+        const loginUrl = `${API_MAIN_BASE_URL}/login/google/?state=${encodeURIComponent(state)}`;
+
+        const refId = localStorage.getItem("ref_id") || "";
+        const popup = window.open(`https://admin.tinovideo.com//login/google?ref=${refId}`, "_blank", "width=500,height=600");
+
+
         if (!popup) {
             return alert('Popup bị chặn, vui lòng cho phép để đăng nhập.');
         }
@@ -433,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ?.addEventListener('click', handleCreateVideo);
 
 
-   
+
     function initCtaListeners() {
         // Bắt tất cả thẻ có class .cta-create-video  +  nav-dashboard-link
         document

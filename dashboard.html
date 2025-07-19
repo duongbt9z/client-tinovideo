@@ -49,7 +49,7 @@
                     <li>
                         <a href="#" class="sidebar-item" onclick="showSection('dashboard')">
                             <i class="fas fa-chart-pie w-5 mr-3"></i>
-                            <span data-key="nav-dashboard">Bảng điều khiển</span>
+                            <span data-key="nav-dashboard">Dashboard</span>
                         </a>
                     </li>
                     <li>
@@ -71,13 +71,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item" onclick="showSection('affiliate')">
+                        <a href="affiliate.html" class="sidebar-item" onclick="showSection('affiliate')">
                             <i class="fa-brands fa-affiliatetheme w-5 mr-3"></i>
                             <span data-key="nav-affiliate">Affiliate</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item" onclick="showSection('settings')">
+                        <a href="settings.html" class="sidebar-item" onclick="showSection('settings')">
                             <i class="fas fa-cog w-5 mr-3"></i>
                             <span data-key="nav-settings">Cài Đặt</span>
                         </a>
@@ -585,6 +585,12 @@
                             <!-- Video Customization -->
 
                             <!-- Preview Area -->
+                            <div id="progress-container" class="w-full bg-gray-700 rounded-full h-4 mt-6 hidden">
+                                <div id="progress-bar"
+                                    class="h-4 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-xs text-center text-white"
+                                    style="width: 0%">0%</div>
+                            </div>
+
 
                             <div>
                                 <h4 class="text-lg font-semibold mb-4" data-key="video-preview">Quá trình tạo video
@@ -766,7 +772,7 @@
                     <!-- Other Sections (placeholders) -->
                     <!-- Dashboard -->
                     <div id="dashboard-section" class="p-6 hidden">
-                        <h2 class="text-3xl font-bold mb-4">Bảng Điều Khiển</h2>
+                        <h2 class="text-3xl font-bold mb-4">dashboard</h2>
                         <p>Thống kê & số liệu chung sẽ hiển thị ở đây.</p>
                     </div>
 
@@ -813,13 +819,14 @@
 
     <!-- Modals and Overlays -->
 
-    <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+
+    <!-- <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
         <div class="bg-gray-800 rounded-xl p-8 text-center">
             <div class="loading-spinner mx-auto mb-4"></div>
             <h3 class="text-xl font-bold mb-2" data-key="processing">Đang xử lý...</h3>
             <p class="text-gray-400" id="processing-desc" data-key="processing-desc">AI đang tạo video cho bạn</p>
         </div>
-    </div>
+    </div> -->
     <!-- <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
         <div class="bg-gray-800 rounded-xl p-8 text-center">
             <div class="loading-spinner mx-auto mb-4"></div>
@@ -925,6 +932,18 @@
         }
     </style>
     <script>
+        function showToast(message, type = "warning") {
+            const bg = type === "error" ? "bg-red-500" : type === "success" ? "bg-green-500" : "bg-yellow-500";
+
+            const toast = document.createElement("div");
+            toast.textContent = message;
+            toast.className = `fixed top-6 right-6 z-50 text-white px-4 py-2 rounded-lg shadow-lg ${bg}`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 2500);
+        }
         // Initialize floating ball functionality
         function initFloatingBall() {
             const ball = document.getElementById('minimax-floating-ball');
@@ -940,15 +959,15 @@
             }, 500);
 
             // Handle logo click
-            const ballContent = ball.querySelector('.minimax-ball-content');
-            ballContent.addEventListener('click', function (e) {
-                e.stopPropagation();
-                window.open('https://agent.minimax.io/agent', '_blank');
-                ball.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    ball.style.transform = 'scale(1)';
-                }, 100);
-            });
+            // const ballContent = ball.querySelector('.minimax-ball-content');
+            // ballContent.addEventListener('click', function (e) {
+            //     e.stopPropagation();
+            //     window.open('https://agent.minimax.io/agent', '_blank');
+            //     ball.style.transform = 'scale(0.95)';
+            //     setTimeout(() => {
+            //         ball.style.transform = 'scale(1)';
+            //     }, 100);
+            // });
 
             // Handle close button click
             const closeIcon = ball.querySelector('.minimax-close-icon');
@@ -964,40 +983,31 @@
         }
 
         // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', initFloatingBall);
+        // document.addEventListener('DOMContentLoaded', initFloatingBall);
 
         let userFetched = false;
+    //     function fillUserHeader(user) {
+    //         const nameEl = document.getElementById("user-name");
+    //         const avatarEl = document.getElementById("user-avatar");
+    //         const pointEl = document.getElementById("user-point");
 
-        window.addEventListener("DOMContentLoaded", async () => {
-            if (userFetched) return; // ✅ Đã gọi rồi thì thôi
-            userFetched = true;
+    //         if (nameEl) nameEl.textContent = user.name || user.email || "Người dùng";
+    //         if (avatarEl) avatarEl.src = user.avatar || "default-avatar.jpg";
+    //         if (pointEl) pointEl.textContent = `Điểm: ${user.point ?? 0}`;
+    //     }
+    //     window.addEventListener("DOMContentLoaded", async () => {
+    // const cached = localStorage.getItem("auth_data");
 
-            const user = await getUserInfoOnce();
-            if (user) {
-                const nameEl = document.getElementById("user-name");
-                const avatarEl = document.getElementById("user-avatar");
-                const pointEl = document.getElementById("user-point");
-
-                if (nameEl) nameEl.textContent = user.name || user.email || "Người dùng";
-                if (avatarEl) avatarEl.src = user.avatar || "default-avatar.jpg";
-                if (pointEl) pointEl.textContent = `Điểm: ${user.point ?? 0}`;
-            }
-
-
-            function showToast(message, type = "warning") {
-                const bg = type === "error" ? "bg-red-500" : type === "success" ? "bg-green-500" : "bg-yellow-500";
-
-                const toast = document.createElement("div");
-                toast.textContent = message;
-                toast.className = `fixed top-6 right-6 z-50 text-white px-4 py-2 rounded-lg shadow-lg ${bg}`;
-                document.body.appendChild(toast);
-
-                setTimeout(() => {
-                    toast.remove();
-                }, 2500);
-            }
-        });
+    // if (!cached) {
+    //     const user = await getUserInfoOnce();
+    //     if (user) fillUserHeader(user);
+    // } else {
+    //     const user = JSON.parse(cached);
+    //     fillUserHeader(user);
+    // }});
     </script>
+
+    
 
 </body>
 

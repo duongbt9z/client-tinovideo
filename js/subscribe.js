@@ -22,15 +22,91 @@ function showToast(message, type = 'info') {
     setTimeout(() => toast.remove(), 200);
   }, 2000);
 }
+const API_BASE_URL = 'https://admin.tinovideo.com/';
+function fillDataUser(user) {
+    const nameDiv = document.querySelector('[data-key="user-name"]');
+    if (nameDiv) nameDiv.textContent = user.name;
 
+    const point = document.querySelector('[data-key="point"]');
+    if (point) point.textContent = user.point;
+
+    const avatarImg = document.querySelector('[data-key="user-avatar"]');
+    if (avatarImg) avatarImg.src = user.avatar;
+
+    const userPlan = document.querySelector('[data-key="user-plan"]');
+    // if (userPlan) userPlan.textContent = user.plan || "Chưa có gói";
+    const claimedPlans = [
+        user.free_claimed && "Free",
+        user.standard_claimed && "Standard",
+        user.pro_claimed && "Pro",
+        user.max_claimed && "Max"
+    ].filter(Boolean);
+
+    let highestPlan = "Chưa có gói";
+    const PLAN_PRIORITY = ["Max", "Pro", "Standard", "Free"];
+    for (const plan of PLAN_PRIORITY) {
+        if (claimedPlans.includes(plan)) {
+            highestPlan = plan;
+            break;
+        }
+    }
+
+    if (userPlan) userPlan.textContent = highestPlan;
+
+    console.log("✅ User đã fill:", user);
+}
+async function getUserInfoOnce() {
+  console.log("2 da vao");
+  
+    // const authData = localStorage.getItem("auth_data");
+    // if (authData) {
+    //     cachedUser = JSON.parse(authData);
+    //     fillDataUser(cachedUser);
+    //     return cachedUser;
+    // }
+    // console.log("✅ User đã fill:", authData);
+    const token = localStorage.getItem("jwt");
+    if (!token) return null;
+
+    try {
+        const res = await fetch(`${API_BASE_URL}/api/user`, {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (data.success) {
+            cachedUser = data.user;
+            localStorage.setItem("auth_data", JSON.stringify(data.user));
+            fillDataUser(cachedUser);  // ✅ truyền đúng user
+            console.log(cachedUser);
+            
+            return cachedUser;
+        } else {
+            console.warn("❌ Không lấy được thông tin user:", data.error);
+            return null;
+        }
+    } catch (err) {
+        console.error("❌ Lỗi kết nối:", err);
+        return null;
+    }
+}
+getUserInfoOnce();
 document.addEventListener("DOMContentLoaded", () => {
+  
+  // const user =  getUserInfoOnce();
+  console.log("1 goi getUserInfoOnce");
+      // if (user) {
+      //   // Sau khi fill xong thì lưu userId để chia sẻ link
+      //   localStorage.setItem("userId", user.id);
+      // }
   /* ───────────────── DOM cache ───────────────── */
   const billingBtns = document.querySelectorAll(".billing-btn");
   const priceEls = document.querySelectorAll(".amount");
   const origPriceEls = document.querySelectorAll(".original-price");
   const billedEls = document.querySelectorAll(".billed-amount");
   const periodEls = document.querySelectorAll(".price .period");
-
+   localStorage.removeItem("auth_data");
+   window.cachedUser = null;
   /* ─────────────── Helpers ──────────────────── */
   const setActiveBtn = btn => {
     billingBtns.forEach(b => b.classList.toggle("active", b === btn));
@@ -83,32 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updatePrices("monthly");                 // Khởi tạo
 
-  /* ───────────────── Thưởng Free & Checkout ─────────────── */
-  // async function claimFree() {
-  //   try {
-  //     const token = localStorage.getItem("jwt");
-  //     const free_claimed = localStorage.getItem("free_claimed");
-  //     if free_claimed == true{
-  //       const resp = await fetch("http://localhost:5000/api/free", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`
-  //         }
-  //       });
-  //       const data = await resp.json();
-  //       if (!resp.ok) throw new Error(data?.message || "Lỗi không xác định");
-  //       showToast('🎉 Bạn vừa nhận 50 điểm!', 'success');
-  //     } catch (err) {
-  //       // alert(err.message);
-  //       showToast(err.message, 'error');
-  //     }
-  //     else{
-  //       showToast('🎉 Bạn đã nhận 50 điểm!', 'error');
-  //     }
-  //   }
-
-  // }
   async function claimFree(buttonElement) {
     const token = localStorage.getItem("jwt");
     const free_claimed = localStorage.getItem("free_claimed");
@@ -128,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const resp = await fetch("http://localhost:5000/api/free", {
+      const resp = await fetch("https://admin.tinovideo.com//api/free", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

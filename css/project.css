@@ -1,0 +1,193 @@
+/* projects.css – chỉ dành riêng cho projects.html */
+
+body {
+  background-color: #0f172a;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.projects-header .btn-create {
+  background: linear-gradient(to right, #4f46e5, #9333ea);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.projects-header .btn-create:hover {
+  opacity: 0.9;
+}
+/* Sidebar navigation */
+.sidebar {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid #374151;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    margin: 4px 16px;
+    border-radius: 8px;
+    color: #9CA3AF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar-item:hover {
+    background: rgba(75, 85, 99, 0.3);
+    color: white;
+}
+
+.sidebar-item.active {
+    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+    color: white;
+}
+.filter-bar {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-bar input,
+.filter-bar select {
+  background: #0f172a;
+  color: white;
+  border: 1px solid #334155;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.project-empty {
+  text-align: center;
+  background: #1e293b;
+  padding: 3rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  color: #94a3b8;
+}
+
+.project-empty i {
+  font-size: 3rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+
+.project-empty h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+}
+
+.project-empty .btn-start {
+  margin-top: 1rem;
+  background: linear-gradient(to right, #4f46e5, #9333ea);
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+}
+@media (max-width:639px) {
+    #sidebar {
+        display: none;
+    }
+
+    .block {
+        display: block;
+
+    }
+
+    #analyze-btn {
+        margin-top: 10px;
+    }
+
+    /* 1️⃣ KHÔNG ẩn toàn bộ .relative nữa  ─────────────────── */
+    /*  Bỏ hẳn hoặc ghi chú dòng này:  `.relative{display:none}`  */
+    /* .relative{display:none;} */
+
+    /* 2️⃣ Chỉnh lưới danh sách nhân vật cho màn nhỏ ────────── */
+    #character-list {
+        /* 2 cột cho màn ≤ 639 px để thẻ lớn, dễ bấm */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        /* khoảng cách vừa đủ */
+        padding: 0 8px;
+        /* mép hai bên thoáng */
+    }
+
+    .btn_nextStep {
+        margin-left: 15px;
+    }
+
+    .resetForm {
+        height: 100px;
+    }
+
+    /* 3️⃣ Tối ưu thẻ nhân vật (giả sử class .character-card) */
+    .character-card {
+        aspect-ratio: 3/4;
+        /* giữ tỷ lệ dọc */
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        /* vẫn dùng “relative” cho icon overlay */
+        transition: transform .2s;
+    }
+
+    .character-card:active {
+        transform: scale(.97);
+        /* hiệu ứng nhấn nhẹ */
+    }
+
+    /* ───🔸 FIX select #intro-select ───────────────────── */
+    #intro-select {
+        width: 100%;
+        /* luôn bám 100 % container */
+        max-width: 100vw;
+        /* không vượt quá chiều rộng màn */
+        box-sizing: border-box;
+
+        /* Hiển thị ngắn gọn khi CHƯA mở */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    /* 2️⃣ Khi dropdown mở, để option xuống dòng
+        (một số browser bỏ qua style option,
+        nhưng vẫn hiệu quả trên Chrome/Edge Android) */
+    #intro-select option {
+        white-space: normal;
+        /* cho phép wrap */
+        word-break: break-word;
+        line-height: 1.35;
+    }
+
+    /* 4️⃣ Ẩn bớt thành phần rườm rà khác nếu cần */
+    .steps {
+        display: none;
+    }
+}

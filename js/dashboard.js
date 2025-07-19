@@ -1,4 +1,3 @@
-
 const API_BASE_URL = 'https://admin.tinovideo.com';
 let currentStep = 1;
 let selectedVoice = null;
@@ -591,12 +590,12 @@ function initializeVoiceSelection() {
             accent: 'Miền Bắc',
             demo: 'khanh-ly.mp3'
         }, {
-            id: 'B2e3SszxeBIVZp7k0tVh',
-            name: 'Mingh IG',
+            id: 'BLeuF5fPXWSDAwZScbTY',
+            name: 'BS Nhi',
             gender: 'female',
             language: 'vietnamese',
             accent: 'Miền Bắc',
-            demo: 'minhig.mp3'
+            demo: 'bs_nhi.mp3'
         }, {
             id: 'KpzB5RgCRuVkUlZeY6wb',
             name: 'Tuyết Trinh',
@@ -608,6 +607,37 @@ function initializeVoiceSelection() {
         , {
             id: '3VnrjnYrskPMDsapTr8X',
             name: 'Đặng Tùng Duy',
+            gender: 'male',
+            language: 'vietnamese',
+            accent: 'Miền Bắc',
+            demo: 'dangtungduy.mp3'
+        }
+        , {
+            id: '329254',
+            name: 'Khả Hân',
+            gender: 'male',
+            language: 'vietnamese',
+            accent: 'Miền Bắc',
+            demo: 'dangtungduy.mp3'
+        }, {
+            id: '329253',
+            name: 'Linh Đan',
+            gender: 'male',
+            language: 'vietnamese',
+            accent: 'Miền Bắc',
+            demo: 'dangtungduy.mp3'
+        }
+        , {
+            id: '329251',
+            name: 'Ái My',
+            gender: 'male',
+            language: 'vietnamese',
+            accent: 'Miền Bắc',
+            demo: 'dangtungduy.mp3'
+        }
+        , {
+            id: '329250',
+            name: 'Mỹ Dung',
             gender: 'male',
             language: 'vietnamese',
             accent: 'Miền Bắc',
@@ -1053,7 +1083,22 @@ async function analyzeUrl(event) {
             a.download = `image_${index + 1}.jpg`;
             a.click();
         });
+        const downloadBtn = document.createElement('button');
+        downloadBtn.innerHTML = '↓';
+        downloadBtn.title = 'Tải ảnh này';
+        downloadBtn.className =
+            'absolute top-1 right-8 w-6 h-6 rounded-full bg-blue-600 bg-opacity-70 text-white font-bold flex items-center justify-center text-sm hover:bg-opacity-90 transition-all';
 
+        downloadBtn.addEventListener('click', () => {
+            const a = document.createElement('button');
+            a.href = img.dataset.realpath || img.src;  // đảm bảo lấy đúng link gốc
+            a.download = `image_${index + 1}.jpg`;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
         const closeBtn = document.createElement('button');
         closeBtn.textContent = '×';
         closeBtn.className =
@@ -1061,6 +1106,7 @@ async function analyzeUrl(event) {
         closeBtn.addEventListener('click', () => wrapper.remove());
 
         wrapper.appendChild(img);
+        wrapper.appendChild(downloadBtn);
         wrapper.appendChild(closeBtn);
         preview.appendChild(wrapper);
     });
@@ -1170,13 +1216,15 @@ function generateScript() {
         return;
     }
     if (duration == 15) {
-        max_char_count = 220;
-    } else if (duration == 30) {
-        max_char_count = 450;
-    } else if (duration == 60) {
-        max_char_count = 450;
+        max_char_count = 45;
     }
+    // } else if (duration == 30) {
+    //     max_char_count = 450;
+    // } else if (duration == 60) {
+    //     max_char_count = 450;
+    // }
 
+    max_char_count = 45;
     document.getElementById('loading-overlay').classList.remove('hidden');
     document.getElementById('processing-desc').textContent = 'Đang tạo kịch bản video';
     const requestScript = {
@@ -1253,72 +1301,74 @@ async function downloadVideo() {
 
 let currentVideoUrl = '';
 async function downloadVideo(url = currentVideoUrl) {
-  // Cho phép truyền URL trực tiếp (nếu cần),
-  // còn không thì dùng URL đã lưu ở bước 1.
-  if (!url) {
-    showToast('Không tìm thấy video để tải xuống', 'error');
-    return;
-  }
+    // Cho phép truyền URL trực tiếp (nếu cần),
+    // còn không thì dùng URL đã lưu ở bước 1.
+    if (!url) {
+        showToast('Không tìm thấy video để tải xuống', 'error');
+        return;
+    }
 
-  showToast('Đang tải video...', 'info');
+    showToast('Đang tải video...', 'info');
 
-  try {
-    /* 1 — tải file dưới dạng blob (server cần mở Access-Control-Allow-Origin) */
-    const resp = await fetch(url, { mode: 'cors' });
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const blob = await resp.blob();
+    try {
+        /* 1 — tải file dưới dạng blob (server cần mở Access-Control-Allow-Origin) */
+        const resp = await fetch(url, { mode: 'cors' });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const blob = await resp.blob();
 
-    /* 2 — tạo URL tạm và buộc tải xuống */
-    const blobUrl = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = blobUrl;
-    a.download = 'download.mp4';           // tên lưu trên máy
-    a.click();
-    URL.revokeObjectURL(blobUrl);            // giải phóng bộ nhớ
+        /* 2 — tạo URL tạm và buộc tải xuống */
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = 'download.mp4';           // tên lưu trên máy
+        a.click();
+        URL.revokeObjectURL(blobUrl);            // giải phóng bộ nhớ
 
-    showToast('Video đã được tải xong!', 'success');
-  } catch (err) {
-    console.error(err);
-    showToast('Tải video thất bại', 'error');
-  }
+        showToast('Video đã được tải xong!', 'success');
+    } catch (err) {
+        console.error(err);
+        showToast('Tải video thất bại', 'error');
+    }
 }
 
 function shareVideo(url = currentVideoUrl) {
-  if (!url) {
-    showToast('Không tìm thấy video để chia sẻ', 'error');
-    return;
-  }
+    if (!url) {
+        showToast('Không tìm thấy video để chia sẻ', 'error');
+        return;
+    }
 
-  // Copy to clipboard
-  navigator.clipboard.writeText(url).then(() => {
-    showToast('Đã sao chép liên kết chia sẻ!', 'success');
-  }).catch(err => {
-    console.error(err);
-    showToast('Không thể sao chép liên kết', 'error');
-  });
+    // Copy to clipboard
+    navigator.clipboard.writeText(url).then(() => {
+        showToast('Đã sao chép liên kết chia sẻ!', 'success');
+    }).catch(err => {
+        console.error(err);
+        showToast('Không thể sao chép liên kết', 'error');
+    });
 }
 
-function handleGenerateSuccess(data) {
-  currentVideoUrl = data.video_url || '';
-  if (!currentVideoUrl) {
-    showToast('Không có video_url trong phản hồi', 'error');
-    return;
-  }
+// === TIẾN ĐỘ THANH ===
+function startProgressBar(duration = 10000) {
+    const progressContainer = document.getElementById("progress-container");
+    const progressBar = document.getElementById("progress-bar");
+    if (!progressContainer || !progressBar) return;
 
-  // Xóa preview cũ (nếu có)
-  const wrapper = document.getElementById('video-wrapper');
-  wrapper.innerHTML = '';
+    progressContainer.classList.remove("hidden");
+    progressBar.style.width = "0%";
+    progressBar.textContent = "0%";
 
-  // Tạo iframe preview
-  const iframe = document.createElement('iframe');
-  iframe.src = currentVideoUrl.includes('/view')
-              ? currentVideoUrl.replace('/view', '/preview')
-              : currentVideoUrl;
-  iframe.width  = '100%';
-  iframe.height = '480';
-  iframe.allow  = 'autoplay; fullscreen';
-  iframe.className = 'rounded';
-  wrapper.appendChild(iframe);
+    let percent = 0;
+    const interval = 250;
+    const increment = 100 / (duration / interval);
+
+    const timer = setInterval(() => {
+        percent += increment;
+        if (percent >= 100) {
+            percent = 100;
+            clearInterval(timer);
+        }
+        progressBar.style.width = `${percent.toFixed(0)}%`;
+        progressBar.textContent = `${percent.toFixed(0)}%`;
+    }, interval);
 }
 
 async function generateVideo() {
@@ -1331,20 +1381,13 @@ async function generateVideo() {
     const script = projectData.script || document.getElementById('script-text').value.trim();
     const transition = projectData.settings.transition || 'fade';
     const music = projectData.settings.music || 'none';
-    const overlay = document.getElementById('loading-overlay');
+    let text = document.getElementById("intro-input").value.trim();
+    if (!text) text = document.getElementById("intro-select").value;
+    const sample = projectData.character;
+
     if (!script) return showToast('Vui lòng tạo kịch bản trước', 'warning');
     if (image_paths.length === 0) return showToast('Vui lòng chọn ít nhất 1 ảnh', 'warning');
-    let text = document.getElementById("intro-input").value.trim();
-    if (!text) {
-        text = document.getElementById("intro-select").value;
-    }
 
-    const sample = projectData.character;
-    overlay.classList.remove('hidden');
-    // fix cứng
-    let y_offset = 150;
-    let font_size = 48;
-    // Tạo payload gửi backend
     const body = {
         script,
         image_paths,
@@ -1352,11 +1395,18 @@ async function generateVideo() {
         transition,
         text,
         bg_music: music !== 'none' ? music : null,
-        sample, y_offset, font_size
+        sample,
+        y_offset: 150,
+        font_size: 48
     };
+    console.log("body", body)
     const token = localStorage.getItem('jwt');
-    let data;
+    const progressContainer = document.getElementById("progress-container");
+    const progressBar = document.getElementById("progress-bar");
+    progressContainer.classList.remove("hidden");
+    startProgressBar();
 
+    let data;
     try {
         const res = await fetch(`${API_BASE_URL}/api/generate-full-video`, {
             method: 'POST',
@@ -1368,26 +1418,28 @@ async function generateVideo() {
         });
         data = await res.json();
     } catch (err) {
-        overlay.classList.add('hidden');
+        progressContainer.classList.add("hidden");
         console.error(err);
         return showToast('Lỗi kết nối khi tạo video', 'error');
     }
 
-    overlay.classList.add('hidden');
-
     if (!data.success) {
+        progressContainer.classList.add("hidden");
+        localStorage.removeItem("auth_data");
         return showToast(data.message || data.error || 'Tạo video thất bại', 'error');
     }
 
+
     showToast('🎉 Tạo video thành công!', 'success');
 
-    // ==== Hiển thị video lên iframe
     const wrapper = document.getElementById('video-wrapper');
     wrapper.innerHTML = '';
-
     const videoUrl = data.video_url;
-    currentVideoUrl=videoUrl;
+    currentVideoUrl = videoUrl;
     const iframe = document.createElement('iframe');
+    progressBar.style.width = "100%";
+    progressBar.textContent = "100%";
+    progressContainer.classList.add("hidden");
     iframe.src = videoUrl.includes('/view') ? videoUrl.replace('/view', '/preview') : videoUrl;
     iframe.width = '100%';
     iframe.height = '480';
@@ -1395,14 +1447,12 @@ async function generateVideo() {
     iframe.className = 'rounded';
     wrapper.appendChild(iframe);
 
-    // ==== Nút tải video
     const downloadBtn = document.getElementById('download-video-btn');
     if (downloadBtn) {
         downloadBtn.classList.remove('hidden');
         downloadBtn.onclick = () => window.open(videoUrl, '_blank');
     }
 
-    // ==== Nút tải giọng đọc (nếu có)
     const audioUrl = data.voice_url;
     const downloadAudioBtn = document.getElementById('download-audio-btn');
     if (audioUrl && downloadAudioBtn) {
@@ -1410,11 +1460,106 @@ async function generateVideo() {
         downloadAudioBtn.onclick = () => window.open(audioUrl, '_blank');
     }
 
-    // ==== Lưu vào state
     projectData.video_url = videoUrl;
     projectData.voice_url = audioUrl;
-    // document.getElementById('step3-next').disabled = false;
 }
+
+
+// async function generateVideo() {
+//     const preview = document.getElementById('image-preview');
+//     const imageSet = new Set();
+//     const image_paths = Array.from(preview.querySelectorAll('img'))
+//         .map(img => img.dataset.realpath || img.src)
+//         .filter(p => !imageSet.has(p) && imageSet.add(p));
+
+//     const script = projectData.script || document.getElementById('script-text').value.trim();
+//     const transition = projectData.settings.transition || 'fade';
+//     const music = projectData.settings.music || 'none';
+//     const overlay = document.getElementById('loading-overlay');
+//     if (!script) return showToast('Vui lòng tạo kịch bản trước', 'warning');
+//     if (image_paths.length === 0) return showToast('Vui lòng chọn ít nhất 1 ảnh', 'warning');
+//     let text = document.getElementById("intro-input").value.trim();
+//     if (!text) {
+//         text = document.getElementById("intro-select").value;
+//     }
+
+//     const sample = projectData.character;
+//     overlay.classList.remove('hidden');
+//     // fix cứng
+//     let y_offset = 150;
+//     let font_size = 48;
+//     // Tạo payload gửi backend
+//     const body = {
+//         script,
+//         image_paths,
+//         voice_id: projectData.voice?.id,
+//         transition,
+//         text,
+//         bg_music: music !== 'none' ? music : null,
+//         sample, y_offset, font_size
+//     };
+//     console.log("full-video", body)
+//     const token = localStorage.getItem('jwt');
+//     let data;
+
+//     try {
+//         const res = await fetch(`${API_BASE_URL}/api/generate-full-video`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': `Bearer ${token}`
+//             },
+//             body: JSON.stringify(body)
+//         });
+//         data = await res.json();
+//     } catch (err) {
+//         overlay.classList.add('hidden');
+//         console.error(err);
+//         return showToast('Lỗi kết nối khi tạo video', 'error');
+//     }
+
+//     overlay.classList.add('hidden');
+
+//     if (!data.success) {
+//         return showToast(data.message || data.error || 'Tạo video thất bại', 'error');
+//     }
+
+//     showToast('🎉 Tạo video thành công!', 'success');
+
+//     // ==== Hiển thị video lên iframe
+//     const wrapper = document.getElementById('video-wrapper');
+//     wrapper.innerHTML = '';
+
+//     const videoUrl = data.video_url;
+//     currentVideoUrl = videoUrl;
+//     const iframe = document.createElement('iframe');
+//     iframe.src = videoUrl.includes('/view') ? videoUrl.replace('/view', '/preview') : videoUrl;
+//     iframe.width = '100%';
+//     iframe.height = '480';
+//     iframe.allow = 'autoplay; fullscreen';
+//     iframe.className = 'rounded';
+//     wrapper.appendChild(iframe);
+
+//     // ==== Nút tải video
+//     const downloadBtn = document.getElementById('download-video-btn');
+//     if (downloadBtn) {
+//         downloadBtn.classList.remove('hidden');
+//         downloadBtn.onclick = () => window.open(videoUrl, '_blank');
+//     }
+
+//     // ==== Nút tải giọng đọc (nếu có)
+//     const audioUrl = data.voice_url;
+//     const downloadAudioBtn = document.getElementById('download-audio-btn');
+//     if (audioUrl && downloadAudioBtn) {
+//         downloadAudioBtn.classList.remove('hidden');
+//         downloadAudioBtn.onclick = () => window.open(audioUrl, '_blank');
+//     }
+
+//     // ==== Lưu vào state
+//     projectData.video_url = videoUrl;
+//     projectData.voice_url = audioUrl;
+//     // document.getElementById('step3-next').disabled = false;
+// }
 
 
 
@@ -1674,11 +1819,114 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-let cachedUser = null;
+// let cachedUser = null;
+
+// async function getUserInfoOnce() {
+//     if (cachedUser) return cachedUser; // ✅ Tránh gọi lại
+// const authData = localStorage.getItem("auth_data");
+//     if (authData) {
+//         cachedUser = JSON.parse(authData);
+//         return cachedUser;
+//     }
+//     const token = localStorage.getItem("jwt");
+//     if (!token) return null;
+
+//     try {
+//         const res = await fetch(`${API_BASE_URL}/api/user`, {
+//             method: "GET",
+//             headers: { Authorization: `Bearer ${token}` }
+//         });
+//         const data = await res.json();
+//         if (data.success) {
+//             cachedUser = data.user;
+//             localStorage.setItem("auth_data", JSON.stringify(data.user));
+//             // localStorage.setItem('userId', data.user.id)
+//             // localStorage.setItem('free_claimed ', data.user.free_claimed)
+//             const nameDiv = document.querySelector('[data-key="user-name"]');
+//             if (nameDiv) nameDiv.textContent = data.user.name;
+//             const point = document.querySelector('[data-key="point"]');
+//             if (point) point.textContent = data.user.point;
+//             // (Tùy chọn) Gán ảnh đại diện
+//             const avatarImg = document.querySelector('[data-key="user-avatar"]');
+//             if (avatarImg) avatarImg.src = data.user.avatar;
+//             const userPlan = document.querySelector('[data-key="user-plan"]');
+//             if (userPlan) userPlan.textContent = data.user.plan;
+//             return cachedUser;
+//         } else {
+
+//             console.warn("❌ Không lấy được thông tin user:", data.error);
+//             return null;
+//         }
+//     } catch (err) {
+//         console.error("❌ Lỗi kết nối:", err);
+//         return null;
+//     }
+// }
+
+
+// function fillDataUser(user) {
+//     auth_data = localStorage.getItem("auth_data")
+
+//     const nameDiv = document.querySelector('[data-key="user-name"]');
+//     if (nameDiv) nameDiv.textContent = auth_data.name;
+
+//     const point = document.querySelector('[data-key="point"]');
+//     if (point) point.textContent = auth_data.point;
+
+//     const avatarImg = document.querySelector('[data-key="user-avatar"]');
+//     if (avatarImg) avatarImg.src = auth_data.avatar;
+
+//     const userPlan = document.querySelector('[data-key="user-plan"]');
+//     if (userPlan) userPlan.textContent = auth_data.plan || "Chưa có gói";
+//     console.log("1",auth_data)
+//        console.log("1",nameDiv)
+//      console.log("1",avatarImg)
+//      console.log("1",userPlan)
+// }
+
+
+function fillDataUser(user) {
+    const nameDiv = document.querySelector('[data-key="user-name"]');
+    if (nameDiv) nameDiv.textContent = user.name;
+
+    const point = document.querySelector('[data-key="point"]');
+    if (point) point.textContent = user.point;
+
+    const avatarImg = document.querySelector('[data-key="user-avatar"]');
+    if (avatarImg) avatarImg.src = user.avatar;
+
+    const userPlan = document.querySelector('[data-key="user-plan"]');
+    // if (userPlan) userPlan.textContent = user.plan || "Chưa có gói";
+    const claimedPlans = [
+        user.free_claimed && "Free",
+        user.standard_claimed && "Standard",
+        user.pro_claimed && "Pro",
+        user.max_claimed && "Max"
+    ].filter(Boolean);
+
+    let highestPlan = "Chưa có gói";
+    const PLAN_PRIORITY = ["Max", "Pro", "Standard", "Free"];
+    for (const plan of PLAN_PRIORITY) {
+        if (claimedPlans.includes(plan)) {
+            highestPlan = plan;
+            break;
+        }
+    }
+
+    if (userPlan) userPlan.textContent = highestPlan;
+
+    console.log("✅ User đã fill:", user);
+}
 
 async function getUserInfoOnce() {
-    if (cachedUser) return cachedUser; // ✅ Tránh gọi lại
-
+    
+    const authData = localStorage.getItem("auth_data");
+    if (authData) {
+        cachedUser = JSON.parse(authData);
+        fillDataUser(cachedUser);
+        return cachedUser;
+    }
+    // console.log("✅ User đã fill:", authData);
     const token = localStorage.getItem("jwt");
     if (!token) return null;
 
@@ -1690,20 +1938,10 @@ async function getUserInfoOnce() {
         const data = await res.json();
         if (data.success) {
             cachedUser = data.user;
-            localStorage.setItem('userId',data.user.id)
-            localStorage.setItem('free_claimed ',data.user.free_claimed)
-            const nameDiv = document.querySelector('[data-key="user-name"]');
-            if (nameDiv) nameDiv.textContent = data.user.name;
-            const point = document.querySelector('[data-key="point"]');
-            if (point) point.textContent = data.user.point;
-            // (Tùy chọn) Gán ảnh đại diện
-            const avatarImg = document.querySelector('[data-key="user-avatar"]');
-            if (avatarImg) avatarImg.src = data.user.avatar;
-             const userPlan = document.querySelector('[data-key="user-plan"]');
-            if (userPlan) userPlan.textContent = data.user.plan;
+            localStorage.setItem("auth_data", JSON.stringify(data.user));
+            fillDataUser(cachedUser);  // ✅ truyền đúng user
             return cachedUser;
         } else {
-           
             console.warn("❌ Không lấy được thông tin user:", data.error);
             return null;
         }
@@ -1712,33 +1950,83 @@ async function getUserInfoOnce() {
         return null;
     }
 }
+
 const SECTIONS = [
-  "dashboard",
-  "create",
-  "projects",
-  "templates",
-  "affiliate",
-  "settings",
-  "help"
+    "dashboard",
+    "create",
+    "projects",
+    "templates",
+    "affiliate",
+    "settings",
+    "help"
 ];
 function showSection(name) {
-  // 1️⃣ Show/Hide section
-  SECTIONS.forEach(sec => {
-    const el = document.getElementById(`${sec}-section`);
-    if (!el) return;
-    if (sec === name) el.classList.remove("hidden");
-    else             el.classList.add("hidden");
-  });
+    // 1️⃣ Show/Hide section
+    SECTIONS.forEach(sec => {
+        const el = document.getElementById(`${sec}-section`);
+        if (!el) return;
+        if (sec === name) el.classList.remove("hidden");
+        else el.classList.add("hidden");
+    });
 
-  // 2️⃣ Cập nhật class `.active` cho sidebar-item
-  document.querySelectorAll(".sidebar-item").forEach(item => {
-    const onclick = item.getAttribute("onclick") || "";
-    const isActive = onclick.includes(`showSection('${name}')`);
-    item.classList.toggle("active", isActive);
-  });
+    // 2️⃣ Cập nhật class `.active` cho sidebar-item
+    document.querySelectorAll(".sidebar-item").forEach(item => {
+        const onclick = item.getAttribute("onclick") || "";
+        const isActive = onclick.includes(`showSection('${name}')`);
+        item.classList.toggle("active", isActive);
+    });
 }
 
 // Khởi động mặc định
 document.addEventListener("DOMContentLoaded", () => {
-  showSection("dashboard");
+    showSection("create");
+
 });
+function waitForUserElementsThenFill(user) {
+    const tryFill = () => {
+        const nameEl = document.getElementById("user-name");
+        const avatarEl = document.getElementById("user-avatar");
+        const pointEl = document.getElementById("user-point");
+
+        if (nameEl && avatarEl && pointEl) {
+            fillUserHeader(user);
+            return true;
+        }
+        return false;
+    };
+
+    if (tryFill()) return;
+
+    const observer = new MutationObserver(() => {
+        if (tryFill()) observer.disconnect();
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+}
+
+window.addEventListener("DOMContentLoaded", async () => {
+    let user = null;
+    const cached = localStorage.getItem("auth_data");
+
+    if (cached) {
+         user = JSON.parse(cached);
+        console.log("hehe");
+        fillDataUser(user)
+        try {
+            user = JSON.parse(cached);
+        } catch (e) {
+            console.error("Lỗi parse auth_data:", e);
+        }
+    }
+
+    if (!cached) {
+        try {
+            user = await getUserInfoOnce();
+        } catch (e) {
+            console.error("Lỗi getUserInfoOnce:", e);
+        }
+    }
+
+
+});
+
