@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,33 +9,81 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 </head>
+
 <body>
 
   <div class="flex h-screen">
     <!-- Sidebar -->
-    <div id="sidebar" class="w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
-      <div class="p-6 border-b border-gray-700 flex items-center space-x-3">
-        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-          <img src="./images/logo.png" alt="Logo">
+    <div id="sidebar" class=" w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+      <!-- Logo -->
+      <div class="p-6 border-b border-gray-700">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <!-- <i class="fas fa-video text-white text-lg"></i> -->
+            <img src="./images/logo.png">
+          </div>
+          <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            Tinovideo
+          </h1>
         </div>
-        <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-          Tinovideo
-        </h1>
       </div>
+
+      <!-- Navigation -->
       <nav class="flex-1 py-6">
+
         <ul class="space-y-2">
-          <li><a href="dashboard.html" class="sidebar-item"><i class="fas fa-chart-pie w-5 mr-3"></i>Dashboard</a></li>
-          <li><a href="dashboard.html" class="sidebar-item"><i class="fas fa-plus-circle w-5 mr-3"></i>Tạo Video Mới</a></li>
-          <li><a href="projects.html" class="sidebar-item active"><i class="fas fa-folder w-5 mr-3"></i>Dự Án Của Tôi</a></li>
-          <li><a href="#" class="sidebar-item"><i class="fas fa-th-large w-5 mr-3"></i>Mẫu Thư Viện</a></li>
-          <li><a href="#" class="sidebar-item"><i class="fa-brands fa-affiliatetheme w-5 mr-3"></i>Affiliate</a></li>
-          <li><a href="settings.html" class="sidebar-item"><i class="fas fa-cog mr-2"></i>Cài Đặt</a></li>
-          <li><a href="#" class="sidebar-item"><i class="fas fa-question-circle w-5 mr-3"></i>Trợ giúp</a></li>
+          <li>
+            <a href="dashboard.html" class="sidebar-item" onclick="showSection('dashboard')">
+              <i class="fas fa-chart-pie w-5 mr-3"></i>
+              <span data-key="nav-dashboard">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="dashboard.html" class="sidebar-item " onclick="showSection('create')">
+              <i class="fas fa-plus-circle w-5 mr-3"></i>
+              <span data-key="nav-create">Tạo Video Mới</span>
+            </a>
+          </li>
+          <li>
+            <a href="projects.html" class="sidebar-item active" onclick="showSection('projects')">
+              <i class="fas fa-folder w-5 mr-3"></i>
+              <span data-key="nav-projects">Dự Án Của Tôi</span>
+            </a>
+          </li>
+          <li>
+            <a href="editvideo.html" class="sidebar-item" onclick="showSection('templates')">
+              <i class="fas fa-th-large w-5 mr-3"></i>
+              <span data-key="nav-templates">Edit Video</span>
+            </a>
+          </li>
+          <li>
+            <a href="affiliate.html" class="sidebar-item" onclick="showSection('affiliate')">
+              <i class="fa-brands fa-affiliatetheme w-5 mr-3"></i>
+              <span data-key="nav-affiliate">Affiliate</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html" class="sidebar-item" onclick="showSection('settings')">
+              <i class="fas fa-cog w-5 mr-3"></i>
+              <span data-key="nav-settings">Cài Đặt</span>
+            </a>
+          </li>
+          <li>
+            <a href="help.html" class="sidebar-item" onclick="showSection('help')">
+              <i class="fas fa-question-circle w-5 mr-3"></i>
+              <span data-key="nav-help">Trợ giúp</span>
+            </a>
+          </li>
         </ul>
       </nav>
+
+      <!-- User Info -->
       <div class="p-6 border-t border-gray-700">
         <div class="flex items-center mb-4">
-          <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mr-3 overflow-hidden">
+          <div
+            class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
+            <!-- <span class="text-white font-bold text-sm">DU</span> -->
             <img src="" class="rounded-full" data-key="user-avatar">
           </div>
           <div>
@@ -44,36 +93,62 @@
         </div>
         <div class="bg-gray-700 rounded-lg p-3 mb-3">
           <div class="flex justify-between items-center mb-2">
-            <span class="text-sm text-gray-300">Credits còn lại:</span>
+            <span class="text-sm text-gray-300" data-key="credits-remaining">Credits còn lại:</span>
             <span class="text-lg font-bold text-blue-400" data-key="point">100</span>
           </div>
           <div class="w-full bg-gray-600 rounded-full h-2">
-            <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70%"></div>
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70%">
+            </div>
           </div>
         </div>
-        <button class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
-          <i class="fas fa-crown mr-2"></i>Nâng cấp
+        <button
+          class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+          <i class="fas fa-crown mr-2"></i><span data-key="upgrade-btn">Nâng cấp</span>
         </button>
       </div>
     </div>
-
-    <!-- Main Content -->
-    <main class="flex-1 p-6 overflow-y-auto">
-      <!-- Header -->
-      <div class="projects-header">
-        <div>
-          <h2>Dự Án Của Tôi</h2>
-          <p class="text-gray-400">Quản lý tất cả các dự án video AI của bạn</p>
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
+        <div class="flex">
+          <button id="sidebar-toggle" class="sidebar-toggle hidden-desktop" aria-label="Toggle menu">
+            ☰
+          </button>
+          <div class="flex items-center space-x-4">
+            <h2 class="text-2xl font-bold ml-4 mr-4">Dự Án Của Tôi</h2>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="relative steps">
+              <!-- <input type="text" placeholder="Tìm kiếm..."
+                class="bg-gray-700 text-white px-4 py-2 pl-10 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
+              <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i> -->
+            </div>
+            <button class="p-2 text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-bell text-lg"></i>
+            </button>
+            <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
+              <i class="fas fa-plus mr-2 ml-2"></i><span data-key="new-video-btn"></span>
+            </button>
+          </div>
         </div>
-        <button class="btn-create">
-          <i class="fas fa-plus mr-2"></i> Tạo Dự Án Mới
-        </button>
-      </div>
+      </header>
+      <!-- Main Content -->
+      <main class="flex-1 p-6 overflow-y-auto">
+        <!-- Header -->
 
-      <!-- Bộ lọc -->
-      <div class="filter-bar">
-        <input type="text" placeholder="🔍 Tìm kiếm dự án..." />
-        <!-- <select>
+        <div class="projects-header">
+          <div>
+            <h2>Dự Án Của Tôi</h2>
+            <p class="text-gray-400">Quản lý tất cả các dự án video AI của bạn</p>
+          </div>
+          <button class="btn-create">
+            <i class="fas fa-plus mr-2 ml-2"></i> Tạo Dự Án Mới
+          </button>
+        </div>
+
+        <!-- Bộ lọc -->
+        <div class="filter-bar">
+          <input type="text" placeholder="🔍 Tìm kiếm dự án..." />
+          <!-- <select>
           <option>Tất cả trạng thái</option>
           <option>Đã xuất</option>
           <option>Đang tạo</option>
@@ -84,25 +159,27 @@
           <option>Cũ nhất</option>
           <option>A-Z</option>
         </select> -->
-        <button class="bg-gray-700 text-white p-2 rounded-lg">
-          <i class="fas fa-th"></i>
-        </button>
-      </div>
+          <button class="bg-gray-700 text-white p-2 rounded-lg">
+            <i class="fas fa-th"></i>
+          </button>
+        </div>
 
-      <!-- Khi chưa có dự án -->
-      <div class="project-empty">
-        <i class="fas fa-video"></i>
-        <h3>Chưa có dự án nào</h3>
-        <p>Bắt đầu tạo dự án video AI đầu tiên của bạn</p>
-        <button class="btn-start">
-          <i class="fas fa-plus mr-2"></i> Tạo Dự Án Đầu Tiên
-        </button>
-      </div>
-    </main>
+        <!-- Khi chưa có dự án -->
+        <div class="project-empty">
+          <i class="fas fa-video"></i>
+          <h3>Chưa có dự án nào</h3>
+          <p>Bắt đầu tạo dự án video AI đầu tiên của bạn</p>
+          <button class="btn-start">
+            <i class="fas fa-plus mr-2 ml-2"></i> Tạo Dự Án Đầu Tiên
+          </button>
+        </div>
+      </main>
+    </div>
+
   </div>
   <script>
-     let cachedUser = null;
-    const API_BASE_URL = 'https://admin.tinovideo.com/';
+    let cachedUser = null;
+    const API_BASE_URL = 'https://admin.tinovideo.com';
     function fillDataUser(user) {
       const nameDiv = document.querySelector('[data-key="user-name"]');
       if (nameDiv) nameDiv.textContent = user.name;
@@ -140,7 +217,7 @@
       }
       const userShare = document.querySelector('[data-key="user-share"]');
       if (userShare) userShare.textContent = user.user_share + " Người" || "Chưa có người giới thiệu ";
-      console.log("✅ User đã fill:", user);
+      // console.log("✅ User đã fill:", user);
     }
 
     async function getUserInfoOnce() {
@@ -182,6 +259,17 @@
         localStorage.setItem("userId", user.id);
       }
     });
+    const btn = document.getElementById("sidebar-toggle");
+    const sidebar = document.getElementById("sidebar");
+
+    btn.addEventListener("click", () => {
+        if (sidebar.style.display === "none") {
+            sidebar.style.display = "block"; // Hoặc "flex", tùy bạn muốn hiện như thế nào
+        } else {
+            sidebar.style.display = "none";
+        }
+    });
   </script>
 </body>
+
 </html>

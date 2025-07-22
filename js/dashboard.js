@@ -1915,7 +1915,7 @@ function fillDataUser(user) {
 
     if (userPlan) userPlan.textContent = highestPlan;
 
-    console.log("✅ User đã fill:", user);
+    // console.log("✅ User đã fill:", user);
 }
 
 async function getUserInfoOnce() {

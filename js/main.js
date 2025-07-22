@@ -1,4 +1,4 @@
-const API_MAIN_BASE_URL = 'https://admin.tinovideo.com/';
+const API_MAIN_BASE_URL = 'https://admin.tinovideo.com';
 // Language translations
 const translations = {
     vi: {
@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const loginUrl = `${API_MAIN_BASE_URL}/login/google/?state=${encodeURIComponent(state)}`;
 
         const refId = localStorage.getItem("ref_id") || "";
-        const popup = window.open(`https://admin.tinovideo.com//login/google?ref=${refId}`, "_blank", "width=500,height=600");
+        const popup = window.open(`https://admin.tinovideo.com/login/google?ref=${refId}`, "_blank", "width=500,height=600");
 
 
         if (!popup) {

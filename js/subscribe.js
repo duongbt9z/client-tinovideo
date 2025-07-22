@@ -22,7 +22,7 @@ function showToast(message, type = 'info') {
     setTimeout(() => toast.remove(), 200);
   }, 2000);
 }
-const API_BASE_URL = 'https://admin.tinovideo.com/';
+const API_BASE_URL = 'https://admin.tinovideo.com';
 function fillDataUser(user) {
     const nameDiv = document.querySelector('[data-key="user-name"]');
     if (nameDiv) nameDiv.textContent = user.name;
@@ -53,7 +53,7 @@ function fillDataUser(user) {
 
     if (userPlan) userPlan.textContent = highestPlan;
 
-    console.log("✅ User đã fill:", user);
+    // console.log("✅ User đã fill:", user);
 }
 async function getUserInfoOnce() {
   console.log("2 da vao");
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const resp = await fetch("https://admin.tinovideo.com//api/free", {
+      const resp = await fetch("https://admin.tinovideo.com/api/free", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

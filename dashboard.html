@@ -53,21 +53,21 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item active" onclick="showSection('create')">
+                        <a href="dashboard.html" class="sidebar-item active" onclick="showSection('create')">
                             <i class="fas fa-plus-circle w-5 mr-3"></i>
                             <span data-key="nav-create">Tạo Video Mới</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item" onclick="showSection('projects')">
+                        <a href="projects.html" class="sidebar-item" onclick="showSection('projects')">
                             <i class="fas fa-folder w-5 mr-3"></i>
                             <span data-key="nav-projects">Dự Án Của Tôi</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item" onclick="showSection('templates')">
+                        <a href="editvideo.html" class="sidebar-item" onclick="showSection('templates')">
                             <i class="fas fa-th-large w-5 mr-3"></i>
-                            <span data-key="nav-templates">Mẫu Thư Viện</span>
+                            <span data-key="nav-templates">Edit Video</span>
                         </a>
                     </li>
                     <li>
@@ -83,7 +83,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item" onclick="showSection('help')">
+                        <a href="help.html" class="sidebar-item" onclick="showSection('help')">
                             <i class="fas fa-question-circle w-5 mr-3"></i>
                             <span data-key="nav-help">Trợ giúp</span>
                         </a>
@@ -132,7 +132,7 @@
                     <div class="flex items-center space-x-4">
                         <h2 class="text-2xl font-bold" data-key="main-title">Tạo Video AI</h2>
                         <span class="text-gray-400">|</span>
-                        <span class="text-gray-300" data-key="project-subtitle">Dự án mới - Nhập Nội Dung</span>
+                        <!-- <span class="text-gray-300" data-key="project-subtitle">Dự án mới - Nhập Nội Dung</span> -->
                     </div>
                     <div class="flex items-center space-x-4">
                         <div class="relative steps">
@@ -145,7 +145,7 @@
                         </button>
                         <button
                             class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
-                            <i class="fas fa-plus mr-2"></i><span data-key="new-video-btn"></span>
+                            <i class="fas fa-plus mr-2 ml-2"></i><span data-key="new-video-btn"></span>
                         </button>
                     </div>
                 </div>
@@ -762,7 +762,7 @@
                                         lại</span>
                                 </button>
                                 <button onclick="createNewVideo()" class="btn-gradient px-8 py-3 rounded-lg">
-                                    <i class="fas fa-plus mr-2"></i><span data-key="create-new">Tạo video mới</span>
+                                    <i class="fas fa-plus mr-2 ml-2"></i><span data-key="create-new">Tạo video mới</span>
                                 </button>
                             </div>
                         </div>
@@ -788,9 +788,10 @@
                     </div>
 
                     <!-- Mẫu Thư Viện -->
-                    <div id="templates-section" class="p-6 hidden">
-                        <h2 class="text-3xl font-bold mb-4">Mẫu Thư Viện</h2>
-                        <p>Chọn từ các mẫu video có sẵn.</p>
+                    <div id="templates-section" class=" hidden">
+                        <h2 class="text-3xl font-bold mb-4">Chỉnh sửa video của bạn</h2>
+                        <!-- <p>Chọn từ các mẫu video có sẵn.</p> -->
+                        <iframe src="https://opencut.app" class="h-screen" title="OpenCut Video Editor"></iframe>
                     </div>
 
                     <!-- Affiliate -->
