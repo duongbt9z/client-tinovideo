@@ -1,6 +1,6 @@
 /* ---------------------  payment.js  --------------------- */
-const API_MAIN_BASE_URL = 'https://admin.tinovideo.com';
-
+// const API_MAIN_BASE_URL = 'https://admin.tinovideo.com';
+ const API_MAIN_BASE_URL = 'https://admin.tinovideo.com';
 document.addEventListener("DOMContentLoaded", () => {
   /* ===== 1. LẤY & HIỂN THỊ GÓI ===== */
   const plan = JSON.parse(localStorage.getItem("selectedPlan") || "null");
@@ -90,36 +90,39 @@ document.addEventListener("DOMContentLoaded", () => {
       vietqrOption.addEventListener("click", handleVietqrClick, { once: true });
     }
   }
- function pollPaymentStatus(reference, retries = 20, delay = 5000) {
+ function pollPaymentStatus(reference, retries = 20, delay = 10000, initialDelay = 60000) {
   let attempt = 0;
 
-  const interval = setInterval(async () => {
-    attempt++;
-    console.log(`🔄 Kiểm tra trạng thái thanh toán – Lần ${attempt}`);
+  console.log(`⏱ Đợi ${initialDelay / 1000} giây trước khi kiểm tra thanh toán...`);
 
-    try {
-      const res = await fetch(`${API_MAIN_BASE_URL}/api/vietqr/status?reference=${reference}`);
-      if (!res.ok) throw new Error(`Status ${res.status}`);
-      const data = await res.json();
+  setTimeout(() => {
+    const interval = setInterval(async () => {
+      attempt++;
+      console.log(`🔄 [Lần ${attempt}] Kiểm tra trạng thái thanh toán cho ${reference}...`);
 
-      if (data.paid) {
-        clearInterval(interval);
-        alert(`✅ Đã nhận ${data.amount.toLocaleString()}đ từ ${data.payer_name || 'người gửi'} lúc ${data.trans_time || '...'}!`);
+      try {
+        const res = await fetch(`${API_MAIN_BASE_URL}/api/status?reference=${reference}`);
+        if (!res.ok) throw new Error(`Status ${res.status}`);
+        const data = await res.json();
 
-        // 👉 Xử lý tiếp sau khi thanh toán thành công
-        // Ví dụ: unlock UI, reload, chuyển trang...
-        // window.location.href = "/thank-you";
+        if (data.paid) {
+          clearInterval(interval);
+          alert(`✅ Đã nhận ${data.amount.toLocaleString()}đ từ ${data.payer_name || 'người gửi'}!`);
+          return;
+        }
 
-      } else if (attempt >= retries) {
-        clearInterval(interval);
-        alert("⏱ Hết thời gian chờ chuyển khoản.");
+        if (attempt >= retries) {
+          clearInterval(interval);
+          alert("⏱ Hết thời gian chờ chuyển khoản.");
+        }
+      } catch (err) {
+        console.error("❌ Lỗi kiểm tra trạng thái:", err);
+        if (attempt >= retries) clearInterval(interval);
       }
-    } catch (err) {
-      console.error("❌ Lỗi khi kiểm tra thanh toán:", err);
-      if (attempt >= retries) clearInterval(interval);
-    }
-  }, delay);
+    }, delay);
+  }, initialDelay);
 }
+
 
 
 
