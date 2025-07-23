@@ -261,7 +261,36 @@
     });
     const btn = document.getElementById("sidebar-toggle");
     const sidebar = document.getElementById("sidebar");
-
+ const token = localStorage.getItem('jwt');
+    if (!token) {
+        window.location.href = "index.html";
+    } else {
+        // Gửi request xác thực token
+        fetch(`${API_BASE_URL}/api/user`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.success) {
+                    // ❌ Token không hợp lệ → xóa và về trang login
+                    localStorage.removeItem('jwt');
+                    localStorage.removeItem('auth_data');
+                    window.location.href = "index.html";
+                } else {
+                    // ✅ Token hợp lệ → tiếp tục
+                    fillDataUser(data.user);
+                }
+            })
+            .catch(err => {
+                console.error("Lỗi xác thực token:", err);
+                localStorage.removeItem('jwt');
+                localStorage.removeItem('auth_data');
+                window.location.href = "index.html";
+            });
+    }
     btn.addEventListener("click", () => {
         if (sidebar.style.display === "none") {
             sidebar.style.display = "block"; // Hoặc "flex", tùy bạn muốn hiện như thế nào

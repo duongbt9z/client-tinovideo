@@ -1,5 +1,5 @@
 /* ---------------------  payment.js  --------------------- */
- const API_MAIN_BASE_URL= 'https://admin.tinovideo.com';
+const API_MAIN_BASE_URL = 'http://localhost:5000';
 
 document.addEventListener("DOMContentLoaded", () => {
   /* ===== 1. LẤY & HIỂN THỊ GÓI ===== */
@@ -31,23 +31,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ===== 3. CHUẨN BỊ DỮ LIỆU THANH TOÁN ===== */
   const amount = Number(plan.price.replace(/\D/g, ""));               // 200000
-  document.querySelector(".value.amount").textContent =
-    new Intl.NumberFormat("vi-VN").format(amount) + " đ";
-  const uerId = localStorage.getItem("userId")
-  /* ===== 4. CLICK “Chuyển khoản VietQR” ===== */
+  document.querySelector(".value.amount").textContent = new Intl.NumberFormat("vi-VN").format(amount) + " đ";
+  const rawData = localStorage.getItem("auth_data");
+  let auth_data = null;  // Khai báo biến toàn cục
+  let userId = null;
+  if (rawData) {
+    const auth_data = JSON.parse(rawData);
+    userId = auth_data.id;
+  } else {
+    console.warn("⚠️ auth_data not found in localStorage");
+  }
   const vietqrOption = document.querySelector(".method-option");
-  if (!vietqrOption) return;      // không tìm thấy khối thanh toán
-
+  if (!vietqrOption) return;
   async function handleVietqrClick() {
-    // tránh bấm lặp trong lúc đang fetch
     if (vietqrOption.dataset.loading) return;
     vietqrOption.dataset.loading = "1";
-
-    const reference = "VD" + plan.name +"T7LQRX8M"+uerId;
+    const reference = "VD" + plan.name + "T7LQRX8M" + userId;
     document.querySelector(".value.reference").textContent = reference;
 
     try {
-      // ---- Gửi yêu cầu tới backend ----
       const res = await fetch(`${API_MAIN_BASE_URL}/api/vietqr`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -78,7 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // ---- Hiển thị kết quả ----
       qrImg.src = qrUrl;
       qrContainer.classList.remove("hidden");           // hiện khối QR
-      // listener tự huỷ do {once:true} ↓
+       pollPaymentStatus(reference);
+
     } catch (err) {
       console.error("VietQR API error:", err);
       alert("Không lấy được QR. Vui lòng thử lại!");
@@ -87,6 +90,39 @@ document.addEventListener("DOMContentLoaded", () => {
       vietqrOption.addEventListener("click", handleVietqrClick, { once: true });
     }
   }
+ function pollPaymentStatus(reference, retries = 20, delay = 5000) {
+  let attempt = 0;
+
+  const interval = setInterval(async () => {
+    attempt++;
+    console.log(`🔄 Kiểm tra trạng thái thanh toán – Lần ${attempt}`);
+
+    try {
+      const res = await fetch(`${API_MAIN_BASE_URL}/api/vietqr/status?reference=${reference}`);
+      if (!res.ok) throw new Error(`Status ${res.status}`);
+      const data = await res.json();
+
+      if (data.paid) {
+        clearInterval(interval);
+        alert(`✅ Đã nhận ${data.amount.toLocaleString()}đ từ ${data.payer_name || 'người gửi'} lúc ${data.trans_time || '...'}!`);
+
+        // 👉 Xử lý tiếp sau khi thanh toán thành công
+        // Ví dụ: unlock UI, reload, chuyển trang...
+        // window.location.href = "/thank-you";
+
+      } else if (attempt >= retries) {
+        clearInterval(interval);
+        alert("⏱ Hết thời gian chờ chuyển khoản.");
+      }
+    } catch (err) {
+      console.error("❌ Lỗi khi kiểm tra thanh toán:", err);
+      if (attempt >= retries) clearInterval(interval);
+    }
+  }, delay);
+}
+
+
+
 
   // Gắn listener CHỈ MỘT LẦN; sau khi thành công sẽ tự gỡ, không gọi lại
   vietqrOption.addEventListener("click", handleVietqrClick, { once: true });

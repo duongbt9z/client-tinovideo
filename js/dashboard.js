@@ -1774,9 +1774,41 @@ document.addEventListener('DOMContentLoaded', function () {
     const video = document.getElementById("step5-video-preview");
 
     // ✅ Check login
+    // const token = localStorage.getItem('jwt');
+    // if (!token) {
+    //     window.location.href = "index.html"; // Nếu không có JWT → redirect về trang chính
+    // }
+
+
     const token = localStorage.getItem('jwt');
     if (!token) {
-        window.location.href = "index.html"; // Nếu không có JWT → redirect về trang chính
+        window.location.href = "index.html";
+    } else {
+        // Gửi request xác thực token
+        fetch(`${API_BASE_URL}/api/user`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.success) {
+                    // ❌ Token không hợp lệ → xóa và về trang login
+                    localStorage.removeItem('jwt');
+                    localStorage.removeItem('auth_data');
+                    window.location.href = "index.html";
+                } else {
+                    // ✅ Token hợp lệ → tiếp tục
+                    fillDataUser(data.user);
+                }
+            })
+            .catch(err => {
+                console.error("Lỗi xác thực token:", err);
+                localStorage.removeItem('jwt');
+                localStorage.removeItem('auth_data');
+                window.location.href = "index.html";
+            });
     }
     video.load();
 
@@ -1919,7 +1951,7 @@ function fillDataUser(user) {
 }
 
 async function getUserInfoOnce() {
-    
+
     const authData = localStorage.getItem("auth_data");
     if (authData) {
         cachedUser = JSON.parse(authData);
@@ -2009,7 +2041,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     const cached = localStorage.getItem("auth_data");
 
     if (cached) {
-         user = JSON.parse(cached);
+        user = JSON.parse(cached);
         console.log("hehe");
         fillDataUser(user)
         try {
