@@ -13,10 +13,24 @@
 <body class="bg-gray-900 text-white font-sans overflow-hidden">
 
     <div class="flex h-screen">
+        <div class="fixed top-3 right-4 z-50 ">
+            <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
+                <button class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi"
+                    onclick="switchLanguage('vi')">
+                    🇻🇳
+                    VI
+                </button>
+                <button class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="en"
+                    onclick="switchLanguage('en')">
+                    🇺🇸
+                    EN
+                </button>
+            </div>
+        </div>
         <!-- Sidebar -->
-        <div id="sidebar" class=" w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+        <div class="w-64 bg-gray-800 border-r border-gray-700 flex flex-col" id="sidebar">
             <!-- Logo -->
-            <div class="p-6 border-b border-gray-700">
+            <div class="p-6 border-b border-gray-700  fl-mobile">
                 <div class="flex items-center space-x-3">
                     <div
                         class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
@@ -27,75 +41,85 @@
                         class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                         Tinovideo
                     </h1>
-                </div>
-            </div>
 
+                </div>
+                <button onclick="toggleSidebar()" class="md:hidden text-white text-xl px-2 ml-12">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
             <!-- Navigation -->
             <nav class="flex-1 py-6">
-
                 <ul class="space-y-2">
                     <li>
-                        <a href="dashboard.html" class="sidebar-item" onclick="showSection('dashboard')">
-                            <i class="fas fa-chart-pie w-5 mr-3"></i>
-                            <span data-key="nav-dashboard">Dashboard</span>
+                        <a class="sidebar-item" href="dashboard.html" onclick="showSection('create')">
+                            <i class="fas fa-plus-circle w-5 mr-3">
+                            </i>
+                            <span data-key="nav-create">
+                                Tạo Video Mới
+                            </span>
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard.htnl" class="sidebar-item " onclick="showSection('create')">
-                            <i class="fas fa-plus-circle w-5 mr-3"></i>
-                            <span data-key="nav-create">Tạo Video Mới</span>
+                        <a class="sidebar-item active" href="editvideo.html" onclick="showSection('templates')">
+                            <i class="fas fa-th-large w-5 mr-3">
+                            </i>
+                            <span data-key="nav-templates">
+                                Edit Video
+                            </span>
                         </a>
                     </li>
                     <li>
-                        <a href="projects.html" class="sidebar-item" onclick="showSection('projects')">
-                            <i class="fas fa-folder w-5 mr-3"></i>
-                            <span data-key="nav-projects">Dự Án Của Tôi</span>
+                        <a class="sidebar-item" href="affiliate.html" onclick="showSection('affiliate')">
+                            <i class="fa-brands fa-affiliatetheme w-5 mr-3">
+                            </i>
+                            <span data-key="nav-affiliate">
+                                Affiliate
+                            </span>
                         </a>
                     </li>
                     <li>
-                        <a href="editvideo.html" class="sidebar-item active" onclick="showSection('templates')">
-                            <i class="fas fa-th-large w-5 mr-3"></i>
-                            <span data-key="nav-templates">Edit Video</span>
+                        <a class="sidebar-item" href="settings.html" onclick="showSection('settings')">
+                            <i class="fas fa-cog w-5 mr-3">
+                            </i>
+                            <span data-key="nav-settings">
+                                Cài Đặt
+                            </span>
                         </a>
                     </li>
                     <li>
-                        <a href="affiliate.html" class="sidebar-item" onclick="showSection('affiliate')">
-                            <i class="fa-brands fa-affiliatetheme w-5 mr-3"></i>
-                            <span data-key="nav-affiliate">Affiliate</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="settings.html" class="sidebar-item" onclick="showSection('settings')">
-                            <i class="fas fa-cog w-5 mr-3"></i>
-                            <span data-key="nav-settings">Cài Đặt</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="help.html" class="sidebar-item" onclick="showSection('help')">
-                            <i class="fas fa-question-circle w-5 mr-3"></i>
-                            <span data-key="nav-help">Trợ giúp</span>
+                        <a class="sidebar-item" href="help.html" onclick="showSection('help')">
+                            <i class="fas fa-question-circle w-5 mr-3">
+                            </i>
+                            <span data-key="nav-help">
+                                Trợ giúp
+                            </span>
                         </a>
                     </li>
                 </ul>
             </nav>
-
-            <!-- User Info -->
             <div class="p-6 border-t border-gray-700">
                 <div class="flex items-center mb-4">
                     <div
                         class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
-                        <!-- <span class="text-white font-bold text-sm">DU</span> -->
-                        <img src="" class="rounded-full" data-key="user-avatar">
+                        <img class="rounded-full" data-key="user-avatar" src="" />
                     </div>
                     <div>
-                        <div class="font-semibold text-sm" data-key="user-name">Demo Người dùng</div>
-                        <div class="text-xs text-gray-400" data-key="user-plan">Chuyên Nghiệp</div>
+                        <div class="font-semibold text-sm" data-key="user-name">
+                            Demo Người dùng
+                        </div>
+                        <div class="text-xs text-gray-400" data-key="user-plan">
+                            Chuyên Nghiệp
+                        </div>
                     </div>
                 </div>
                 <div class="bg-gray-700 rounded-lg p-3 mb-3">
                     <div class="flex justify-between items-center mb-2">
-                        <span class="text-sm text-gray-300" data-key="credits-remaining">Credits còn lại:</span>
-                        <span class="text-lg font-bold text-blue-400" data-key="point">100</span>
+                        <span class="text-sm text-gray-300" data-key="credits-remaining">
+                            Credits còn lại:
+                        </span>
+                        <span class="text-lg font-bold text-blue-400" data-key="point">
+                            100
+                        </span>
                     </div>
                     <div class="w-full bg-gray-600 rounded-full h-2">
                         <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70%">
@@ -104,235 +128,180 @@
                 </div>
                 <button
                     class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
-                    <i class="fas fa-crown mr-2"></i><span data-key="upgrade-btn">Nâng cấp</span>
+                    <i class="fas fa-crown mr-2">
+                    </i>
+                    <span data-key="upgrade-btn">
+                        Nâng cấp
+                    </span>
                 </button>
             </div>
         </div>
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col ">
             <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
                 <div class="flex">
-                    <button id="sidebar-toggle" class="sidebar-toggle hidden-desktop" aria-label="Toggle menu">
+                    <button aria-label="Toggle menu" class="sidebar-toggle hidden-desktop" id="sidebar-toggle">
                         ☰
                     </button>
                     <div class="flex items-center space-x-4">
-                        <h2 class="text-2xl font-bold ml-4 mr-4">Chỉnh sửa video của bạn</h2>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="relative steps">
-                            <!-- <input type="text" placeholder="Tìm kiếm..."
-                class="bg-gray-700 text-white px-4 py-2 pl-10 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
-              <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i> -->
-                        </div>
-                        <button class="p-2 text-gray-400 hover:text-white transition-colors">
-                            <i class="fas fa-bell text-lg"></i>
-                        </button>
-                        <button
-                            class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
-                            <i class="fas fa-plus mr-2 ml-2"></i><span data-key="new-video-btn"></span>
-                        </button>
+                        <h2 class="text-2xl font-bold ml-4 mr-4" data-key="edit-title">
+                            Chỉnh sửa video
+                        </h2>
                     </div>
                 </div>
             </header>
-            <main class="flex-1 ">
-                <!-- <h2 class="text-3xl font-bold mb-4">Chỉnh sửa video của bạn</h2> -->
-                <!-- <p>Chọn từ các mẫu video có sẵn.</p> -->
-                <iframe src="https://opencut.app" class="h-screen" title="OpenCut Video Editor"></iframe>
+            <main class="flex-1">
+                <iframe class="h-screen" src="https://opencut.app" title="OpenCut Video Editor">
+                </iframe>
+            </main>
         </div>
-
-
-        </main>
     </div>
-    </div>
-    <style>
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+
+
+
+</body>
+<style>
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    #templates-section {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+</style>
+<script>
+    function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-x-full transition-transform duration-300`;
+        switch (type) {
+            case 'success': toast.classList.add('bg-green-500'); break;
+            case 'error': toast.classList.add('bg-red-500'); break;
+            case 'warning': toast.classList.add('bg-yellow-500'); break;
+            default: toast.classList.add('bg-blue-500');
         }
-#templates-section{
-     width: 100%;
-            height: 100%;
-            border: none;
-}
-    </style>
-    <script>
-        function showToast(message, type = 'info') {
-            const toast = document.createElement('div');
-            toast.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-x-full transition-transform duration-300`;
-            switch (type) {
-                case 'success': toast.classList.add('bg-green-500'); break;
-                case 'error': toast.classList.add('bg-red-500'); break;
-                case 'warning': toast.classList.add('bg-yellow-500'); break;
-                default: toast.classList.add('bg-blue-500');
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.classList.remove('translate-x-full'), 10);
+        setTimeout(() => {
+            toast.classList.add('translate-x-full');
+            setTimeout(() => toast.remove(), 200);
+        }, 2000);
+    }
+
+    let cachedUser = null;
+    const API_BASE_URL = 'https://admin.tinovideo.com';
+    function fillDataUser(user) {
+        const nameDiv = document.querySelector('[data-key="user-name"]');
+        if (nameDiv) nameDiv.textContent = user.name;
+
+        const point = document.querySelector('[data-key="point"]');
+        if (point) point.textContent = user.point;
+
+        const avatarImg = document.querySelector('[data-key="user-avatar"]');
+        if (avatarImg) avatarImg.src = user.avatar;
+
+        const userPlan = document.querySelector('[data-key="user-plan"]');
+        // if (userPlan) userPlan.textContent = user.plan || "Chưa có gói";
+        const claimedPlans = [
+            user.free_claimed && "Free",
+            user.standard_claimed && "Standard",
+            user.pro_claimed && "Pro",
+            user.max_claimed && "Max"
+        ].filter(Boolean);
+
+        let highestPlan = "Chưa có gói";
+        const PLAN_PRIORITY = ["Max", "Pro", "Standard", "Free"];
+        for (const plan of PLAN_PRIORITY) {
+            if (claimedPlans.includes(plan)) {
+                highestPlan = plan;
+                break;
             }
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.classList.remove('translate-x-full'), 10);
-            setTimeout(() => {
-                toast.classList.add('translate-x-full');
-                setTimeout(() => toast.remove(), 200);
-            }, 2000);
-        }
-
-        let cachedUser = null;
-        const API_BASE_URL = 'https://admin.tinovideo.com';
-        function fillDataUser(user) {
-            const nameDiv = document.querySelector('[data-key="user-name"]');
-            if (nameDiv) nameDiv.textContent = user.name;
-
-            const point = document.querySelector('[data-key="point"]');
-            if (point) point.textContent = user.point;
-
-            const avatarImg = document.querySelector('[data-key="user-avatar"]');
-            if (avatarImg) avatarImg.src = user.avatar;
-
-            const userPlan = document.querySelector('[data-key="user-plan"]');
-            // if (userPlan) userPlan.textContent = user.plan || "Chưa có gói";
-            const claimedPlans = [
-                user.free_claimed && "Free",
-                user.standard_claimed && "Standard",
-                user.pro_claimed && "Pro",
-                user.max_claimed && "Max"
-            ].filter(Boolean);
-
-            let highestPlan = "Chưa có gói";
-            const PLAN_PRIORITY = ["Max", "Pro", "Standard", "Free"];
-            for (const plan of PLAN_PRIORITY) {
-                if (claimedPlans.includes(plan)) {
-                    highestPlan = plan;
-                    break;
-                }
-            }
-
-            if (userPlan) userPlan.textContent = highestPlan;
-            const userMoney = document.querySelector('[data-key="user-money"]');
-            if (userMoney) if (!user.money) {
-                userMoney.textContent = "Chưa có hoa hồng";
-            } else {
-                userMoney.textContent = user.money + ".000 VNĐ";
-            }
-            const userShare = document.querySelector('[data-key="user-share"]');
-            if (userShare) userShare.textContent = user.user_share + " Người" || "Chưa có người giới thiệu ";
-            // console.log("✅ User đã fill:", user);
         }
 
-        async function getUserInfoOnce() {
-            if (cachedUser) return cachedUser;
+        if (userPlan) userPlan.textContent = highestPlan;
+        const userMoney = document.querySelector('[data-key="user-money"]');
+        if (userMoney) if (!user.money) {
+            userMoney.textContent = "Chưa có hoa hồng";
+        } else {
+            userMoney.textContent = user.money + ".000 VNĐ";
+        }
+        const userShare = document.querySelector('[data-key="user-share"]');
+        if (userShare) userShare.textContent = user.user_share + " Người" || "Chưa có người giới thiệu ";
+        // console.log("✅ User đã fill:", user);
+    }
 
-            const authData = localStorage.getItem("auth_data");
-            if (authData) {
-                cachedUser = JSON.parse(authData);
-                fillDataUser(cachedUser);  // ✅ gọi đúng
+    async function getUserInfoOnce() {
+        if (cachedUser) return cachedUser;
+
+        const authData = localStorage.getItem("auth_data");
+        if (authData) {
+            cachedUser = JSON.parse(authData);
+            fillDataUser(cachedUser);  // ✅ gọi đúng
+            return cachedUser;
+        }
+
+        const token = localStorage.getItem("jwt");
+        if (!token) return null;
+
+        try {
+            const res = await fetch(`${API_BASE_URL}/api/user`, {
+                method: "GET",
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            const data = await res.json();
+            if (data.success) {
+                cachedUser = data.user;
+                localStorage.setItem("auth_data", JSON.stringify(data.user));
+                fillDataUser(cachedUser);  // ✅ truyền đúng user
                 return cachedUser;
-            }
-
-            const token = localStorage.getItem("jwt");
-            if (!token) return null;
-
-            try {
-                const res = await fetch(`${API_BASE_URL}/api/user`, {
-                    method: "GET",
-                    headers: { Authorization: `Bearer ${token}` }
-                });
-                const data = await res.json();
-                if (data.success) {
-                    cachedUser = data.user;
-                    localStorage.setItem("auth_data", JSON.stringify(data.user));
-                    fillDataUser(cachedUser);  // ✅ truyền đúng user
-                    return cachedUser;
-                } else {
-                    console.warn("❌ Không lấy được thông tin user:", data.error);
-                    return null;
-                }
-            } catch (err) {
-                console.error("❌ Lỗi kết nối:", err);
+            } else {
+                console.warn("❌ Không lấy được thông tin user:", data.error);
                 return null;
             }
+        } catch (err) {
+            console.error("❌ Lỗi kết nối:", err);
+            return null;
         }
-        document.querySelectorAll('.tab').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById(btn.dataset.tab).classList.add('active');
+    }
+    document.querySelectorAll('.tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(btn.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Toggle sidebar on mobile
+    const btn = document.getElementById("sidebar-toggle");
+    const sidebar = document.getElementById("sidebar");
+
+    btn.addEventListener("click", () => {
+        if (sidebar.style.display === "none") {
+            sidebar.style.display = "block"; // Hoặc "flex", tùy bạn muốn hiện như thế nào
+        } else {
+            sidebar.style.display = "none";
+        }
+    });
+
+    window.addEventListener("DOMContentLoaded", async () => {
+        const user = await getUserInfoOnce();
+        if (user) {
+            // Sau khi fill xong thì lưu userId để chia sẻ link
+            localStorage.setItem("userId", user.id);
+        }
+        const upgradeBtn = document.querySelector(".upgrade-btn");
+        if (upgradeBtn) {
+            upgradeBtn.addEventListener("click", () => {
+                window.location.href = "subscribe.html";
             });
-        });
-
-        // Toggle sidebar on mobile
-        const btn = document.getElementById("sidebar-toggle");
-        const sidebar = document.getElementById("sidebar");
-
-        btn.addEventListener("click", () => {
-            if (sidebar.style.display === "none") {
-                sidebar.style.display = "block"; // Hoặc "flex", tùy bạn muốn hiện như thế nào
-            } else {
-                sidebar.style.display = "none";
-            }
-        });
-
-
-        // const baseUrl = window.location.origin;
-        // const shareUrl = `${baseUrl}?ref=${userId}`;
-        //  if (!url) {
-        //         showToast('Không tìm thấy video để chia sẻ', 'error');
-        //         return;
-        //     }
-
-        // Copy to clipboard
-        // navigator.clipboard.writeText(shareUrl).then(() => {
-        //   showToast('Đã sao chép liên kết chia sẻ!', 'success');
-        // }).catch(err => {
-        //   console.error(err);
-        //   showToast('Không thể sao chép liên kết', 'error');
-        // });
-        // Sao chép vào clipboard
-        // navigator.clipboard.writeText(shareUrl)
-        //   .then(() => {
-        //     alert("Link giới thiệu:" + shareUrl);
-        //   })
-        //   .catch(err => {
-        //     console.error("Không thể sao chép link:", err);
-        //     alert("Trình duyệt không hỗ trợ sao chép tự động.");
-        //   });
-        function shareVideo() {
-            const userId = localStorage.getItem("userId");
-
-            if (!userId) {
-                alert("❌ Không tìm thấy userId trong localStorage.");
-                return;
-            }
-
-            const baseUrl = window.location.origin;
-            const shareUrl = `${baseUrl}?ref=${userId}`;
-
-            navigator.clipboard.writeText(shareUrl)
-                .then(() => {
-                    showToast('✅ Đã sao chép link giới thiệu thành công', 'success');
-                    // alert("✅ Đã sao chép link giới thiệu:\n" + shareUrl);
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("❌ Không thể sao chép liên kết");
-                    showToast('❌ Không thể sao chép liên kết', 'error');
-                });
         }
-
-
-        window.addEventListener("DOMContentLoaded", async () => {
-            const user = await getUserInfoOnce();
-            if (user) {
-                // Sau khi fill xong thì lưu userId để chia sẻ link
-                localStorage.setItem("userId", user.id);
-            }
-            const upgradeBtn = document.querySelector(".upgrade-btn");
-            if (upgradeBtn) {
-                upgradeBtn.addEventListener("click", () => {
-                    window.location.href = "subscribe.html";
-                });
-            }
-        });
- const token = localStorage.getItem('jwt');
+    });
+    const token = localStorage.getItem('jwt');
     if (!token) {
         window.location.href = "index.html";
     } else {
@@ -362,9 +331,61 @@
                 window.location.href = "index.html";
             });
     }
-    </script>
+    const editTranslations = {
+        "vi": {
+            "nav-settings": "Cài Đặt ",
+            "tinovideo": "Tinovideo",
+            "nav-create": "Tạo Video Mới",
+            "nav-templates": "Edit Video",
+            "nav-affiliate": "Affiliate",
+            "nav-help": "Trợ giúp",
+            "edit-title": "Chỉnh sửa video",
+        }, "en": {
+            "nav-settings": "Settings ",
+            "tinovideo": "Tinovideo",
+            "nav-create": "Create New Video",
+            "nav-templates": "Edit Video",
+            "nav-affiliate": "Affiliate",
+            "nav-help": "help",
+            "edit-title": "Edit your video",
+        }
+    }
+    function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        if (sidebar) {
+            sidebar.style.display = "none";
+        }
+    }
+    function switchLanguage(lang) {
+        localStorage.setItem('tinovideo-language', lang);
+        const t = editTranslations[lang];
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if (btn.dataset.lang === lang) {
+                btn.style.display = 'none'; // ẩn nút hiện tại
+            } else {
+                btn.style.display = 'inline-block'; // hiện nút còn lại
+            }
+            btn.classList.remove('active');
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            }
+        });
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (!t[key]) return;
 
+            if (el.tagName === 'INPUT') {
+                el.placeholder = t[key];
+            } else {
+                el.textContent = t[key];
+            }
+        });
+    }
 
-</body>
+    window.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem('tinovideo-language') || 'vi';
+        switchLanguage(savedLang);
+    });
+</script>
 
 </html>

@@ -11,12 +11,20 @@
 </head>
 
 <body class="bg-gray-900 text-white font-sans overflow-hidden">
-
+<div class="fixed top-3 right-4 z-50 ">
+        <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
+            <button onclick="switchLanguage('vi')"
+                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi">🇻🇳 VI</button>
+            <button onclick="switchLanguage('en')"
+                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="en">🇺🇸 EN</button>
+        </div>
+    </div>
   <div class="flex h-screen">
     <!-- Sidebar -->
+     
     <div id="sidebar" class=" w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
             <!-- Logo -->
-            <div class="p-6 border-b border-gray-700">
+             <div class="p-6 border-b border-gray-700  fl-mobile">
                 <div class="flex items-center space-x-3">
                     <div
                         class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
@@ -27,31 +35,35 @@
                         class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                         Tinovideo
                     </h1>
+
                 </div>
+                <button onclick="toggleSidebar()" class="md:hidden text-white text-xl px-2 ml-12">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
 
             <!-- Navigation -->
             <nav class="flex-1 py-6">
 
                 <ul class="space-y-2">
-                    <li>
+                    <!-- <li>
                         <a href="dashboard.html" class="sidebar-item" onclick="showSection('dashboard')">
                             <i class="fas fa-chart-pie w-5 mr-3"></i>
                             <span data-key="nav-dashboard">Dashboard</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="dashboard.html" class="sidebar-item " onclick="showSection('create')">
                             <i class="fas fa-plus-circle w-5 mr-3"></i>
                             <span data-key="nav-create">Tạo Video Mới</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="projects.html" class="sidebar-item" onclick="showSection('projects')">
                             <i class="fas fa-folder w-5 mr-3"></i>
                             <span data-key="nav-projects">Dự Án Của Tôi</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="editvideo.html" class="sidebar-item" onclick="showSection('templates')">
                             <i class="fas fa-th-large w-5 mr-3"></i>
@@ -109,7 +121,7 @@
             </div>
         </div>
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col overflow-hidden">
+    <div class="flex-1 flex flex-col">
       <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
         <div class="flex">
           <button id="sidebar-toggle" class="sidebar-toggle hidden-desktop" aria-label="Toggle menu">
@@ -124,12 +136,12 @@
                 class="bg-gray-700 text-white px-4 py-2 pl-10 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
               <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i> -->
             </div>
-            <button class="p-2 text-gray-400 hover:text-white transition-colors">
+            <!-- <button class="p-2 text-gray-400 hover:text-white transition-colors">
               <i class="fas fa-bell text-lg"></i>
             </button>
             <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
               <i class="fas fa-plus mr-2 ml-2"></i><span data-key="new-video-btn"></span>
-            </button>
+            </button> -->
           </div>
         </div>
       </header>
@@ -148,7 +160,7 @@
           <!-- Card Hoa Hồng -->
           <div class="rose-card flex-1 bg-gray-800 p-4 rounded-lg shadow">
             <div class="plan-header">
-              <h3>Hoa Hồng</h3>
+              <h3 data-key="commission-title">Hoa Hồng</h3>
             </div>
             <div class="price">
               <span class="amount" data-key="user-money">100.000.000 VNĐ</span>
@@ -158,7 +170,7 @@
           <!-- Card mới nằm ngang -->
           <div class="flex-1 bg-gray-800 p-4 rounded-lg shadow">
             <div class="plan-header">
-              <h3>Giới Thiệu</h3>
+           <h3 data-key="referral-title">Giới Thiệu</h3>
             </div>
             <div class="price">
               <span class="amount text-green-400" data-key="user-share">20 người</span>
@@ -171,21 +183,21 @@
             <h3>Affilate</h3>
           </div>
           <div class="price">
-            <span class="amount" data-yearly="Free" data-monthly="Free">Hoa Hồng</span>
-            <span class="period">/Trọn đời</span>
+            <span class="amount" data-yearly="Free" data-monthly="Free" data-key="commission-title">Hoa Hồng</span>
+            <span class="period" data-key="lifetime">/Trọn đời</span>
           </div>
 
           <!-- gắn data-plan="free" để JS nhận biết -->
-          <button onclick="shareVideo()" class="share-btn" data-plan="free">
-            Chia sẻ Link
-          </button>
+          <button onclick="shareVideo()" class="share-btn" data-plan="free" data-key="share-btn">
+          Chia sẻ Link
+        </button>
 
           <!-- <div class="billed-amount" data-yearly="Tặng 50 điểm" data-monthly="Tặng 50 điểm">
             Tặng 50 điểm
           </div> -->
           <ul class="features">
-            <li>✓ Nhận ngay 50 credit</li>
-            <li>✓ Nhận hoa hồng lên đến 30% </li>
+            <li data-key="bonus-credits">✓ Nhận ngay 50 credit</li>
+          <li data-key="commission-rate">✓ Nhận hoa hồng lên đến 30%</li>
           </ul>
         </div>
 
@@ -195,7 +207,7 @@
     </main>
   </div>
   </div>
-
+  <script src="./js/affiliate.js"></script>
   <script>
     function showToast(message, type = 'info') {
     const toast = document.createElement('div');

@@ -17,259 +17,286 @@ let projectData = {
         duration: 30
     }
 };
-// Language translations for dashboard
+let allVoices = [];
+
 const dashboardTranslations = {
-    vi: {
-        // Navigation
-        'nav-dashboard': 'Bảng điều khiển',
-        'nav-create': 'Tạo Video Mới',
-        'nav-projects': 'Dự Án Của Tôi',
-        'nav-templates': 'Mẫu Thư Viện',
-        'nav-settings': 'Cài Đặt',
-        'nav-help': 'Trợ giúp',
-
-        // User info
-        'user-name': 'Demo Người dùng',
-        'user-plan': 'Chuyên Nghiệp',
-        'credits-remaining': 'Credits còn lại:',
-        'upgrade-btn': 'Nâng cấp',
-
-        // Header
-        'main-title': 'Tạo Video AI',
-        'project-subtitle': 'Dự án mới - Nhập Nội Dung',
-        'new-video-btn': 'Tạo Video Mới',
-
-        // Steps
-        'step-1-title': 'Nhập Nội Dung',
-        'step-2-title': 'Chọn Giọng Đọc AI',
-        'step-3-title': 'Tạo kịch Bản',
-        'step-4-title': 'Tạo Video',
-        'step-5-title': 'Xuất Video',
-
-        // Step 1
-        'step-1-main-title': 'Bước 1: Nhập Nội Dung Sản Phẩm',
-        'step-1-description': 'Nhập URL sản phẩm hoặc văn bản nội dung để tạo video',
-        'tab-url': 'URL Sản phẩm',
-        'tab-text': 'Nội dung Text',
-        'url-label': 'URL Sản phẩm',
-        'url-placeholder': 'https://shopee.vn/...',
-        'analyze-btn': 'Phân tích',
-        'supported-platforms': 'Nền tảng được hỗ trợ:',
-        'images-label': 'Hình ảnh bổ sung (tuỳ chọn)',
-        'upload-title': 'Kéo thả hoặc nhấp để tải lên',
-        'upload-desc': 'Hỗ trợ JPG, PNG, WEBP. Tối đa 10 hình.',
-        'text-label': 'Nội dung văn bản',
-        'text-placeholder': 'Nhập mô tả sản phẩm của bạn...',
-        'reset-btn': 'Đặt lại',
-        'save-btn': 'Lưu dự án',
-        'next-btn': 'Tiếp theo: Chọn giọng đọc',
-
-        // Step 2
-        'step-2-main-title': 'Bước 2: Chọn Giọng Đọc AI',
-        'step-2-description': 'Lựa chọn giọng đọc phù hợp cho video của bạn',
-        'all-voices': 'Tất cả',
-        'male-voices': 'Giọng Nam',
-        'female-voices': 'Giọng Nữ',
-        'vietnamese-voices': 'Tiếng Việt',
-        'english-voices': 'Tiếng Anh',
-        'voice-settings': 'Cài đặt giọng đọc',
-        'speed-label': 'Tốc độ (Bình thường)',
-        'pitch-label': 'Tông giọng (Trung bình)',
-        'volume-label': 'Âm lượng',
-        'low': 'Thấp',
-        'normal': 'Bình thường',
-        'high': 'Cao',
-        'sample-text-title': 'Mô Tả  về sản phẩm',
-        'sample-text-placeholder': 'Xin chào! Đây là giọng đọc AI của Tinovideo. Chúng tôi sẽ giúp bạn tạo video quảng cáo tuyệt vời.',
-        'preview-voice': 'Nghe thử',
-        'previous-btn': 'Quay lại',
-        'next-create-btn': 'Tiếp theo: Tạo video',
-
-        // Step 3
-        'step-3-main-title': 'Bước 3: kịch bản ',
-        'step-3-description': 'Chọn template và tùy chỉnh video theo ý muốn',
-        'template-gallery': 'Thư viện Template',
-        'video-preview': 'Xem trước video',
-        'preview-placeholder': 'Video preview sẽ hiển thị ở đây',
-        'customization': 'Tạo Kịch Bản',
-        'background-music': 'Nhạc nền',
-        'no-music': 'Không có nhạc',
-        'text-style': 'Kiểu chữ',
-        'transitions': 'Hiệu ứng chuyển cảnh',
-        'fade': 'Fade',
-        'slide': 'Slide',
-        'zoom': 'Zoom',
-        'dissolve': 'Dissolve',
-        'video-duration': 'Thời lượng video',
-        'generate-video': 'Tạo Video AI',
-        'generation-time': 'Quá trình tạo video sẽ mất 2-3 phút',
-        'next-export-btn': 'Tiếp theo: Xuất video',
-        // Step 4
-        'step-3-main-title': 'Bước 3: Tạo Video',
-        'step-3-description': 'Chọn template và tùy chỉnh video theo ý muốn',
-        'template-gallery': 'Thư viện Template',
-        'video-preview': 'Xem trước video',
-        'preview-placeholder': 'Video preview sẽ hiển thị ở đây',
-        'customization': 'Tùy chỉnh',
-        'background-music': 'Nhạc nền',
-        'no-music': 'Không có nhạc',
-        'text-style': 'Kiểu chữ',
-        'transitions': 'Hiệu ứng chuyển cảnh',
-        'fade': 'Fade',
-        'slide': 'Slide',
-        'zoom': 'Zoom',
-        'dissolve': 'Dissolve',
-        'video-duration': 'Thời lượng video',
-        'generate-video': 'Tạo Video AI',
-        'generation-time': 'Quá trình tạo video sẽ mất 2-3 phút',
-        'next-export-btn': 'Tiếp theo: Xuất video',
-
-        // Step 5
-        'step-4-main-title': 'Bước 4: Xuất Video',
-        'step-4-description': 'Tùy chỉnh chất lượng và tải xuống video của bạn',
-        'video-ready': 'Video đã sẵn sàng!',
-        'video-ready-desc': 'Video AI của bạn đã được tạo thành công',
-        'final-preview': 'Xem trước cuối cùng',
-        'final-video-ready': 'Video đã hoàn thành',
-        'play-video': 'Phát video',
-        'export-settings': 'Cài đặt xuất',
-        'video-quality': 'Chất lượng video',
-        'video-format': 'Định dạng',
-        'thumbnail': 'Thumbnail',
-        'download-options': 'Tùy chọn tải xuống',
-        'download-video': 'Tải Video',
-        'share-video': 'Chia sẻ',
-        'save-cloud': 'Lưu Cloud',
-        'create-new': 'Tạo video mới',
-
-        // Other sections
-        'dashboard-title': 'Bảng điều khiển',
-        'projects-title': 'Dự Án Của Tôi',
-        'templates-title': 'Mẫu Thư Viện',
-        'settings-title': 'Cài Đặt',
-        'help-title': 'Trợ giúp',
-
-        // Loading
-        'processing': 'Đang xử lý...',
-        'processing-desc': 'AI đang tạo video cho bạn',
-        'processing-desc-script': 'AI đang tạo kịch bản cho bạn'
+    "vi": {
+        "-vi-75cb": "🇻🇳 VI",
+        "-en-1b8b": "🇺🇸 EN",
+        "tinovideo-bd7c": "Tinovideo",
+        "-0985": "☰",
+        "-864a": "|",
+        "1-6c96": "1",
+        "2-efd6": "2",
+        "3-f74e": "3",
+        "4-3c81": "4",
+        "5-f5dc": "5",
+        "15s-1a65": "15s",
+        "30s-fbdb": "30s",
+        "60s-e055": "60s",
+        "tất-cả-fdff": "Tất cả",
+        "quảng-cáo-9c1e": "Quảng cáo",
+        "đánh-giá-53a7": "Đánh giá",
+        "kể-chuyện-41bd": "Kể chuyện",
+        "mẹo-nhanh-bb29": "Mẹo nhanh",
+        "giới-tính-fddb": "Giới tính",
+        "tất-cả-7368": "Tất cả",
+        "nam-f5d3": "Nam",
+        "nữ-de04": "Nữ",
+        "cảm-xúc-e1d3": "Cảm xúc",
+        "tất-cả-c501": "Tất cả",
+        "vui-vẻ-8e8d": "Vui vẻ",
+        "nghi-ngờ-3177": "nghi ngờ",
+        "buồn-bã-8edc": "buồn bã",
+        "cấp-bách-84a8": "cấp bách",
+        "wow-ad8f": "Wow",
+        "tức-tối-e63a": "Tức tối",
+        "-chọn-câu-mở-đầu--2b23": "-- Chọn câu mở đầu --",
+        "chào-bạn-đây-là-sản-phẩm-đang-rất-hot-tr-6e72": "Chào\n                                                bạn! Đây là sản phẩm đang rất hot trên thị trường.",
+        "bạn-đang-tìm-một-giải-pháp-hiệu-quả-hãy--cb30": "Bạn đang tìm một giải pháp hiệu quả? Hãy xem ngay sản phẩm này!",
+        "hôm-nay-mình-sẽ-review-một-sản-phẩm-cực--d7aa": "Hôm\n                                                nay mình sẽ review một sản phẩm cực kỳ đáng chú ý.",
+        "cùng-khám-phá-điều-đặc-biệt-ở-sản-phẩm-n-12e1": "Cùng khám\n                                                phá điều đặc biệt ở sản phẩm này nhé!",
+        "đừng-bỏ-lỡ-đây-có-thể-là-thứ-bạn-đang-cầ-b497": "Đừng bỏ lỡ, đây\n                                                có thể là thứ bạn đang cần!",
+        "0-5f31": "0%",
+        "1280x720-0975": "1280x720",
+        "1920x1080-2b62": "1920x1080",
+        "3840x2160-674e": "3840x2160",
+        "mp4-khuyến-nghị-2dda": "MP4 (Khuyến nghị)",
+        "mov-1e90": "MOV",
+        "avi-96ef": "AVI",
+        "dự-án-của-tôi-e9e2": "Dự Án Của Tôi",
+        "danh-sách-các-dự-án-của-bạn-sẽ-hiển-thị--18fb": "Danh sách các dự án của bạn sẽ hiển thị tại đây.",
+        "chỉnh-sửa-video-của-bạn-5600": "Chỉnh sửa video của bạn",
+        "affiliate-a712": "Affiliate",
+        "thông-tin-chương-trình-affiliate-link-gi-a5ce": "Thông tin chương trình affiliate & link giới thiệu.",
+        "cài-đặt-966b": "Cài Đặt",
+        "thay-đổi-tùy-chọn-cá-nhân-của-bạn-ở-đây-5f5a": "Thay đổi tùy chọn cá nhân của bạn ở đây.",
+        "trợ-giúp-27e9": "Trợ Giúp",
+        "các-câu-hỏi-thường-gặp-và-hỗ-trợ-7fa1": "Các câu hỏi thường gặp và hỗ trợ.",
+        "nav-create": "Tạo Video Mới",
+        "nav-templates": "Edit Video",
+        "nav-affiliate": "Affiliate",
+        "nav-settings": "Cài Đặt",
+        "nav-help": "Trợ giúp",
+        "user-plan": "Chưa có gói ",
+        "credits-remaining": "Credits còn lại:",
+        "point": "100",
+        "upgrade-btn": "Nâng cấp",
+        "main-title": "Tạo Video AI",
+        "step-1-title": "Nhập Nội Dung",
+        "step-2-title": "Chọn Giọng Đọc AI",
+        "step-3-title": "Tạo Kịch Bản",
+        "step-4-title": "Tạo Video",
+        "step-5-title": "Xuất Video",
+        "step-1-main-title": "Bước 1: Nhập Nội Dung\n                                    Sản Phẩm",
+        "step-1-description": "Nhập URL sản phẩm hoặc văn\n                                    bản nội dung để tạo video",
+        "url-label": "URL Sản\n                                            phẩm",
+        "analyze-btn": "Phân\n                                                    tích",
+        "supported-platforms": "Nền tảng\n                                            được hỗ trợ:",
+        "images-label": "Hình ảnh\n                                            bổ sung (tuỳ chọn)",
+        "upload-title": "Kéo thả hoặc\n                                                nhấp để tải lên",
+        "upload-desc": "Hỗ trợ JPG, PNG, WEBP. Tối\n                                                đa 10 hình.",
+        "text-label": "Nội dung văn\n                                            bản",
+        "reset-btn": "Đặt lại",
+        "next-btn": "Tiếp theo: Chọn giọng đọc",
+        "step-2-main-title": "Bước 2: Chọn Giọng Đọc\n                                    AI",
+        "step-2-description": "Lựa chọn giọng đọc phù hợp\n                                    cho video của bạn",
+        "all-voices": "Tất cả",
+        "male-voices": "Giọng Nam",
+        "female-voices": "Giọng Nữ",
+        "video-duration": "Thời lượng\n                                        video",
+        "previous-btn": "Quay\n                                        lại",
+        "next-create-btn": "Tiếp theo: mở đầu",
+        "prompt-main-title": "Bước 3: Chọn Kịch Bản",
+        "prompt-desc": "Chọn mẫu kịch bản phù hợp hoặc tạo\n                                    mới để AI dựng video",
+        "sample-text-title": "Kịch bản\n                                        của bạn",
+        "sample-text-placeholder": "Cảm ơn bạn đã lựa chọn dịch vụ của chúng tôi. Đây là giọng đọc AI từ phần mềm Ti Nô Video, được thiết kế nhằm mang đến trải nghiệm nghe tự nhiên và dễ chịu nhất.",
+        "preview-voice": "Tạo kịch\n                                            bản",
+        "step-3-main-title": "Bước 5: Tạo AI Video",
+        "transitions": "Chọn cảm xúc\n                                    bạn muốn hoặc dùng AI tìm phiên bản tốt nhất",
+        "next-export-btn": "Tiếp theo: Xuất video",
+        "customization": "Gợi ý mở đầu ấn\n                                        tượng",
+        "intro-sentence": "Sửa Câu\n                                            mở\n                                            đầu theo ý của riêng bạn",
+        "video-preview": "Quá trình tạo video\n                                    sẽ mất 2-3 phút",
+        "generate-video": "Tạo Video\n                                        AI",
+        "generation-time": "Quá trình tạo video sẽ mất\n                                    2-3 phút",
+        "step-4-main-title": "Bước 5: Xuất Video",
+        "step-4-description": "Tùy chỉnh chất lượng và tải\n                                xuống video của bạn",
+        "video-ready": "Video đã sẵn sàng!",
+        "video-ready-desc": "Video AI của bạn đã được tạo\n                                    thành công",
+        "export-settings": "Cài đặt xuất",
+        "video-quality": "Chất\n                                                lượng video",
+        "video-format": "Định\n                                                dạng",
+        "download-options": "Tùy chọn tải\n                                    xuống",
+        "download-video": "Tải\n                                            Video",
+        "share-video": "Chia sẻ",
+        "create-new": "Tạo video\n                                        mới",
+        "processing": "Đang xử lý...",
+        "processing-desc": "AI đang tạo video cho bạn"
     },
-    en: {
-        // Navigation
-        'nav-dashboard': 'Dashboard',
-        'nav-create': 'Create New Video',
-        'nav-projects': 'My Projects',
-        'nav-templates': 'Template Library',
-        'nav-settings': 'Settings',
-        'nav-help': 'Help',
-
-        // User info
-        'user-name': 'Demo User',
-        'user-plan': 'Professional',
-        'credits-remaining': 'Credits remaining:',
-        'upgrade-btn': 'Upgrade',
-
-        // Header
-        'main-title': 'Create AI Video',
-        'project-subtitle': 'New project - Input Content',
-        'new-video-btn': 'Create New Video',
-
-        // Steps
-        'step-1-title': 'Input Content',
-        'step-2-title': 'Choose AI Voice',
-        'step-3-title': 'Create Video',
-        'step-4-title': 'Export Video',
-
-        // Step 1
-        'step-1-main-title': 'Step 1: Input Product Content',
-        'step-1-description': 'Enter product URL or text content to create video',
-        'tab-url': 'Product URL',
-        'tab-text': 'Text Content',
-        'url-label': 'Product URL',
-        'url-placeholder': 'https://shopee.vn/...',
-        'analyze-btn': 'Analyze',
-        'supported-platforms': 'Supported platforms:',
-        'images-label': 'Additional images (optional)',
-        'upload-title': 'Drag & drop or click to upload',
-        'upload-desc': 'Support JPG, PNG, WEBP. Maximum 10 images.',
-        'text-label': 'Text content',
-        'text-placeholder': 'Enter your product description...',
-        'reset-btn': 'Reset',
-        'save-btn': 'Save project',
-        'next-btn': 'Next: Choose voice',
-
-        // Step 2
-        'step-2-main-title': 'Step 2: Choose AI Voice',
-        'step-2-description': 'Select suitable voice for your video',
-        'all-voices': 'All',
-        'male-voices': 'Male Voices',
-        'female-voices': 'Female Voices',
-        'vietnamese-voices': 'Vietnamese',
-        'english-voices': 'English',
-        'voice-settings': 'Voice settings',
-        'speed-label': 'Speed (Normal)',
-        'pitch-label': 'Pitch (Medium)',
-        'volume-label': 'Volume',
-        'low': 'Low',
-        'normal': 'Normal',
-        'high': 'High',
-        'sample-text-title': 'Sample text',
-        'sample-text-placeholder': 'Hello! This is Tinovideo AI voice. We will help you create amazing promotional videos.',
-        'preview-voice': 'Preview',
-        'previous-btn': 'Previous',
-        'next-create-btn': 'Next: Create video',
-
-        // Step 3
-        'step-3-main-title': 'Step 3: Create Video',
-        'step-3-description': 'Choose template and customize your video',
-        'template-gallery': 'Template Gallery',
-        'video-preview': 'Video preview',
-        'preview-placeholder': 'Video preview will show here',
-        'customization': 'Customization',
-        'background-music': 'Background music',
-        'no-music': 'No music',
-        'text-style': 'Text style',
-        'transitions': 'Transitions',
-        'fade': 'Fade',
-        'slide': 'Slide',
-        'zoom': 'Zoom',
-        'dissolve': 'Dissolve',
-        'video-duration': 'Video duration',
-        'generate-video': 'Generate AI Video',
-        'generation-time': 'Video generation will take 2-3 minutes',
-        'next-export-btn': 'Next: Export video',
-
-        // Step 4
-        'step-4-main-title': 'Step 4: Export Video',
-        'step-4-description': 'Customize quality and download your video',
-        'video-ready': 'Video is ready!',
-        'video-ready-desc': 'Your AI video has been created successfully',
-        'final-preview': 'Final preview',
-        'final-video-ready': 'Video completed',
-        'play-video': 'Play video',
-        'export-settings': 'Export settings',
-        'video-quality': 'Video quality',
-        'video-format': 'Format',
-        'thumbnail': 'Thumbnail',
-        'download-options': 'Download options',
-        'download-video': 'Download Video',
-        'share-video': 'Share',
-        'save-cloud': 'Save to Cloud',
-        'create-new': 'Create new video',
-
-        // Other sections
-        'dashboard-title': 'Dashboard',
-        'projects-title': 'My Projects',
-        'templates-title': 'Template Library',
-        'settings-title': 'Settings',
-        'help-title': 'Help',
-
-        // Loading
-        'processing': 'Processing...',
-        'processing-desc': 'AI is creating your video'
+    "en": {
+        "-vi-75cb": "🇻🇳 VI",
+        "-en-1b8b": "🇺🇸 EN",
+        "tinovideo-bd7c": "Tinovideo",
+        "-0985": "☰",
+        "-864a": "|",
+        "1-6c96": "1",
+        "2-efd6": "2",
+        "3-f74e": "3",
+        "4-3c81": "4",
+        "5-f5dc": "5",
+        "15s-1a65": "15s",
+        "30s-fbdb": "30s",
+        "60s-e055": "60s",
+        "tất-cả-fdff": "Tất cả",
+        "quảng-cáo-9c1e": "Quảng cáo",
+        "đánh-giá-53a7": "Đánh giá",
+        "kể-chuyện-41bd": "Kể chuyện",
+        "mẹo-nhanh-bb29": "Mẹo nhanh",
+        "giới-tính-fddb": "Giới tính",
+        "tất-cả-7368": "Tất cả",
+        "nam-f5d3": "Nam",
+        "nữ-de04": "Nữ",
+        "cảm-xúc-e1d3": "Cảm xúc",
+        "tất-cả-c501": "Tất cả",
+        "vui-vẻ-8e8d": "Vui vẻ",
+        "nghi-ngờ-3177": "nghi ngờ",
+        "buồn-bã-8edc": "buồn bã",
+        "cấp-bách-84a8": "cấp bách",
+        "wow-ad8f": "Wow",
+        "tức-tối-e63a": "Tức tối",
+        "-chọn-câu-mở-đầu--2b23": "-- Chọn câu mở đầu --",
+        "chào-bạn-đây-là-sản-phẩm-đang-rất-hot-tr-6e72": "Chào\n                                                bạn! Đây là sản phẩm đang rất hot trên thị trường.",
+        "bạn-đang-tìm-một-giải-pháp-hiệu-quả-hãy--cb30": "Bạn đang tìm một giải pháp hiệu quả? Hãy xem ngay sản phẩm này!",
+        "hôm-nay-mình-sẽ-review-một-sản-phẩm-cực--d7aa": "Hôm\n                                                nay mình sẽ review một sản phẩm cực kỳ đáng chú ý.",
+        "cùng-khám-phá-điều-đặc-biệt-ở-sản-phẩm-n-12e1": "Cùng khám\n                                                phá điều đặc biệt ở sản phẩm này nhé!",
+        "đừng-bỏ-lỡ-đây-có-thể-là-thứ-bạn-đang-cầ-b497": "Đừng bỏ lỡ, đây\n                                                có thể là thứ bạn đang cần!",
+        "0-5f31": "0%",
+        "1280x720-0975": "1280x720",
+        "1920x1080-2b62": "1920x1080",
+        "3840x2160-674e": "3840x2160",
+        "mp4-khuyến-nghị-2dda": "MP4 (Khuyến nghị)",
+        "mov-1e90": "MOV",
+        "avi-96ef": "AVI",
+        "dự-án-của-tôi-e9e2": "My Projects",
+        "danh-sách-các-dự-án-của-bạn-sẽ-hiển-thị--18fb": "Danh sách các dự án của bạn sẽ hiển thị tại đây.",
+        "chỉnh-sửa-video-của-bạn-5600": "Chỉnh sửa video của bạn",
+        "affiliate-a712": "Affiliate",
+        "thông-tin-chương-trình-affiliate-link-gi-a5ce": "Thông tin chương trình affiliate & link giới thiệu.",
+        "cài-đặt-966b": "Settings",
+        "thay-đổi-tùy-chọn-cá-nhân-của-bạn-ở-đây-5f5a": "Thay đổi tùy chọn cá nhân của bạn ở đây.",
+        "trợ-giúp-27e9": "Trợ Giúp",
+        "các-câu-hỏi-thường-gặp-và-hỗ-trợ-7fa1": "Các câu hỏi thường gặp và hỗ trợ.",
+        "nav-create": "Create Video",
+        "nav-templates": "Edit Video",
+        "nav-affiliate": "Affiliate",
+        "nav-settings": "Settings",
+        "nav-help": "Help",
+        "user-plan": "Professional",
+        "credits-remaining": "Remaining credits:",
+        "point": "100",
+        "upgrade-btn": "Upgrade",
+        "main-title": "Create AI Video",
+        "step-1-title": "Input Content",
+        "step-2-title": "Choose AI Voice",
+        "step-3-title": "Create Script",
+        "step-4-title": "Generate Video",
+        "step-5-title": "Export Video",
+        "step-1-main-title": "Step 1: Input Product Content",
+        "step-1-description": "Enter product URL or text content to create the video",
+        "url-label": "Product URL",
+        "analyze-btn": "Analyze",
+        "supported-platforms": "Supported Platforms:",
+        "images-label": "Additional Images (Optional)",
+        "upload-title": "Drag & Drop or Click to Upload",
+        "upload-desc": "Supports JPG, PNG, WEBP. Max 10 images.",
+        "text-label": "Text Content",
+        "reset-btn": "Reset",
+        "next-btn": "Next: Choose Voice",
+        "step-2-main-title": "Step 2: Choose AI Voice",
+        "step-2-description": "Select the appropriate AI voice for your video",
+        "all-voices": "All Voices",
+        "male-voices": "Male Voices",
+        "female-voices": "Female Voices",
+        "video-duration": "Video Duration",
+        "previous-btn": "Back",
+        "next-create-btn": "Next: Hook Line",
+        "prompt-main-title": "Step 3: Choose Script",
+        "prompt-desc": "Choose a suitable script or create a new one for AI to generate the video",
+        "sample-text-title": "Your Script",
+        "preview-voice": "Create Script",
+        "step-3-main-title": "Step 5: Generate AI Video",
+        "transitions": "Select the desired emotion or let AI choose the best version",
+        "next-export-btn": "Next: Export Video",
+        "customization": "Hook Suggestions",
+        "intro-sentence": "Edit the Opening Line to Your Style",
+        "video-preview": "Video generation will take 2-3 minutes",
+        "generate-video": "Generate AI Video",
+        "generation-time": "Video generation will take 2-3 minutes",
+        "step-4-main-title": "Step 5: Export Video",
+        "step-4-description": "Customize quality and download your video",
+        "video-ready": "Video is Ready!",
+        "video-ready-desc": "Your AI video has been successfully created",
+        "export-settings": "Export Settings",
+        "video-quality": "Video Quality",
+        "video-format": "Format",
+        "download-options": "Download Options",
+        "download-video": "Download Video",
+        "share-video": "Share",
+        "create-new": "Create New Video",
+        "processing": "Processing...",
+        "processing-desc": "AI is generating your video"
     }
 };
+document.addEventListener("DOMContentLoaded", () => {
+    const savedLang = localStorage.getItem("tinovideo-language") || "vi";
+    switchLanguage(savedLang);
 
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            switchLanguage(lang);
+        });
+    });
+    
+});
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  if (sidebar) {
+    sidebar.style.display = "none"; 
+  }
+}
+function switchLanguage(lang) {
+    localStorage.setItem('tinovideo-language', lang);
+    const t = dashboardTranslations[lang];
+    console.log(t);
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.dataset.lang === lang) {
+            btn.style.display = 'none'; // ẩn nút hiện tại
+        } else {
+            btn.style.display = 'inline-block'; // hiện nút còn lại
+        }
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        }
+    });
+
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (!t[key]) return;
+
+        if (el.placeholder !== undefined && el.tagName === 'INPUT') {
+            el.placeholder = t[key];
+        } else {
+            el.textContent = t[key];
+        }
+    });
+
+
+}
 function validateUrl(url) {
     try {
         new URL(url);
@@ -345,15 +372,53 @@ function selectVoice(voiceId, element) {
 
 // Filter voices
 function filterVoices(filter) {
-    // Update filter buttons
+    // Cập nhật nút active
     document.querySelectorAll('.voice-category-btn').forEach(btn => {
-        btn.classList.remove('active');
+        const label = btn.textContent.toLowerCase();
+        const isMatch =
+            (filter === 'male' && label.includes('nam')) ||
+            (filter === 'female' && label.includes('nữ')) ||
+            (filter === 'all' && label.includes('tất'));
+        btn.classList.toggle('active', isMatch);
     });
-    event.target.classList.add('active');
 
-    // Filter logic would go here
-    showToast(`Lọc giọng đọc: ${filter}`, 'info');
+    const filtered = allVoices.filter(v => {
+        if (filter === 'all') return true;
+        return v.gender === filter;
+    });
+
+    renderVoiceGrid(filtered);
+    showToast(`🎙️ Lọc giọng đọc: ${filter === 'female' ? 'Nữ' : filter === 'male' ? 'Nam' : 'Tất cả'}`, 'info');
 }
+
+
+function renderVoiceGrid(voices) {
+    const voiceGrid = document.getElementById('voice-grid');
+    voiceGrid.innerHTML = voices.map(v => `
+        <div class="voice-card ${v.id === selectedVoice?.id ? 'selected' : ''}"
+             onclick="selectVoice('${v.id}', this)">
+          <div class="flex items-center mb-3">
+            <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full
+                        flex items-center justify-center mr-3">
+              <i class="fas ${v.gender === 'male' ? 'fa-male' : 'fa-female'} text-white text-lg"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold">${v.name}</h4>
+              <p class="text-sm text-gray-400">${v.accent}</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-xs px-2 py-1 rounded bg-green-500/20 text-green-400">Tiếng Việt</span>
+           <button class="voice-play-btn text-blue-400 hover:text-blue-300"
+            data-filename="${v.demo}"
+            onclick="handleVoicePlay(event)">
+                <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </div>
+    `).join('');
+}
+
 
 // Voice settings
 function updateSpeed(value) {
@@ -412,18 +477,6 @@ function updatePlayButton(btn, isPlaying) {
 
 
 
-function selectPrompt(id, el) {
-    document.querySelectorAll('.prompt-card').forEach(c => c.classList.remove('ring-2', 'ring-green-500'));
-    el.classList.add('ring-2', 'ring-green-500');
-    selectedPrompt = PROMPTS.find(p => p.id === id);
-    showToast('Đã chọn kịch bản', 'success');
-}
-function filterPrompts(cat) {
-    document.querySelectorAll('.prompt-cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-    document.querySelectorAll('.prompt-card').forEach(card => {
-        card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
-    });
-}
 
 
 function nextStep() {
@@ -493,24 +546,25 @@ function validateCurrentStep() {
             break;
 
         case 3:
-            if (!selectedPrompt) {
-                showToast('Vui lòng chọn mẫu kịch bản', 'warning');
-                return false;
-            }
             const scriptContent = document.getElementById('script-text').value.trim();
-            const wordCount = scriptContent.split(/\s+/).length;
+            const wordCount = scriptContent.split(/\s+/).filter(Boolean).length;
+
             if (!scriptContent) {
                 showToast('Vui lòng tạo kịch bản trước khi tiếp tục', 'warning');
                 return false;
             }
-            if (wordCount > 1000) {
-                showToast('Kịch bản vượt quá 1000 từ. Vui lòng rút gọn!', 'warning');
+
+            if (wordCount < 20) {
+                showToast('Kịch bản quá ngắn. Vui lòng viết ít nhất 20 từ.', 'warning');
+                return false;
+            } else if (wordCount > 100) {
+                showToast('Kịch bản vượt quá 100 từ. Vui lòng rút gọn!', 'warning');
                 return false;
             }
-            projectData.prompt = selectedPrompt;
-            projectData.script = scriptContent;
-            break;
 
+            projectData.script = scriptContent;
+            projectData.prompt = selectedPrompt || null;
+            break;
         case 4:
             if (!selectedModels) {
                 showToast('Vui lòng chọn Mẫu', 'warning');
@@ -527,8 +581,9 @@ function validateCurrentStep() {
             }
             break;
         case 6:
-            if (!selectedModels) {
-                showToast('Vui lòng chọn nhân vật AI', 'warning');
+            const iframe = document.querySelector('#video-wrapper iframe');
+            if (!iframe) {
+                showToast('Vui lòng tạo video trước khi tiếp tục', 'warning');
                 return false;
             }
             break;
@@ -565,7 +620,7 @@ const ANH_VIEN_VOICE_ID = 'iSFxP4Z6YNcx9OXl62Ic';
 function initializeVoiceSelection() {
     const voiceGrid = document.getElementById('voice-grid');
     // Chỉ 2 giọng: AI & Ánh Viên
-    const voices = [
+    allVoices = [
         {
             id: 'default-ai',
             name: 'AI',
@@ -615,14 +670,14 @@ function initializeVoiceSelection() {
         , {
             id: '329254',
             name: 'Khả Hân',
-            gender: 'male',
+            gender: 'female',
             language: 'vietnamese',
             accent: 'Miền Bắc',
             demo: 'dangtungduy.mp3'
         }, {
             id: '329253',
             name: 'Linh Đan',
-            gender: 'male',
+            gender: 'female',
             language: 'vietnamese',
             accent: 'Miền Bắc',
             demo: 'dangtungduy.mp3'
@@ -630,7 +685,7 @@ function initializeVoiceSelection() {
         , {
             id: '329251',
             name: 'Ái My',
-            gender: 'male',
+            gender: 'female',
             language: 'vietnamese',
             accent: 'Miền Bắc',
             demo: 'dangtungduy.mp3'
@@ -638,56 +693,57 @@ function initializeVoiceSelection() {
         , {
             id: '329250',
             name: 'Mỹ Dung',
-            gender: 'male',
+            gender: 'female',
             language: 'vietnamese',
             accent: 'Miền Bắc',
             demo: 'dangtungduy.mp3'
         }
     ];
 
-    voiceGrid.innerHTML = voices.map(v => `
-    <div class="voice-card ${v.id === selectedVoice?.id ? 'selected' : ''}"
-         onclick="selectVoice('${v.id}', this)">
-      <div class="flex items-center mb-3">
-        <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full
-                    flex items-center justify-center mr-3">
-          <i class="fas fa-female text-white text-lg"></i>
-        </div>
-        <div>
-          <h4 class="font-semibold">${v.name}</h4>
-          <p class="text-sm text-gray-400">${v.accent}</p>
-        </div>
-      </div>
-      <div class="flex justify-between items-center">
-        <span class="text-xs px-2 py-1 rounded bg-green-500/20 text-green-400">Tiếng Việt</span>
-       <button class="voice-play-btn text-blue-400 hover:text-blue-300"
-        data-filename="${v.demo}"
-        onclick="handleVoicePlay(event)">
-            <i class="fas fa-play"></i>
-        </button>
-      </div>
-    </div>
-  `).join('');
+    //     voiceGrid.innerHTML = voices.map(v => `
+    //     <div class="voice-card ${v.id === selectedVoice?.id ? 'selected' : ''}"
+    //          onclick="selectVoice('${v.id}', this)">
+    //       <div class="flex items-center mb-3">
+    //         <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full
+    //                     flex items-center justify-center mr-3">
+    //           <i class="fas fa-female text-white text-lg"></i>
+    //         </div>
+    //         <div>
+    //           <h4 class="font-semibold">${v.name}</h4>
+    //           <p class="text-sm text-gray-400">${v.accent}</p>
+    //         </div>
+    //       </div>
+    //       <div class="flex justify-between items-center">
+    //         <span class="text-xs px-2 py-1 rounded bg-green-500/20 text-green-400">Tiếng Việt</span>
+    //        <button class="voice-play-btn text-blue-400 hover:text-blue-300"
+    //         data-filename="${v.demo}"
+    //         onclick="handleVoicePlay(event)">
+    //             <i class="fas fa-play"></i>
+    //         </button>
+    //       </div>
+    //     </div>
+    //   `).join('');
+    renderVoiceGrid(allVoices); // Hiển thị ban đầu
 }
 
 /* ==================== PROMPT GALLERY ==================== */
 const PROMPTS = [
     {
         id: 'review-urgent-solution',
-        cat: 'review',
+        cat: 'ads',
         title: 'Review “Giải pháp cho vấn đề cấp bách”',
         text: 'Nêu vấn đề nhức nhối → giới thiệu giải pháp → kêu gọi hành động',
-        icon: 'images/icons/icons8-qa-64.png',
-        gradient: 'gradient-ai-blue',      // từ chàm đậm → xanh lam nhẹ
+        icon: '/images/icons/icons8-qa-64.png',
+        gradient: 'gradient-ai-blue',      
         textColor: 'text-white'
     },
     {
         id: 'review-before-after',
-        cat: 'review',
+        cat: 'danhgia',
         title: 'Review “So sánh trước và sau”',
         text: 'Hiển thị bằng chứng trực quan (ảnh/video trước–sau) → nhấn mạnh thay đổi',
-        icon: 'images/icons/ss.png',
-        gradient: 'gradient-ai-purple',    // từ tím đậm → hồng nhạt
+        icon: '/images/icons/ss.png',
+        gradient: 'gradient-ai-purple',   
         textColor: 'text-white'
     },
     {
@@ -695,8 +751,8 @@ const PROMPTS = [
         cat: 'review',
         title: 'Review “Chứng thực từ khách hàng thực”',
         text: 'Trích dẫn cảm nhận khách hàng, chèn cảnh sử dụng sản phẩm',
-        icon: 'images/icons/dialogue.png',
-        gradient: 'gradient-ai-cyan',      // từ lam ngọc → xanh cyan
+        icon: '/images/icons/dialogue.png',
+        gradient: 'gradient-ai-cyan',     
         textColor: 'text-black'
     },
     {
@@ -704,17 +760,17 @@ const PROMPTS = [
         cat: 'review',
         title: 'Review “Thử thách thực tế”',
         text: 'Thực hiện thử thách/benchmark và trình bày kết quả ấn tượng',
-        icon: 'images/icons/challenge.png',
-        gradient: 'bg-gradient-to-r from-green-500 to-blue-500',     // từ xanh ngọc → xanh lá pastel
+        icon: '/images/icons/challenge.png',
+        gradient: 'bg-gradient-to-r from-green-500 to-blue-500',     
         textColor: 'text-black'
     },
     {
         id: 'review-journey',
-        cat: 'review',
+        cat: 'story',
         title: 'Review “Hành trình khám phá sản phẩm”',
         text: 'Kể hành trình trải nghiệm từng bước, nêu điểm nhấn & cảm xúc',
-        icon: 'images/icons/discover.png',
-        gradient: 'gradient-ai-indigo',    // từ chàm → xanh tím dịu
+        icon: '/images/icons/discover.png',
+        gradient: 'gradient-ai-indigo',   
         textColor: 'text-white'
     },
     {
@@ -722,43 +778,43 @@ const PROMPTS = [
         cat: 'review',
         title: 'Review “Đối thoại với chuyên gia”',
         text: 'Phỏng vấn ngắn chuyên gia, trích ý kiến chuyên môn + lợi ích',
-        icon: 'images/icons/job-interview.png',
+        icon: '/images/icons/job-interview.png',
         gradient: 'gradient-ai-blue',
         textColor: 'text-white'
     },
     {
         id: 'review-qa',
-        cat: 'review',
+        cat: 'tip',
         title: 'Review “Phong cách Q&A”',
         text: 'Liệt kê câu hỏi phổ biến → trả lời ngắn gọn, minh họa trực quan',
-        icon: 'images/icons/verification.png',
+        icon: '/images/icons/verification.png',
         gradient: 'gradient-ai-purple',
         textColor: 'text-white'
     },
     {
         id: 'review-lifestyle',
-        cat: 'review',
+        cat: 'story',
         title: 'Review “Lối sống lý tưởng”',
         text: 'Mô tả lối sống/hoạt cảnh, lồng ghép sản phẩm như giải pháp tối ưu',
-        icon: 'images/icons/idealistic.png',
+        icon: '/images/icons/idealistic.png',
         gradient: 'gradient-ai-cyan',
         textColor: 'text-black'
     },
     {
         id: 'review-success-story',
-        cat: 'review',
+        cat: 'story',
         title: 'Review “Câu chuyện thành công”',
         text: 'Kể câu chuyện thành công có thật, nhấn vai trò sản phẩm, chốt CTA',
-        icon: 'images/icons/success.png',
+        icon: '/images/icons/success.png',
         gradient: 'gradient-ai-green',
         textColor: 'text-black'
     },
     {
         id: 'review-flash-sale',
-        cat: 'review',
+        cat: 'tip',
         title: 'Review “Flash Sale Countdown”',
         text: 'Đếm ngược Flash-sale, nêu lợi ích nhanh, tạo FOMO, kêu gọi mua ngay',
-        icon: 'images/icons/flash-sale.png',
+        icon: '/images/icons/flash-sale.png',
         gradient: 'gradient-ai-indigo',
         textColor: 'text-white'
     }
@@ -790,8 +846,8 @@ function initializePromptGallery() {
     const scriptText = document.getElementById('script-text').value.trim();
     const wordCount = scriptText.split(/\s+/).length;
 
-    if (wordCount > 1000) {
-        showToast(`Kịch bản đang có ${wordCount} từ. Vui lòng rút gọn dưới 1000 từ để tiếp tục.`, 'warning');
+    if (wordCount > 100) {
+        showToast(`Kịch bản đang có ${wordCount} từ. Vui lòng rút gọn dưới 100 từ để tiếp tục.`, 'warning');
         return; // ❌ Không cho sang bước tiếp theo
     }
 }
@@ -815,7 +871,56 @@ function insertPrompt(promptId) {
     }
 }
 
+function selectPrompt(id, el) {
+    document.querySelectorAll('.prompt-card').forEach(c => c.classList.remove('ring-2', 'ring-green-500'));
+    el.classList.add('ring-2', 'ring-green-500');
+    selectedPrompt = PROMPTS.find(p => p.id === id);
+    showToast('Đã chọn kịch bản', 'success');
+}
 
+function filterPrompts(cat) {
+    console.log("Filtering by category:", cat);
+
+    // Cập nhật trạng thái active cho các nút
+    document.querySelectorAll('.prompt-cat-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.cat === cat);
+    });
+
+    // Lọc các prompt card
+    document.querySelectorAll('.prompt-card').forEach(card => {
+        const promptId = card.getAttribute('onclick').match(/'([^']+)'/)[1];
+        const prompt = PROMPTS.find(p => p.id === promptId);
+
+        if (!prompt) {
+            card.classList.add('hidden');
+            return;
+        }
+
+        if (cat === 'all' || prompt.cat === cat) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
+
+// function filterPrompts(cat) {
+//     console.log("Cat",cat);
+
+//   // Cập nhật trạng thái active cho các nút
+//   document.querySelectorAll('.prompt-cat-btn').forEach(b => {
+//     b.classList.toggle('active', b.dataset.cat === cat);
+//   });
+
+//   // Lọc các prompt card
+//   document.querySelectorAll('.prompt-card').forEach(card => {
+//     if (cat === 'all') {
+//       card.classList.remove('hidden');
+//     } else {
+//         card.classList.remove('hidden');
+//     }
+//   });
+// }
 
 // Template gallery
 function initializeModels() {
@@ -1138,70 +1243,144 @@ function renderImagePreviews() {
     });
 }
 
-function handleImageUpload(event) {
+// function handleImageUpload(event) {
+//     const files = event.target.files;
+//     const preview = document.getElementById('image-preview');
+
+//     if (!files || files.length === 0) return;
+
+//     // Đếm ảnh đang có
+//     const currentImageCount = preview.querySelectorAll('img').length;
+//     const maxAllowed = 10;
+
+//     if (currentImageCount >= maxAllowed) {
+//         showToast(`Bạn chỉ được chọn tối đa ${maxAllowed} ảnh`, 'warning');
+//         return;
+//     }
+
+//     const remainingSlots = maxAllowed - currentImageCount;
+//     const filesToAdd = Array.from(files).slice(0, remainingSlots);
+
+//     preview.classList.remove('hidden');
+
+//     filesToAdd.forEach((file, index) => {
+//         if (!file.type.startsWith('image/')) return;
+
+//         const reader = new FileReader();
+//         reader.onload = (e) => {
+//             const dataUri = e.target.result;
+//             const wrapper = document.createElement('div');
+//             wrapper.className = 'relative group';
+
+//             const img = document.createElement('img');
+//             // img.src = e.target.result;
+//             img.src = dataUri;
+//             img.alt = file.name;
+//             img.dataset.realpath = dataUri;
+//             img.className = 'rounded w-full h-auto object-cover cursor-pointer transition-transform duration-200 group-hover:scale-105';
+
+//             img.addEventListener('click', () => {
+//                 const a = document.createElement('a');
+//                 a.href = img.src;
+//                 a.download = file.name;
+//                 a.click();
+//             });
+
+//             const closeBtn = document.createElement('button');
+//             closeBtn.innerHTML = '×';
+//             closeBtn.className = `
+//         absolute top-1 right-1 w-6 h-6 rounded-full 
+//         bg-black bg-opacity-60 text-white font-bold 
+//         flex items-center justify-center text-sm
+//         hover:bg-opacity-90 transition-all
+//       `;
+//             closeBtn.addEventListener('click', () => {
+//                 wrapper.remove();
+//             });
+
+//             wrapper.appendChild(img);
+//             wrapper.appendChild(closeBtn);
+//             preview.appendChild(wrapper);
+
+//             uploadedImages.push(file);
+//         };
+//         reader.readAsDataURL(file);
+//     });
+
+// }
+async function handleImageUpload(event) {
     const files = event.target.files;
     const preview = document.getElementById('image-preview');
-
     if (!files || files.length === 0) return;
 
-    // Đếm ảnh đang có
     const currentImageCount = preview.querySelectorAll('img').length;
     const maxAllowed = 10;
-
     if (currentImageCount >= maxAllowed) {
         showToast(`Bạn chỉ được chọn tối đa ${maxAllowed} ảnh`, 'warning');
         return;
     }
 
+    const token = localStorage.getItem('jwt');
     const remainingSlots = maxAllowed - currentImageCount;
-    const filesToAdd = Array.from(files).slice(0, remainingSlots);
+    const filesToUpload = Array.from(files).slice(0, remainingSlots);
 
     preview.classList.remove('hidden');
 
-    filesToAdd.forEach((file, index) => {
-        if (!file.type.startsWith('image/')) return;
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const dataUri = e.target.result;
-            const wrapper = document.createElement('div');
-            wrapper.className = 'relative group';
-
-            const img = document.createElement('img');
-            // img.src = e.target.result;
-            img.src = dataUri;
-            img.alt = file.name;
-            img.dataset.realpath = dataUri;
-            img.className = 'rounded w-full h-auto object-cover cursor-pointer transition-transform duration-200 group-hover:scale-105';
-
-            img.addEventListener('click', () => {
-                const a = document.createElement('a');
-                a.href = img.src;
-                a.download = file.name;
-                a.click();
+    for (const file of filesToUpload) {
+        const formData = new FormData();
+        formData.append('file', file);
+        const userId = JSON.parse(localStorage.getItem("auth_data") || "{}").id;
+        try {
+            const res = await fetch(`${API_BASE_URL}/api/upload-image`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'X-User-Id': userId
+                },
+                body: formData
             });
+            const data = await res.json();
+            if (data.success && data.url) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'relative group';
 
-            const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = '×';
-            closeBtn.className = `
-        absolute top-1 right-1 w-6 h-6 rounded-full 
-        bg-black bg-opacity-60 text-white font-bold 
-        flex items-center justify-center text-sm
-        hover:bg-opacity-90 transition-all
-      `;
-            closeBtn.addEventListener('click', () => {
-                wrapper.remove();
-            });
+                const img = document.createElement('img');
+                const fullUrl = data.url.startsWith('/')
+                    ? `${location.origin}${data.url}`
+                    : data.url;
+                img.src = fullUrl;
+                img.alt = file.name;
+                img.dataset.realpath = fullUrl;
+                img.className = 'rounded w-full h-auto object-cover cursor-pointer transition-transform duration-200 group-hover:scale-105';
 
-            wrapper.appendChild(img);
-            wrapper.appendChild(closeBtn);
-            preview.appendChild(wrapper);
+                img.addEventListener('click', () => {
+                    const a = document.createElement('a');
+                    a.href = data.url;
+                    a.download = file.name;
+                    a.click();
+                });
 
-            uploadedImages.push(file);
-        };
-        reader.readAsDataURL(file);
-    });
+                const closeBtn = document.createElement('button');
+                closeBtn.innerHTML = '×';
+                closeBtn.className = `
+                    absolute top-1 right-1 w-6 h-6 rounded-full 
+                    bg-black bg-opacity-60 text-white font-bold 
+                    flex items-center justify-center text-sm
+                    hover:bg-opacity-90 transition-all
+                `;
+                closeBtn.addEventListener('click', () => wrapper.remove());
 
+                wrapper.appendChild(img);
+                wrapper.appendChild(closeBtn);
+                preview.appendChild(wrapper);
+            } else {
+                showToast(data.message || 'Upload thất bại', 'error');
+            }
+        } catch (err) {
+            console.error(err);
+            showToast('Lỗi khi upload ảnh', 'error');
+        }
+    }
 }
 
 function generateScript() {
@@ -1212,7 +1391,7 @@ function generateScript() {
     const duration = projectData.settings.duration;
 
     if (!promptTemplate) {
-        showToast('Vui lòng CHỌN kịch bản mẫu trước khi tạo kịch bản', 'warning');
+        showToast('Vui lòng chọn kịch bản mẫu trước khi tạo kịch bản', 'warning');
         return;
     }
     if (duration == 15) {
@@ -1371,6 +1550,123 @@ function startProgressBar(duration = 10000) {
     }, interval);
 }
 
+// async function generateVideo() {
+//     const preview = document.getElementById('image-preview');
+//     const imageSet = new Set();
+//     const image_paths = Array.from(preview.querySelectorAll('img'))
+//         .map(img => img.dataset.realpath || img.src)
+//         .filter(p => !imageSet.has(p) && imageSet.add(p));
+
+//     const script = projectData.script || document.getElementById('script-text').value.trim();
+//     const transition = projectData.settings.transition || 'fade';
+//     const music = projectData.settings.music || 'none';
+//     let text = document.getElementById("intro-input").value.trim();
+//     if (!text) text = document.getElementById("intro-select").value;
+//     const sample = projectData.character;
+
+//     if (!script) return showToast('Vui lòng tạo kịch bản trước', 'warning');
+//     if (image_paths.length === 0) return showToast('Vui lòng chọn ít nhất 1 ảnh', 'warning');
+
+//     const body = {
+//         script,
+//         image_paths,
+//         voice_id: projectData.voice?.id,
+//         transition,
+//         text,
+//         bg_music: music !== 'none' ? music : null,
+//         sample,
+//         y_offset: 150,
+//         font_size: 48
+//     };
+//     console.log("body", body)
+//     const token = localStorage.getItem('jwt');
+//     const progressContainer = document.getElementById("progress-container");
+//     const progressBar = document.getElementById("progress-bar");
+//     progressContainer.classList.remove("hidden");
+//     startProgressBar();
+//     console.log("data", body)
+//     let data;
+//     try {
+//         const res = await fetch(`${API_BASE_URL}/api/generate-full-video`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': `Bearer ${token}`
+//             },
+//             body: JSON.stringify(body)
+//         });
+//         data = await res.json();
+//     } catch (err) {
+//         progressContainer.classList.add("hidden");
+//         console.error(err);
+//         return showToast('Lỗi kết nối khi tạo video', 'error');
+//     }
+
+//     if (!data.success) {
+//         progressContainer.classList.add("hidden");
+//         localStorage.removeItem("auth_data");
+//         return showToast(data.message || data.error || 'Tạo video thất bại', 'error');
+//     }
+
+
+//     showToast('🎉 Tạo video thành công!', 'success');
+//     localStorage.removeItem("auth_data"); // ❌ Xoá dữ liệu cũ
+
+//     // ✅ Gọi lại API để lấy thông tin user mới
+//      try {
+//         const res = await fetch(`${API_BASE_URL}/api/user`, {
+//           method: "GET",
+//           headers: { Authorization: `Bearer ${token}` }
+//         });
+//         const data = await res.json();
+//         if (data.success) {
+//           cachedUser = data.user;
+//           localStorage.setItem("auth_data", JSON.stringify(data.user));
+//           fillDataUser(cachedUser);  // ✅ truyền đúng user
+//           return cachedUser;
+//         } else {
+//           console.warn("❌ Không lấy được thông tin user:", data.error);
+//           return null;
+//         }
+//       } catch (err) {
+//         console.error("❌ Lỗi kết nối:", err);
+//         return null;
+//       }
+
+//     const wrapper = document.getElementById('video-wrapper');
+//     wrapper.innerHTML = '';
+//     const videoUrl = data.video_url;
+//     currentVideoUrl = videoUrl;
+//     const iframe = document.createElement('iframe');
+//     progressBar.style.width = "100%";
+//     progressBar.textContent = "100%";
+//     progressContainer.classList.add("hidden");
+//     iframe.src = videoUrl.includes('/view') ? videoUrl.replace('/view', '/preview') : videoUrl;
+//     iframe.width = '100%';
+//     iframe.height = '480';
+//     iframe.allow = 'autoplay; fullscreen';
+//     iframe.className = 'rounded';
+//     wrapper.appendChild(iframe);
+
+//     const downloadBtn = document.getElementById('download-video-btn');
+//     if (downloadBtn) {
+//         downloadBtn.classList.remove('hidden');
+//         downloadBtn.onclick = () => window.open(videoUrl, '_blank');
+//     }
+
+//     const audioUrl = data.voice_url;
+//     const downloadAudioBtn = document.getElementById('download-audio-btn');
+//     if (audioUrl && downloadAudioBtn) {
+//         downloadAudioBtn.classList.remove('hidden');
+//         downloadAudioBtn.onclick = () => window.open(audioUrl, '_blank');
+//     }
+
+//     projectData.video_url = videoUrl;
+//     projectData.voice_url = audioUrl;
+
+// }
+
+
 async function generateVideo() {
     const preview = document.getElementById('image-preview');
     const imageSet = new Set();
@@ -1399,14 +1695,14 @@ async function generateVideo() {
         y_offset: 150,
         font_size: 48
     };
-    console.log("body", body)
+
     const token = localStorage.getItem('jwt');
     const progressContainer = document.getElementById("progress-container");
     const progressBar = document.getElementById("progress-bar");
     progressContainer.classList.remove("hidden");
     startProgressBar();
 
-    let data;
+    let videoData;
     try {
         const res = await fetch(`${API_BASE_URL}/api/generate-full-video`, {
             method: 'POST',
@@ -1416,25 +1712,44 @@ async function generateVideo() {
             },
             body: JSON.stringify(body)
         });
-        data = await res.json();
+        videoData = await res.json();
     } catch (err) {
         progressContainer.classList.add("hidden");
         console.error(err);
         return showToast('Lỗi kết nối khi tạo video', 'error');
     }
 
-    if (!data.success) {
+    if (!videoData.success) {
         progressContainer.classList.add("hidden");
         localStorage.removeItem("auth_data");
-        return showToast(data.message || data.error || 'Tạo video thất bại', 'error');
+        return showToast(videoData.message || videoData.error || 'Tạo video thất bại', 'error');
     }
 
-
     showToast('🎉 Tạo video thành công!', 'success');
+    localStorage.removeItem("auth_data"); // ❌ Xoá dữ liệu cũ
 
+    // ✅ Gọi lại API để lấy thông tin user mới
+    try {
+        const res = await fetch(`${API_BASE_URL}/api/user`, {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const userRes = await res.json();
+        if (userRes.success) {
+            cachedUser = userRes.user;
+            localStorage.setItem("auth_data", JSON.stringify(userRes.user));
+            fillDataUser?.(cachedUser); // Cập nhật UI nếu có
+        } else {
+            console.warn("❌ Không lấy được thông tin user:", userRes.error);
+        }
+    } catch (err) {
+        console.error("❌ Lỗi kết nối khi lấy user:", err);
+    }
+
+    // ✅ Hiển thị video
     const wrapper = document.getElementById('video-wrapper');
     wrapper.innerHTML = '';
-    const videoUrl = data.video_url;
+    const videoUrl = videoData.video_url;
     currentVideoUrl = videoUrl;
     const iframe = document.createElement('iframe');
     progressBar.style.width = "100%";
@@ -1453,7 +1768,7 @@ async function generateVideo() {
         downloadBtn.onclick = () => window.open(videoUrl, '_blank');
     }
 
-    const audioUrl = data.voice_url;
+    const audioUrl = videoData.voice_url;
     const downloadAudioBtn = document.getElementById('download-audio-btn');
     if (audioUrl && downloadAudioBtn) {
         downloadAudioBtn.classList.remove('hidden');
@@ -1463,103 +1778,6 @@ async function generateVideo() {
     projectData.video_url = videoUrl;
     projectData.voice_url = audioUrl;
 }
-
-
-// async function generateVideo() {
-//     const preview = document.getElementById('image-preview');
-//     const imageSet = new Set();
-//     const image_paths = Array.from(preview.querySelectorAll('img'))
-//         .map(img => img.dataset.realpath || img.src)
-//         .filter(p => !imageSet.has(p) && imageSet.add(p));
-
-//     const script = projectData.script || document.getElementById('script-text').value.trim();
-//     const transition = projectData.settings.transition || 'fade';
-//     const music = projectData.settings.music || 'none';
-//     const overlay = document.getElementById('loading-overlay');
-//     if (!script) return showToast('Vui lòng tạo kịch bản trước', 'warning');
-//     if (image_paths.length === 0) return showToast('Vui lòng chọn ít nhất 1 ảnh', 'warning');
-//     let text = document.getElementById("intro-input").value.trim();
-//     if (!text) {
-//         text = document.getElementById("intro-select").value;
-//     }
-
-//     const sample = projectData.character;
-//     overlay.classList.remove('hidden');
-//     // fix cứng
-//     let y_offset = 150;
-//     let font_size = 48;
-//     // Tạo payload gửi backend
-//     const body = {
-//         script,
-//         image_paths,
-//         voice_id: projectData.voice?.id,
-//         transition,
-//         text,
-//         bg_music: music !== 'none' ? music : null,
-//         sample, y_offset, font_size
-//     };
-//     console.log("full-video", body)
-//     const token = localStorage.getItem('jwt');
-//     let data;
-
-//     try {
-//         const res = await fetch(`${API_BASE_URL}/api/generate-full-video`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Bearer ${token}`
-//             },
-//             body: JSON.stringify(body)
-//         });
-//         data = await res.json();
-//     } catch (err) {
-//         overlay.classList.add('hidden');
-//         console.error(err);
-//         return showToast('Lỗi kết nối khi tạo video', 'error');
-//     }
-
-//     overlay.classList.add('hidden');
-
-//     if (!data.success) {
-//         return showToast(data.message || data.error || 'Tạo video thất bại', 'error');
-//     }
-
-//     showToast('🎉 Tạo video thành công!', 'success');
-
-//     // ==== Hiển thị video lên iframe
-//     const wrapper = document.getElementById('video-wrapper');
-//     wrapper.innerHTML = '';
-
-//     const videoUrl = data.video_url;
-//     currentVideoUrl = videoUrl;
-//     const iframe = document.createElement('iframe');
-//     iframe.src = videoUrl.includes('/view') ? videoUrl.replace('/view', '/preview') : videoUrl;
-//     iframe.width = '100%';
-//     iframe.height = '480';
-//     iframe.allow = 'autoplay; fullscreen';
-//     iframe.className = 'rounded';
-//     wrapper.appendChild(iframe);
-
-//     // ==== Nút tải video
-//     const downloadBtn = document.getElementById('download-video-btn');
-//     if (downloadBtn) {
-//         downloadBtn.classList.remove('hidden');
-//         downloadBtn.onclick = () => window.open(videoUrl, '_blank');
-//     }
-
-//     // ==== Nút tải giọng đọc (nếu có)
-//     const audioUrl = data.voice_url;
-//     const downloadAudioBtn = document.getElementById('download-audio-btn');
-//     if (audioUrl && downloadAudioBtn) {
-//         downloadAudioBtn.classList.remove('hidden');
-//         downloadAudioBtn.onclick = () => window.open(audioUrl, '_blank');
-//     }
-
-//     // ==== Lưu vào state
-//     projectData.video_url = videoUrl;
-//     projectData.voice_url = audioUrl;
-//     // document.getElementById('step3-next').disabled = false;
-// }
 
 
 
@@ -1620,12 +1838,12 @@ function resetAnalyzeResult() {
 // Initialize dashboard
 document.addEventListener('DOMContentLoaded', function () {
     // Load saved language preference
-    const savedLanguage = localStorage.getItem('tinovideo-language') || 'vi';
-    switchLanguage(savedLanguage);
+
 
     // Initialize step progress
     updateStepProgress();
-
+    initializeVoiceSelection();
+    filterPrompts('all');
     // Add CSS classes for voice and template buttons
     const style = document.createElement('style');
     style.textContent = `
@@ -1819,10 +2037,13 @@ document.addEventListener('DOMContentLoaded', function () {
     scriptTextarea?.addEventListener("input", () => {
         const text = scriptTextarea.value.trim();
         const words = text.length > 0 ? text.split(/\s+/) : [];
-
-        if (words.length > 500) {
-            scriptTextarea.value = words.slice(0, 500).join(" ");
-            showToast("Giới hạn tối đa 500 từ cho kịch bản");
+        // if (20 < words.length) {
+        //     scriptTextarea.value = words.slice(0, 20).join(" ");
+        //     showToast("Giới hạn tối thiểu 20 từ cho kịch bản");
+        // }
+        if (words.length > 100) {
+            scriptTextarea.value = words.slice(0, 100).join(" ");
+            showToast("Giới hạn tối đa 100 từ cho kịch bản");
         }
     });
 
@@ -2016,7 +2237,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 function waitForUserElementsThenFill(user) {
     const tryFill = () => {
-        const nameEl = document.getElementById("user-name");
+        // const nameEl = document.getElementById("user-name");
         const avatarEl = document.getElementById("user-avatar");
         const pointEl = document.getElementById("user-point");
 

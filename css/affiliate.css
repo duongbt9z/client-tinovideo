@@ -17,7 +17,10 @@ body {
     backdrop-filter: blur(10px);
     border-right: 1px solid #374151;
 }
-
+.lang-btn {
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    color: white;
+}
 .sidebar-item {
     display: flex;
     align-items: center;
@@ -186,7 +189,9 @@ label {
   .tabs {
     flex-direction: column;
   }
-
+ .fl-mobile{
+        display: flex;
+    }
   .tab {
     width: 100%;
   }

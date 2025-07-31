@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gen Video AI</title>
+</head>
+<body style="background: #111; color: white; font-family: sans-serif; text-align: center; padding: 2rem;">
+  <h1>🎥 Tạo video AI từ mô tả</h1>
+  <input type="text" id="prompt" placeholder="Nhập mô tả..." style="padding: 10px; width: 300px;" />
+  <button onclick="generateVideo()" style="padding: 10px 20px;">Tạo Video</button>
+  <p id="loading" style="margin-top: 1rem;"></p>
+  <video id="resultVideo" controls style="margin-top: 2rem; max-width: 80%; display: none;"></video>
+
+  <script>
+    const COMFYUI_API = "http://localhost:8188"; // đổi thành IP thật nếu cần
+    const clientId = crypto.randomUUID(); // để track lịch sử
+
+    async function generateVideo() {
+      const promptText = document.getElementById("prompt").value.trim();
+      const loading = document.getElementById("loading");
+      const videoEl = document.getElementById("resultVideo");
+
+      if (!promptText) {
+        loading.innerText = "⚠️ Vui lòng nhập mô tả.";
+        return;
+      }
+
+      loading.innerText = "🔄 Đang tạo video...";
+      videoEl.style.display = "none";
+
+      // Payload gửi tới ComfyUI API
+      const payload = {
+        client_id: clientId,
+        prompt: {
+          "3": {
+            "class_type": "KSampler",
+            "inputs": {
+              "model": ["48", 0],
+              "positive": ["6", 0],
+              "negative": ["7", 0],
+              "latent_image": ["40", 0],
+              "seed": 123456789,
+              "sampler_name": "uni_pc",
+              "scheduler": "simple",
+              "steps": 20,
+              "cfg": 6,
+              "denoise": 1
+            }
+          },
+          "6": {
+            "class_type": "CLIPTextEncode",
+            "inputs": {
+              "clip": ["38", 0],
+              "text": promptText
+            }
+          },
+          "7": {
+            "class_type": "CLIPTextEncode",
+            "inputs": {
+              "clip": ["38", 0],
+              "text": "worst quality, bad anatomy, lowres"
+            }
+          },
+          "8": {
+            "class_type": "VAEDecode",
+            "inputs": {
+              "samples": ["3", 0],
+              "vae": ["39", 0]
+            }
+          },
+          "47": {
+            "class_type": "SaveWEBM",
+            "inputs": {
+              "images": ["8", 0]
+            },
+            "widgets_values": [
+              "ComfyUI", "vp9", 24, 32
+            ]
+          },
+          "40": {
+            "class_type": "EmptyHunyuanLatentVideo",
+            "inputs": {},
+            "widgets_values": [832, 480, 33, 1]
+          },
+          "48": {
+            "class_type": "ModelSamplingSD3",
+            "inputs": { "model": ["37", 0] },
+            "widgets_values": [8]
+          },
+          "37": {
+            "class_type": "UNETLoader",
+            "inputs": {},
+            "widgets_values": [
+              "wan2.1_t2v_1.3B_fp16.safetensors",
+              "default"
+            ]
+          },
+          "38": {
+            "class_type": "CLIPLoader",
+            "inputs": {},
+            "widgets_values": [
+              "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+              "wan",
+              "default"
+            ]
+          },
+          "39": {
+            "class_type": "VAELoader",
+            "inputs": {},
+            "widgets_values": [
+              "wan_2.1_vae.safetensors"
+            ]
+          }
+        }
+      };
+
+      // 1. Gửi prompt đến ComfyUI
+      const res = await fetch(`${COMFYUI_API}/prompt`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await res.json();
+      const promptId = result.prompt_id;
+
+      if (!promptId) {
+        loading.innerText = "❌ Không nhận được prompt ID.";
+        return;
+      }
+
+      // 2. Poll để lấy kết quả từ /history/<prompt_id>
+      const getVideoUrl = async () => {
+        const historyRes = await fetch(`${COMFYUI_API}/history/${promptId}`);
+        const history = await historyRes.json();
+
+        const outputs = history.outputs || {};
+        for (const node of Object.values(outputs)) {
+          const files = node.files || [];
+          for (const file of files) {
+            if (file.endsWith(".webm")) {
+              return `${COMFYUI_API}/view?filename=${file}`;
+            }
+          }
+        }
+        return null;
+      };
+
+      // 3. Chờ kết quả (poll mỗi 2s, timeout sau 30s)
+      let attempts = 0;
+      let videoUrl = null;
+
+      while (attempts < 15) {
+        videoUrl = await getVideoUrl();
+        if (videoUrl) break;
+        await new Promise(r => setTimeout(r, 2000));
+        attempts++;
+      }
+
+      if (videoUrl) {
+        videoEl.src = videoUrl;
+        videoEl.style.display = "block";
+        loading.innerText = "✅ Video đã sẵn sàng!";
+      } else {
+        loading.innerText = "❌ Không tìm thấy video sau khi tạo.";
+      }
+    }
+  </script>
+</body>
+</html>

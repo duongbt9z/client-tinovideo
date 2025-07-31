@@ -11,7 +11,10 @@ body {
     backdrop-filter: blur(10px);
     border-right: 1px solid #374151;
 }
-
+.lang-btn {
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    color: white;
+}
 .sidebar-item {
     display: flex;
     align-items: center;
@@ -321,8 +324,13 @@ body {
 @media (max-width:639px) {
     #sidebar {
         display: none;
+    } .steps {
+        display: none;
     }
-     
+
+      .fl-mobile{
+        display: flex;
+    }
 
     .block {
         display: block;

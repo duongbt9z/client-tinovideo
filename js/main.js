@@ -184,6 +184,11 @@ function switchLanguage(lang) {
 
     // Update language buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
+         if (btn.dataset.lang === lang) {
+            btn.style.display = 'none'; // ẩn nút hiện tại
+        } else {
+            btn.style.display = 'inline-block'; // hiện nút còn lại
+        }
         btn.classList.remove('active');
         if (btn.dataset.lang === lang) {
             btn.classList.add('active');

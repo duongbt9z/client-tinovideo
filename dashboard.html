@@ -15,7 +15,7 @@
 <body class="bg-gray-900 text-white font-sans overflow-hidden">
 
     <!-- Language Switcher -->
-    <div class="fixed top-4 right-4 z-50 steps">
+    <div class="fixed top-3 right-4 z-50 ">
         <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
             <button onclick="switchLanguage('vi')"
                 class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi">🇻🇳 VI</button>
@@ -28,7 +28,7 @@
         <!-- Sidebar -->
         <div id="sidebar" class=" w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
             <!-- Logo -->
-            <div class="p-6 border-b border-gray-700">
+            <div class="p-6 border-b border-gray-700  fl-mobile">
                 <div class="flex items-center space-x-3">
                     <div
                         class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
@@ -39,31 +39,35 @@
                         class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                         Tinovideo
                     </h1>
+
                 </div>
+                <button onclick="toggleSidebar()" class="md:hidden text-white text-xl px-2 ml-12">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
 
             <!-- Navigation -->
             <nav class="flex-1 py-6">
 
                 <ul class="space-y-2">
-                    <li>
+                    <!-- <li>
                         <a href="#" class="sidebar-item" onclick="showSection('dashboard')">
                             <i class="fas fa-chart-pie w-5 mr-3"></i>
                             <span data-key="nav-dashboard">Dashboard</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="dashboard.html" class="sidebar-item active" onclick="showSection('create')">
                             <i class="fas fa-plus-circle w-5 mr-3"></i>
                             <span data-key="nav-create">Tạo Video Mới</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="projects.html" class="sidebar-item" onclick="showSection('projects')">
                             <i class="fas fa-folder w-5 mr-3"></i>
                             <span data-key="nav-projects">Dự Án Của Tôi</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="editvideo.html" class="sidebar-item" onclick="showSection('templates')">
                             <i class="fas fa-th-large w-5 mr-3"></i>
@@ -122,7 +126,7 @@
         </div>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col ">
             <!-- Header -->
             <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
                 <div class="flex items-center justify-between">
@@ -131,22 +135,22 @@
                     </button>
                     <div class="flex items-center space-x-4">
                         <h2 class="text-2xl font-bold" data-key="main-title">Tạo Video AI</h2>
-                        <span class="text-gray-400">|</span>
+                        <!-- <span class="text-gray-400">|</span> -->
                         <!-- <span class="text-gray-300" data-key="project-subtitle">Dự án mới - Nhập Nội Dung</span> -->
                     </div>
                     <div class="flex items-center space-x-4">
                         <div class="relative steps">
-                            <input type="text" placeholder="Tìm kiếm..."
+                            <!-- <input type="text" placeholder="Tìm kiếm..."
                                 class="bg-gray-700 text-white px-4 py-2 pl-10 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none">
-                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i> -->
                         </div>
-                        <button class="p-2 text-gray-400 hover:text-white transition-colors">
+                        <!-- <button class="p-2 text-gray-400 hover:text-white transition-colors">
                             <i class="fas fa-bell text-lg"></i>
-                        </button>
-                        <button
+                        </button> -->
+                        <!-- <button
                             class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
                             <i class="fas fa-plus mr-2 ml-2"></i><span data-key="new-video-btn"></span>
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </header>
@@ -242,12 +246,12 @@
                                         <div class="flex flex-wrap gap-2">
                                             <span class="platform-badge"><i class="fab fa-tiktok mr-2"></i>TikTok
                                                 Shop</span>
-                                            <span class="platform-badge"><i
+                                            <!-- <span class="platform-badge"><i
                                                     class="fas fa-shopping-bag mr-2"></i>Shopee</span>
                                             <span class="platform-badge"><i class="fas fa-store mr-2"></i>Lazada</span>
                                             <span class="platform-badge"><i class="fab fa-amazon mr-2"></i>Amazon</span>
                                             <span class="platform-badge"><i
-                                                    class="fas fa-shopping-cart mr-2"></i>Sendo</span>
+                                                    class="fas fa-shopping-cart mr-2"></i>Sendo</span> -->
                                         </div>
                                     </div>
 
@@ -266,11 +270,11 @@
                                                 class="hidden" onchange="handleImageUpload(event)">
                                         </div>
 
-                                        <!-- Image Preview Grid -->
+
                                         <h2 id="product-title" class="text-xl font-bold mt-4"></h2>
                                         <p id="product-price" class="text-green-400 font-semibold"></p>
                                         <div id="image-preview" class="mt-4 grid grid-cols-4 gap-4 hidden">
-                                            <!-- Preview images will be added here -->
+
                                         </div>
                                     </div>
                                 </div>
@@ -324,10 +328,10 @@
                                             data-key="male-voices">Giọng Nam</button>
                                         <button class="voice-category-btn" onclick="filterVoices('female')"
                                             data-key="female-voices">Giọng Nữ</button>
-                                        <button class="voice-category-btn" onclick="filterVoices('vietnamese')"
+                                        <!-- <button class="voice-category-btn" onclick="filterVoices('vietnamese')"
                                             data-key="vietnamese-voices">Tiếng Việt</button>
                                         <button class="voice-category-btn" onclick="filterVoices('english')"
-                                            data-key="english-voices">Tiếng Anh</button>
+                                            data-key="english-voices">Tiếng Anh</button> -->
                                     </div>
                                 </div>
 
@@ -337,7 +341,7 @@
                                 </div>
                                 <div class="space-y-6 mb-4">
                                     <!-- Background Music -->
-                                    <div>
+                                    <!-- <div>
                                         <label class="block text-sm font-medium mb-2" data-key="background-music">Nhạc
                                             nền</label>
                                         <select id="music-select" class="form-input w-full">
@@ -347,9 +351,9 @@
                                             <option value="tech_innovation.mp3">Tech Innovation</option>
                                             <option value="modern_pop.mp3">Modern Pop</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <!-- Transitions -->
-                                    <div>
+                                    <!-- <div>
                                         <label class="block text-sm font-medium mb-2" data-key="transitions">Hiệu
                                             ứng chuyển cảnh</label>
                                         <select id="transition-select" class="form-input w-full">
@@ -358,13 +362,13 @@
                                             <option value="zoom" data-key="zoom">Zoom</option>
                                             <option value="dissolve" data-key="dissolve">Dissolve</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="mb-6">
                                     <label class="block text-sm font-medium mb-2" data-key="video-duration">Thời lượng
                                         video</label>
                                     <div class="flex space-x-3">
-                                        <button class="duration-btn active" data-duration="15">15s</button>
+                                        <button class="duration-btn active " data-duration="15">15s</button>
                                         <button class="duration-btn" data-duration="30">30s</button>
                                         <button class="duration-btn" data-duration="60">60s</button>
                                         <!-- <button class="duration-btn" data-duration="custom">Tùy
@@ -406,7 +410,7 @@
                                     mới để AI dựng video</p>
 
                                 <!-- Prompt Category Filter -->
-                                <div class="flex flex-wrap gap-3 mb-6">
+                                <div class="flex flex-wrap gap-3 mb-6 ">
                                     <button class="prompt-cat-btn active" data-cat="all"
                                         onclick="filterPrompts('all')">Tất cả</button>
                                     <button class="prompt-cat-btn" data-cat="ads"
@@ -762,7 +766,8 @@
                                         lại</span>
                                 </button>
                                 <button onclick="createNewVideo()" class="btn-gradient px-8 py-3 rounded-lg">
-                                    <i class="fas fa-plus mr-2 ml-2"></i><span data-key="create-new">Tạo video mới</span>
+                                    <i class="fas fa-plus mr-2 ml-2"></i><span data-key="create-new">Tạo video
+                                        mới</span>
                                 </button>
                             </div>
                         </div>
@@ -771,10 +776,15 @@
                 <div>
                     <!-- Other Sections (placeholders) -->
                     <!-- Dashboard -->
-                    <div id="dashboard-section" class="p-6 hidden">
-                        <h2 class="text-3xl font-bold mb-4">dashboard</h2>
-                        <p>Thống kê & số liệu chung sẽ hiển thị ở đây.</p>
-                    </div>
+                    <!-- <div id="dashboard-section" class="p-6">
+                        <h2 class="text-3xl font-bold mb-4">Dashboard</h2>
+                        <label for="promptInput">Nhập text</label>
+                        <input type="text" id="promptInput" class="border text-black p-2 w-full"
+                            placeholder="Nhập mô tả ảnh...">
+                        <button id="generateBtn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Tạo ảnh</button>
+                        <div id="result" class="mt-4 text-green-500 font-semibold"></div>
+                    </div> -->
+
 
                     <!-- Tạo Video Mới (create) -->
                     <div id="create-section" class="p-6">
@@ -821,13 +831,13 @@
     <!-- Modals and Overlays -->
 
 
-    <!-- <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
         <div class="bg-gray-800 rounded-xl p-8 text-center">
             <div class="loading-spinner mx-auto mb-4"></div>
             <h3 class="text-xl font-bold mb-2" data-key="processing">Đang xử lý...</h3>
             <p class="text-gray-400" id="processing-desc" data-key="processing-desc">AI đang tạo video cho bạn</p>
         </div>
-    </div> -->
+    </div>
     <!-- <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
         <div class="bg-gray-800 rounded-xl p-8 text-center">
             <div class="loading-spinner mx-auto mb-4"></div>
@@ -835,8 +845,321 @@
             <p class="text-gray-400" data-key="processing-desc">AI đang tạo kịch bản cho bạn</p>
         </div>
     </div> -->
-    <script src="js/main.js"></script>
+
     <script src="js/dashboard.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <!-- <script>
+    document.getElementById("generateBtn").addEventListener("click", async () => {
+        const promptText = document.getElementById("promptInput").value;
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = "⏳ Đang gửi prompt...";
+
+        const payload = {
+            prompt: {
+                "3": {
+                    "class_type": "KSampler",
+                    "inputs": {
+                        "cfg": 8,
+                        "denoise": 1,
+                        "latent_image": ["5", 0],
+                        "model": ["4", 0],
+                        "negative": ["7", 0],
+                        "positive": ["6", 0],
+                        "sampler_name": "euler",
+                        "scheduler": "normal",
+                        "seed": 5,
+                        "steps": 20
+                    }
+                },
+                "4": {
+                    "class_type": "CheckpointLoaderSimple",
+                    "inputs": {
+                        "ckpt_name": "v1-5-pruned-emaonly.safetensors"
+                    }
+                },
+                "5": {
+                    "class_type": "EmptyLatentImage",
+                    "inputs": {
+                        "batch_size": 1,
+                        "height": 512,
+                        "width": 512
+                    }
+                },
+                "6": {
+                    "class_type": "CLIPTextEncode",
+                    "inputs": {
+                        "clip": ["4", 1],
+                        "text": promptText || "Naruto, epic anime style, glowing aura"
+                    }
+                },
+                "7": {
+                    "class_type": "CLIPTextEncode",
+                    "inputs": {
+                        "clip": ["4", 1],
+                        "text": "bad hands"
+                    }
+                },
+                "8": {
+                    "class_type": "VAEDecode",
+                    "inputs": {
+                        "samples": ["3", 0],
+                        "vae": ["4", 2]
+                    }
+                },
+                "save_image_node": {
+                    "class_type": "SaveImage",
+                    "inputs": {
+                        "images": ["8", 0],
+                        "filename_prefix": "my_output"
+                    }
+                }
+            },
+            client_id: "abc-123"
+        };
+
+        try {
+            const res = await fetch("http://127.0.0.1:8188/prompt", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await res.json();
+            const promptId = data.prompt_id;
+            resultDiv.innerHTML = `✅ Prompt đã gửi!<br><b>ID:</b> ${promptId}<br>⏳ Đang xử lý queue...`;
+
+            const done = await waitForPromptComplete(promptId, 300); // 5 phút
+
+            if (done) {
+                resultDiv.innerHTML += "<br>✅ Đã xử lý xong! Đang lấy ảnh...";
+                await getImageFromPrompt(promptId);
+            } else {
+                resultDiv.innerHTML += "<br>⚠️ Quá thời gian chờ mà chưa hoàn tất.";
+            }
+        } catch (err) {
+            console.error("❌ Lỗi khi gửi prompt:", err);
+            resultDiv.innerHTML = "❌ Không gửi được prompt.";
+        }
+    });
+
+    async function waitForPromptComplete(promptId, maxWait = 300) {
+        const delay = 3000;
+        let attempts = Math.ceil((maxWait * 1000) / delay);
+
+        while (attempts-- > 0) {
+            try {
+                const res = await fetch("http://127.0.0.1:8188/queue");
+                const data = await res.json();
+                const running = data.queue_running;
+                const pending = data.queue_pending || [];
+
+                const isRunning = running && running[1] === promptId;
+                const isPending = pending.some(item => item[1] === promptId);
+
+                if (!isRunning && !isPending) return true;
+            } catch (err) {
+                console.warn("⚠️ Không kiểm tra được queue:", err);
+            }
+
+            await new Promise(r => setTimeout(r, delay));
+        }
+
+        return false;
+    }
+
+    async function getImageFromPrompt(promptId) {
+        const resultDiv = document.getElementById("result");
+
+        try {
+            const res = await fetch(`http://127.0.0.1:8188/history/${promptId}`);
+            const data = await res.json();
+
+            const outputs = data?.[promptId]?.outputs;
+            if (!outputs) {
+                resultDiv.innerHTML += "<br>⚠️ Không có dữ liệu outputs.";
+                return;
+            }
+
+            for (const nodeId in outputs) {
+                const node = outputs[nodeId];
+                const img = node.images?.[0];
+
+                if (img) {
+                    const url = `http://127.0.0.1:8188/view?filename=${encodeURIComponent(img.filename)}&subfolder=${encodeURIComponent(img.subfolder)}&type=${img.type}`;
+
+                    const image = document.createElement("img");
+                    image.src = url;
+                    image.className = "mt-4 w-full max-w-md rounded border";
+                    image.alt = "Ảnh kết quả";
+
+                    resultDiv.innerHTML += "<br><b>🖼️ Ảnh đã tạo:</b><br>";
+                    resultDiv.appendChild(image);
+                    return;
+                }
+            }
+
+            resultDiv.innerHTML += "<br>⚠️ Không tìm thấy ảnh nào.";
+        } catch (err) {
+            console.error("❌ Lỗi khi lấy ảnh:", err);
+            resultDiv.innerHTML += "<br>❌ Lỗi khi lấy ảnh.";
+        }
+    }
+</script> -->
+    <script>
+        let ws;
+        let lastPromptId = null;
+        let hasImage = false;
+
+        // async function connectWebSocket(clientId) {
+        //   return new Promise((resolve, reject) => {
+        //     ws = new WebSocket(`ws://127.0.0.1:8188/ws?clientId=${clientId}`);
+
+        //     ws.onopen = () => {
+        //       console.log("✅ WebSocket đã kết nối.");
+        //       resolve(ws);
+        //     };
+
+        //     ws.onerror = (err) => {
+        //       console.error("❌ Lỗi WebSocket:", err);
+        //       reject(err);
+        //     };
+
+        //     ws.onmessage = (msg) => {
+        //       if (typeof msg.data !== "string") {
+        //         const reader = new FileReader();
+        //         reader.onload = () => {
+        //           const arrayBuffer = reader.result;
+        //           const blob = new Blob([arrayBuffer]);
+        //           const url = URL.createObjectURL(blob);
+        //           showImage(url);
+        //           hasImage = true;
+        //         };
+        //         reader.readAsArrayBuffer(msg.data.slice(8));
+        //       } else {
+        //         const data = JSON.parse(msg.data);
+        //         if (data.type === "executing" && data.data?.node === null) {
+        //           // Trường hợp không có SaveImageWebsocket, fallback lấy từ history
+        //           if (!hasImage && lastPromptId) {
+        //             getImageFromPrompt(lastPromptId);
+        //           }
+        //         }
+        //       }
+        //     };
+        //   });
+        // }
+
+        function showImage(url) {
+            const resultDiv = document.getElementById("result");
+            const image = document.createElement("img");
+            image.src = url;
+            image.className = "mt-4 w-full max-w-md rounded border";
+            image.alt = "Ảnh kết quả";
+            resultDiv.innerHTML += "<br><b>🖼️ Ảnh đã tạo:</b><br>";
+            resultDiv.appendChild(image);
+        }
+
+        async function getImageFromPrompt(promptId) {
+            try {
+                const res = await fetch(`http://127.0.0.1:8188/history/${promptId}`);
+                const data = await res.json();
+                const outputs = data?.[promptId]?.outputs;
+
+                for (const nodeId in outputs) {
+                    const node = outputs[nodeId];
+                    if (node.images && node.images.length > 0) {
+                        const img = node.images[0];
+                        const url = `http://127.0.0.1:8188/view?filename=${encodeURIComponent(img.filename)}&subfolder=${encodeURIComponent(img.subfolder)}&type=${encodeURIComponent(img.type)}`;
+                        showImage(url);
+                        return;
+                    }
+                }
+
+                document.getElementById("result").innerHTML += "<br>";
+            } catch (err) {
+                console.error("❌ Lỗi khi lấy ảnh từ history:", err);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            //   const clientId = crypto.randomUUID();
+            //   await connectWebSocket(clientId);
+
+            //   document.getElementById("generateBtn").addEventListener("click", async () => {
+            //     const promptText = document.getElementById("promptInput").value;
+            //     const resultDiv = document.getElementById("result");
+            //     resultDiv.innerHTML = "⏳ Đang gửi prompt...";
+            //     hasImage = false;
+
+            //     const payload = {
+            //       prompt: {
+            //         "3": {
+            //           "class_type": "KSampler",
+            //           "inputs": {
+            //             "cfg": 8,
+            //             "denoise": 1,
+            //             "latent_image": ["5", 0],
+            //             "model": ["4", 0],
+            //             "negative": ["7", 0],
+            //             "positive": ["6", 0],
+            //             "sampler_name": "euler",
+            //             "scheduler": "normal",
+            //             "seed": Math.floor(Math.random() * 1000000),
+            //             "steps": 20
+            //           }
+            //         },
+            //         "4": {
+            //           "class_type": "CheckpointLoaderSimple",
+            //           "inputs": { "ckpt_name": "v1-5-pruned-emaonly.safetensors" }
+            //         },
+            //         "5": {
+            //           "class_type": "EmptyLatentImage",
+            //           "inputs": { "batch_size": 1, "height": 512, "width": 512 }
+            //         },
+            //         "6": {
+            //           "class_type": "CLIPTextEncode",
+            //           "inputs": {
+            //             "clip": ["4", 1],
+            //             "text": promptText || "Naruto glowing in sage mode, cinematic, high detail"
+            //           }
+            //         },
+            //         "7": {
+            //           "class_type": "CLIPTextEncode",
+            //           "inputs": { "clip": ["4", 1], "text": "bad hands" }
+            //         },
+            //         "8": {
+            //           "class_type": "VAEDecode",
+            //           "inputs": { "samples": ["3", 0], "vae": ["4", 2] }
+            //         },
+            //         "save_image_websocket_node": {
+            //           "class_type": "SaveImageWebsocket",
+            //           "inputs": { "images": ["8", 0] }
+            //         }
+            //       },
+            //       client_id: clientId,
+            //       outputs: ["save_image_websocket_node"]
+            //     };
+
+            //     try {
+            //       const res = await fetch("http://127.0.0.1:8188/prompt", {
+            //         method: "POST",
+            //         headers: { "Content-Type": "application/json" },
+            //         body: JSON.stringify(payload)
+            //       });
+
+            //       const data = await res.json();
+            //       const promptId = data.prompt_id;
+            //       lastPromptId = promptId;
+            //       showToast("✅ Prompt đã gửi!",'success')
+            //       resultDiv.innerHTML = `<br>⏳ Đang xử lý, Vui Lòng chờ trong giây lát...`;
+            //     } catch (err) {
+            //       console.error("❌ Lỗi khi gửi prompt:", err);
+            //       resultDiv.innerHTML = "❌ Lỗi khi gửi prompt.";
+            //     }
+            //   });
+        });
+    </script>
+
+
 
     <style>
         /* .prompt-card {
@@ -987,28 +1310,28 @@
         // document.addEventListener('DOMContentLoaded', initFloatingBall);
 
         let userFetched = false;
-    //     function fillUserHeader(user) {
-    //         const nameEl = document.getElementById("user-name");
-    //         const avatarEl = document.getElementById("user-avatar");
-    //         const pointEl = document.getElementById("user-point");
+        //     function fillUserHeader(user) {
+        //         const nameEl = document.getElementById("user-name");
+        //         const avatarEl = document.getElementById("user-avatar");
+        //         const pointEl = document.getElementById("user-point");
 
-    //         if (nameEl) nameEl.textContent = user.name || user.email || "Người dùng";
-    //         if (avatarEl) avatarEl.src = user.avatar || "default-avatar.jpg";
-    //         if (pointEl) pointEl.textContent = `Điểm: ${user.point ?? 0}`;
-    //     }
-    //     window.addEventListener("DOMContentLoaded", async () => {
-    // const cached = localStorage.getItem("auth_data");
+        //         if (nameEl) nameEl.textContent = user.name || user.email || "Người dùng";
+        //         if (avatarEl) avatarEl.src = user.avatar || "default-avatar.jpg";
+        //         if (pointEl) pointEl.textContent = `Điểm: ${user.point ?? 0}`;
+        //     }
+        //     window.addEventListener("DOMContentLoaded", async () => {
+        // const cached = localStorage.getItem("auth_data");
 
-    // if (!cached) {
-    //     const user = await getUserInfoOnce();
-    //     if (user) fillUserHeader(user);
-    // } else {
-    //     const user = JSON.parse(cached);
-    //     fillUserHeader(user);
-    // }});
+        // if (!cached) {
+        //     const user = await getUserInfoOnce();
+        //     if (user) fillUserHeader(user);
+        // } else {
+        //     const user = JSON.parse(cached);
+        //     fillUserHeader(user);
+        // }});
     </script>
 
-    
+
 
 </body>
 

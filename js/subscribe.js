@@ -1,5 +1,10 @@
 // ./js/subscribe.js
-
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  if (sidebar) {
+    sidebar.style.display = "none"; 
+  }
+}
 
 function showToast(message, type = 'info') {
   const toast = document.createElement('div');
