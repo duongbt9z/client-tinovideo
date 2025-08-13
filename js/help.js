@@ -1,5 +1,5 @@
 const helpTranslations = {
-    "vi": {
+    vi: {
         "nav-settings": "Cài Đặt ",
         "tinovideo": "Tinovideo",
         "nav-create": "Tạo Video Mới",
@@ -7,6 +7,7 @@ const helpTranslations = {
         "nav-affiliate": "Affiliate",
         "nav-help": "Trợ giúp",
         "nav-create-veo": "Tạo video veo",
+         "credits-remaining": "Credits còn lại:",
         "help-title": "Trung tâm trợ giúp",
         "help-subtitle": "Tìm câu trả lời cho mọi thắc mắc của bạn",
         "help-search": "🔍 Tìm kiếm câu hỏi, hướng dẫn...",
@@ -38,9 +39,11 @@ const helpTranslations = {
         "contact-hotline": "Hotline",
         "doc-guide": "Hướng dẫn sử dụng",
         "doc-api": "API Documentation",
+          "upgrade-btn": "Nâng cấp",
         "doc-practice": "Best Practices"
+
     },
-    "en": {
+    en: {
         "nav-settings": "Settings ",
         "tinovideo": "Tinovideo",
         "nav-create": "Create New Video",
@@ -49,6 +52,8 @@ const helpTranslations = {
         "nav-help": "help",
         "nav-create-veo": "Create Veo Video",
         "help-title": "Help Center",
+          "credits-remaining": "Remaining credits:",
+            "upgrade-btn": "Upgrade",
         "help-subtitle": "Find answers to all your questions",
         "help-search": "🔍 Search questions, guides...",
         "tab-faq": "❓ FAQs",
@@ -88,36 +93,64 @@ function toggleSidebar() {
         sidebar.style.display = "none";
     }
 }
+// function switchLanguage(lang) {
+//     localStorage.setItem('tinovideo-language', lang);
+//     const t = helpTranslations[lang];
+//     document.querySelectorAll('.lang-btn').forEach(btn => {
+//         if (btn.dataset.lang === lang) {
+//             btn.style.display = 'none'; // ẩn nút hiện tại
+//         } else {
+//             btn.style.display = 'inline-block'; // hiện nút còn lại
+//         }
+//         btn.classList.remove('active');
+//         if (btn.dataset.lang === lang) {
+//             btn.classList.add('active');
+//         }
+//     });
+//     document.querySelectorAll('[data-key]').forEach(el => {
+//         const key = el.getAttribute('data-key');
+//         if (!t[key]) return;
+
+//         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+//             el.placeholder = t[key];
+//         } else {
+//             el.textContent = t[key];
+//         }
+//     });
+
+// }
+
 function switchLanguage(lang) {
     localStorage.setItem('tinovideo-language', lang);
     const t = helpTranslations[lang];
+
+    // Update trạng thái nút ngôn ngữ
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.dataset.lang === lang) {
-            btn.style.display = 'none'; // ẩn nút hiện tại
-        } else {
-            btn.style.display = 'inline-block'; // hiện nút còn lại
-        }
-        btn.classList.remove('active');
-        if (btn.dataset.lang === lang) {
-            btn.classList.add('active');
-        }
+        const isCurrent = btn.dataset.lang === lang;
+        btn.classList.toggle('active', isCurrent);
+        btn.style.display = isCurrent ? 'none' : 'inline-block';
     });
+
+    // Update toàn bộ text/placeholder theo key
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         if (!t[key]) return;
 
-        // if (el.tagName === 'INPUT') {
-        //   el.placeholder = t[key];
-        // } else {
-        //   el.textContent = t[key];
-        // }
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = t[key];
+        } else {
+            el.textContent = t[key];
+        }
     });
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-    const savedLang = localStorage.getItem('tinovideo-language') || 'vi';
-    switchLanguage(savedLang);
-});
+
+
+
+// window.addEventListener("DOMContentLoaded", () => {
+//     const savedLang = localStorage.getItem('tinovideo-language') || 'vi';
+//     switchLanguage(savedLang);
+// });
 
 const faqItems = document.querySelectorAll('.faq-item');
 const filterButtons = document.querySelectorAll('.filter');
@@ -291,6 +324,8 @@ document.querySelectorAll('.tab').forEach(btn => {
 });
 
 window.addEventListener("DOMContentLoaded", async () => {
+    const savedLang = localStorage.getItem('tinovideo-language') || 'vi';
+    switchLanguage(savedLang);
     const user = await getUserInfoOnce();
     if (user) {
         // Sau khi fill xong thì lưu userId để chia sẻ link

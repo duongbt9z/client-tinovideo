@@ -1,4 +1,28 @@
-
+const editTranslations = {
+  "vi": {
+    "nav-settings": "Cài Đặt ",
+    "tinovideo": "Tinovideo",
+    "nav-create": "Tạo Video Mới",
+    "nav-templates": "Edit Video",
+    "nav-affiliate": "Affiliate",
+    "nav-help": "Trợ giúp",
+    "upgrade-btn": "Nâng cấp",
+    "credits-remaining": "Credits còn lại:",
+    "nav-create-veo": "Tạo video veo",
+    "edit-title": "Chỉnh sửa video",
+  }, "en": {
+    "nav-settings": "Settings ",
+    "nav-create-veo": "Create Veo Video",
+    "tinovideo": "Tinovideo",
+    "upgrade-btn": "Upgrade",
+    "nav-create": "Create New Video",
+    "nav-templates": "Edit Video",
+    "credits-remaining": "Remaining credits:",
+    "nav-affiliate": "Affiliate",
+    "nav-help": "help",
+    "edit-title": "Edit your video",
+  }
+}
 function showToast(message, type = 'info') {
   const toast = document.createElement('div');
   toast.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-x-full transition-transform duration-300`;
@@ -156,27 +180,7 @@ if (!token) {
       window.location.href = "index.html";
     });
 }
-const editTranslations = {
-  "vi": {
-    "nav-settings": "Cài Đặt ",
-    "tinovideo": "Tinovideo",
-    "nav-create": "Tạo Video Mới",
-    "nav-templates": "Edit Video",
-    "nav-affiliate": "Affiliate",
-    "nav-help": "Trợ giúp",
-    "nav-create-veo": "Tạo video veo",
-    "edit-title": "Chỉnh sửa video",
-  }, "en": {
-    "nav-settings": "Settings ",
-    "nav-create-veo": "Create Veo Video",
-    "tinovideo": "Tinovideo",
-    "nav-create": "Create New Video",
-    "nav-templates": "Edit Video",
-    "nav-affiliate": "Affiliate",
-    "nav-help": "help",
-    "edit-title": "Edit your video",
-  }
-}
+
 function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
   if (sidebar) {

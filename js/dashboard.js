@@ -79,7 +79,7 @@ const dashboardTranslations = {
         "nav-affiliate": "Affiliate",
         "nav-settings": "Cài Đặt",
         "nav-help": "Trợ giúp",
-        "user-plan": "Chưa có gói ",
+        
         "credits-remaining": "Credits còn lại:",
         "point": "100",
         "upgrade-btn": "Nâng cấp",
