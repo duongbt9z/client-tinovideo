@@ -4,122 +4,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cài Đặt - Tinovideo</title>
+  <title>Affiliate - Tinovideo</title>
   <link rel="stylesheet" href="css/affiliate.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 </head>
 
 <body class="bg-gray-900 text-white font-sans overflow-hidden">
-<div class="fixed top-3 right-4 z-50 ">
-        <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
-            <button onclick="switchLanguage('vi')"
-                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi">🇻🇳 VI</button>
-            <button onclick="switchLanguage('en')"
-                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="en">🇺🇸 EN</button>
-        </div>
+  <div class="fixed top-3 right-4 z-50 ">
+    <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
+      <button onclick="switchLanguage('vi')"  class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105"
+        data-lang="vi">🇻🇳 <span data-key="lang-vi">VI</span></button>
+      <button onclick="switchLanguage('en')" class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105"
+        data-lang="en">🇺🇸 <span data-key="lang-en">EN</span></button>
     </div>
+  </div>
   <div class="flex h-screen">
     <!-- Sidebar -->
-     
+
     <div id="sidebar" class=" w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
-            <!-- Logo -->
-             <div class="p-6 border-b border-gray-700  fl-mobile">
-                <div class="flex items-center space-x-3">
-                    <div
-                        class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <!-- <i class="fas fa-video text-white text-lg"></i> -->
-                        <img src="./images/logo.png">
-                    </div>
-                    <h1
-                        class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                        Tinovideo
-                    </h1>
+      <!-- Logo -->
+      <div class="p-6 border-b border-gray-700  fl-mobile">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <!-- <i class="fas fa-video text-white text-lg"></i> -->
+            <img src="./images/logo.png">
+          </div>
+          <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            Tinovideo
+          </h1>
 
-                </div>
-                <button onclick="toggleSidebar()" class="md:hidden text-white text-xl px-2 ml-12">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
+        </div>
+        <button onclick="toggleSidebar()" class="md:hidden text-white text-xl px-2 ml-12">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
 
-            <!-- Navigation -->
-            <nav class="flex-1 py-6">
+      <!-- Navigation -->
+      <nav class="flex-1 py-6">
 
-                <ul class="space-y-2">
-                    <!-- <li>
+        <ul class="space-y-2">
+          <!-- <li>
                         <a href="dashboard.html" class="sidebar-item" onclick="showSection('dashboard')">
                             <i class="fas fa-chart-pie w-5 mr-3"></i>
                             <span data-key="nav-dashboard">Dashboard</span>
                         </a>
                     </li> -->
-                    <li>
-                        <a href="dashboard.html" class="sidebar-item " onclick="showSection('create')">
-                            <i class="fas fa-plus-circle w-5 mr-3"></i>
-                            <span data-key="nav-create">Tạo Video Mới</span>
-                        </a>
-                    </li>
-                    <!-- <li>
-                        <a href="projects.html" class="sidebar-item" onclick="showSection('projects')">
-                            <i class="fas fa-folder w-5 mr-3"></i>
-                            <span data-key="nav-projects">Dự Án Của Tôi</span>
-                        </a>
-                    </li> -->
-                    <li>
-                        <a href="editvideo.html" class="sidebar-item" onclick="showSection('templates')">
-                            <i class="fas fa-th-large w-5 mr-3"></i>
-                            <span data-key="nav-templates">Edit Video</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="affiliate.html" class="sidebar-item active" onclick="showSection('affiliate')">
-                            <i class="fa-brands fa-affiliatetheme w-5 mr-3"></i>
-                            <span data-key="nav-affiliate">Affiliate</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="settings.html" class="sidebar-item" onclick="showSection('settings')">
-                            <i class="fas fa-cog w-5 mr-3"></i>
-                            <span data-key="nav-settings">Cài Đặt</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="help.html" class="sidebar-item" onclick="showSection('help')">
-                            <i class="fas fa-question-circle w-5 mr-3"></i>
-                            <span data-key="nav-help">Trợ giúp</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+          <li>
+            <a href="dashboard.html" class="sidebar-item " onclick="showSection('create')">
+              <i class="fas fa-plus-circle w-5 mr-3"></i>
+              <span data-key="nav-create">Tạo Video Mới</span>
+            </a>
+          </li>
+          <li>
+            <a href="create_video.html" class="sidebar-item " onclick="showSection('projects')">
+              <i class="fas fa-folder w-5 mr-3"></i>
+              <span data-key="nav-create-veo">Tạo video veo</span>
+            </a>
+          </li>
+          <li>
+            <a href="editvideo.html" class="sidebar-item" onclick="showSection('templates')">
+              <i class="fas fa-th-large w-5 mr-3"></i>
+              <span data-key="nav-templates">Edit Video</span>
+            </a>
+          </li>
+          <li>
+            <a href="affiliate.html" class="sidebar-item active" onclick="showSection('affiliate')">
+              <i class="fa-brands fa-affiliatetheme w-5 mr-3"></i>
+              <span data-key="nav-affiliate">Affiliate</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html" class="sidebar-item" onclick="showSection('settings')">
+              <i class="fas fa-cog w-5 mr-3"></i>
+              <span data-key="nav-settings">Cài Đặt</span>
+            </a>
+          </li>
+          <li>
+            <a href="help.html" class="sidebar-item" onclick="showSection('help')">
+              <i class="fas fa-question-circle w-5 mr-3"></i>
+              <span data-key="nav-help">Trợ giúp</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
-            <!-- User Info -->
-            <div class="p-6 border-t border-gray-700">
-                <div class="flex items-center mb-4">
-                    <div
-                        class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
-                        <!-- <span class="text-white font-bold text-sm">DU</span> -->
-                        <img src="" class="rounded-full" data-key="user-avatar">
-                    </div>
-                    <div>
-                        <div class="font-semibold text-sm" data-key="user-name">Demo Người dùng</div>
-                        <div class="text-xs text-gray-400" data-key="user-plan">Chuyên Nghiệp</div>
-                    </div>
-                </div>
-                <div class="bg-gray-700 rounded-lg p-3 mb-3">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-sm text-gray-300" data-key="credits-remaining">Credits còn lại:</span>
-                        <span class="text-lg font-bold text-blue-400" data-key="point">100</span>
-                    </div>
-                    <div class="w-full bg-gray-600 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70%">
-                        </div>
-                    </div>
-                </div>
-                <button
-                    class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
-                    <i class="fas fa-crown mr-2"></i><span data-key="upgrade-btn">Nâng cấp</span>
-                </button>
-            </div>
+      <!-- User Info -->
+      <div class="p-6 border-t border-gray-700">
+        <div class="flex items-center mb-4">
+          <div
+            class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
+            <!-- <span class="text-white font-bold text-sm">DU</span> -->
+            <img src="" class="rounded-full" data-key="user-avatar">
+          </div>
+          <div>
+            <div class="font-semibold text-sm" data-key="user-name">Demo Người dùng</div>
+            <div class="text-xs text-gray-400" data-key="user-plan">Chuyên Nghiệp</div>
+          </div>
         </div>
+        <div class="bg-gray-700 rounded-lg p-3 mb-3">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-gray-300" data-key="credits-remaining">Credits còn lại:</span>
+            <span class="text-lg font-bold text-blue-400" data-key="point">100</span>
+          </div>
+          <div class="w-full bg-gray-600 rounded-full h-2">
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70%">
+            </div>
+          </div>
+        </div>
+        <button
+          class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+          <i class="fas fa-crown mr-2"></i><span data-key="upgrade-btn">Nâng cấp</span>
+        </button>
+      </div>
+    </div>
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
       <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
@@ -170,7 +177,7 @@
           <!-- Card mới nằm ngang -->
           <div class="flex-1 bg-gray-800 p-4 rounded-lg shadow">
             <div class="plan-header">
-           <h3 data-key="referral-title">Giới Thiệu</h3>
+              <h3 data-key="referral-title">Giới Thiệu</h3>
             </div>
             <div class="price">
               <span class="amount text-green-400" data-key="user-share">20 người</span>
@@ -189,15 +196,15 @@
 
           <!-- gắn data-plan="free" để JS nhận biết -->
           <button onclick="shareVideo()" class="share-btn" data-plan="free" data-key="share-btn">
-          Chia sẻ Link
-        </button>
+            Chia sẻ Link
+          </button>
 
           <!-- <div class="billed-amount" data-yearly="Tặng 50 điểm" data-monthly="Tặng 50 điểm">
             Tặng 50 điểm
           </div> -->
           <ul class="features">
             <li data-key="bonus-credits">✓ Nhận ngay 50 credit</li>
-          <li data-key="commission-rate">✓ Nhận hoa hồng lên đến 30%</li>
+            <li data-key="commission-rate">✓ Nhận hoa hồng lên đến 30%</li>
           </ul>
         </div>
 
@@ -210,25 +217,22 @@
   <script src="./js/affiliate.js"></script>
   <script>
     function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-x-full transition-transform duration-300`;
-    switch (type) {
+      const toast = document.createElement('div');
+      toast.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-x-full transition-transform duration-300`;
+      switch (type) {
         case 'success': toast.classList.add('bg-green-500'); break;
         case 'error': toast.classList.add('bg-red-500'); break;
         case 'warning': toast.classList.add('bg-yellow-500'); break;
         default: toast.classList.add('bg-blue-500');
-    }
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.classList.remove('translate-x-full'), 10);
-    setTimeout(() => {
+      }
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.classList.remove('translate-x-full'), 10);
+      setTimeout(() => {
         toast.classList.add('translate-x-full');
         setTimeout(() => toast.remove(), 200);
-    }, 2000);
-}
-
-    let cachedUser = null;
-    const API_BASE_URL = 'https://admin.tinovideo.com';
+      }, 2000);
+    }
     function fillDataUser(user) {
       const nameDiv = document.querySelector('[data-key="user-name"]');
       if (nameDiv) nameDiv.textContent = user.name;
@@ -257,7 +261,7 @@
         }
       }
 
-      if (userPlan) userPlan.textContent = highestPlan;
+      if (userPlan) userPlan.textContent = user.role;
       const userMoney = document.querySelector('[data-key="user-money"]');
       if (userMoney) if (!user.money) {
         userMoney.textContent = "Chưa có hoa hồng";
@@ -312,8 +316,8 @@
     });
 
     // Toggle sidebar on mobile
-    const btn = document.getElementById("sidebar-toggle");
-    const sidebar = document.getElementById("sidebar");
+    // const btn = document.getElementById("sidebar-toggle");
+    // const sidebar = document.getElementById("sidebar");
 
     btn.addEventListener("click", () => {
       if (sidebar.style.display === "none") {
@@ -377,12 +381,12 @@
         // Sau khi fill xong thì lưu userId để chia sẻ link
         localStorage.setItem("userId", user.id);
       }
-       const upgradeBtn = document.querySelector(".upgrade-btn");
-    if (upgradeBtn) {
+      const upgradeBtn = document.querySelector(".upgrade-btn");
+      if (upgradeBtn) {
         upgradeBtn.addEventListener("click", () => {
-            window.location.href = "subscribe.html";
+          window.location.href = "subscribe.html";
         });
-    }
+      }
     });
 
   </script>

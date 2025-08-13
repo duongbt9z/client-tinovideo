@@ -1,7 +1,7 @@
 const API_BASE_URL = 'https://admin.tinovideo.com';
 const settingsTranslations = {
   "vi": {
-    "nav-settings": "Cài Đặt ",
+    "nav-settings": "Cài Đặt",
     "tinovideo": "Tinovideo",
     "nav-create": "Tạo Video Mới",
     "nav-templates": "Edit Video",
@@ -29,7 +29,7 @@ const settingsTranslations = {
     "lich-su-thanh-toan": "Lịch sử thanh toán"
   },
   "en": {
-    "nav-settings": "Settings ",
+    "nav-settings": "Settings",
     "tinovideo": "Tinovideo",
     "nav-create": "Create New Video",
     "nav-templates": "Edit Video",

@@ -40,11 +40,17 @@
     <div class="fixed top-3 right-4 z-50 ">
 
         <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
-            <button onclick="switchLanguage('vi')"
-                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi">🇻🇳 VI</button>
-            <button onclick="switchLanguage('en')"
-                class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="en">🇺🇸 EN</button>
-        </div>
+      <button onclick="switchLanguage('vi')"  class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105"
+        data-lang="vi">🇻🇳 <span data-key="lang-vi">VI</span></button>
+      <button onclick="switchLanguage('en')" class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105"
+        data-lang="en">🇺🇸 <span data-key="lang-en">EN</span></button>
+    </div>
     </div>
 
     <!-- Navigation -->

@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cài Đặt - Tinovideo</title>
+    <title>Edit Video - Tinovideo</title>
     <link rel="stylesheet" href="css/affiliate.css" />
+      <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 </head>
@@ -15,17 +17,17 @@
     <div class="flex h-screen">
         <div class="fixed top-3 right-4 z-50 ">
             <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
-                <button class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="vi"
-                    onclick="switchLanguage('vi')">
-                    🇻🇳
-                    VI
-                </button>
-                <button class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300" data-lang="en"
-                    onclick="switchLanguage('en')">
-                    🇺🇸
-                    EN
-                </button>
-            </div>
+      <button onclick="switchLanguage('vi')"  class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105"
+        data-lang="vi">🇻🇳 <span data-key="lang-vi">VI</span></button>
+      <button onclick="switchLanguage('en')" class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105"
+        data-lang="en">🇺🇸 <span data-key="lang-en">EN</span></button>
+    </div>
         </div>
         <!-- Sidebar -->
         <div class="w-64 bg-gray-800 border-r border-gray-700 flex flex-col" id="sidebar">
@@ -57,6 +59,11 @@
                             <span data-key="nav-create">
                                 Tạo Video Mới
                             </span>
+                        </a>
+                    </li>         <li>
+                        <a href="create_video.html" class="sidebar-item " onclick="showSection('projects')">
+                            <i class="fas fa-folder w-5 mr-3"></i>
+                            <span data-key="nav-create-veo">Tạo video veo</span>
                         </a>
                     </li>
                     <li>
@@ -127,13 +134,9 @@
                     </div>
                 </div>
                 <button
-                    class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
-                    <i class="fas fa-crown mr-2">
-                    </i>
-                    <span data-key="upgrade-btn">
-                        Nâng cấp
-                    </span>
-                </button>
+          class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+          <i class="fas fa-crown mr-2"></i><span data-key="upgrade-btn">Nâng cấp</span>
+        </button>
             </div>
         </div>
         <!-- Main Content -->
@@ -222,7 +225,7 @@
             }
         }
 
-        if (userPlan) userPlan.textContent = highestPlan;
+        if (userPlan) userPlan.textContent = user.role;
         const userMoney = document.querySelector('[data-key="user-money"]');
         if (userMoney) if (!user.money) {
             userMoney.textContent = "Chưa có hoa hồng";

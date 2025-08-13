@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-key="page-title">Cài Đặt - Tinovideo</title>
+  <link rel="stylesheet" href="css/affiliate.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    color: #333;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    /* margin-bottom: 30px; */
+  }
+
+  .section {
+    margin-bottom: 25px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  textarea.prompt-input {
+    width: 100%;
+    height: 80px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  button {
+    background-color: #0078d4;
+    color: white;
+    padding: 10px 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #005a9e;
+  }
+
+  #sidebar-toggle {
+   background-color: transparent !important;
+  }
+
+  #sidebar-toggle:hover {
+    background-color: #005a9e;
+  }
+
+  #uploadBtn {
+    margin-bottom: 10px;
+  }
+
+  .image-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    gap: 12px;
+  }
+
+  .image-list li {
+    position: relative;
+    border-radius: 8px;
+    padding: 4px;
+    width: 120px;
+    height: auto;
+  }
+
+  .image-preview {
+    width: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+
+  }
+
+
+  #logOutput {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: monospace;
+  }
+
+  .note {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 6px;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .remove-btn {
+    margin-top: 4px;
+    background: #e74c3c;
+  }
+
+  .remove-overlay-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .remove-overlay-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .remove-btn:hover {
+    background: #c0392b;
+  }
+
+  @media (max-width: 600px) {
+    .image-list li {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .image-preview {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+</style>
+
+<body class="bg-gray-900 font-sans overflow-hidden text-white">
+  <div class="fixed top-3 right-4 z-50">
+    <div class="bg-gray-800 rounded-lg p-2 flex gap-2">
+      <button onclick="switchLanguage('vi')"  class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105"
+        data-lang="vi">🇻🇳 <span data-key="lang-vi">VI</span></button>
+      <button onclick="switchLanguage('en')" class="lang-btn px-3 py-1 rounded text-sm transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105"
+        data-lang="en">🇺🇸 <span data-key="lang-en">EN</span></button>
+    </div>
+  </div>
+
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div id="sidebar" class="w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+      <!-- Logo -->
+      <div class="p-6 border-b border-gray-700 fl-mobile">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <img src="./images/logo.png" alt="Logo">
+          </div>
+          <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+            data-key="brand-name">Tinovideo</h1>
+        </div>
+        <button onclick="toggleSidebar()" class="md:hidden text-white text-xl px-2 ml-12">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex-1 py-6">
+        <ul class="space-y-2">
+          <li>
+            <a href="dashboard.html" class="sidebar-item" onclick="showSection('create')">
+              <i class="fas fa-plus-circle w-5 mr-3"></i>
+              <span data-key="nav-create">Tạo Video Mới</span>
+            </a>
+          </li>
+          <li>
+            <a href="create_video.html" class="sidebar-item active" onclick="showSection('projects')">
+              <i class="fas fa-folder w-5 mr-3"></i>
+              <span data-key="nav-create-veo">Tạo video veo</span>
+            </a>
+          </li>
+          <li>
+            <a href="editvideo.html" class="sidebar-item" onclick="showSection('templates')">
+              <i class="fas fa-th-large w-5 mr-3"></i>
+              <span data-key="nav-edit">Edit Video</span>
+            </a>
+          </li>
+          <li>
+            <a href="affiliate.html" class="sidebar-item" onclick="showSection('affiliate')">
+              <i class="fa-brands fa-affiliatetheme w-5 mr-3"></i>
+              <span data-key="nav-affiliate">Affiliate</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html" class="sidebar-item" onclick="showSection('settings')">
+              <i class="fas fa-cog w-5 mr-3"></i>
+              <span data-key="nav-settings">Cài Đặt</span>
+            </a>
+          </li>
+          <li>
+            <a href="help.html" class="sidebar-item" onclick="showSection('help')">
+              <i class="fas fa-question-circle w-5 mr-3"></i>
+              <span data-key="nav-help">Trợ giúp</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- User Info -->
+      <div class="p-6 border-t border-gray-700">
+        <div class="flex items-center mb-4">
+          <div
+            class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
+            <img src="" class="rounded-full" data-key="user-avatar">
+          </div>
+          <div>
+            <div class="font-semibold text-sm" data-key="user-name">Demo Người dùng</div>
+            <div class="text-xs text-gray-400" data-key="user-plan">Chuyên Nghiệp</div>
+          </div>
+        </div>
+        <div class="bg-gray-700 rounded-lg p-3 mb-3">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-gray-300" data-key="credits-remaining">Credits còn lại:</span>
+            <span class="text-lg font-bold text-blue-400" data-key="point">100</span>
+          </div>
+          <div class="w-full bg-gray-600 rounded-full h-2">
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70%"></div>
+          </div>
+        </div>
+        <button
+          class="upgrade-btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+          <i class="fas fa-crown mr-2"></i><span data-key="upgrade-btn">Nâng cấp</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
+        <div class="flex">
+          <button id="sidebar-toggle" class="sidebar-toggle hidden-desktop" aria-label="Toggle menu">☰</button>
+          <div class="flex items-center space-x-4">
+            <h2 class="text-2xl font-bold ml-4 mr-4" data-key="page-header">Tạo Video</h2>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 p-6 overflow-y-auto rounded-lg">
+        <div class="p-8 bg-gray-800 text-white rounded-lg">
+          <h1 class="mb-6 font-bold" data-key="form-title">Tạo Video bằng AI Veo</h1>
+
+          <div class="section">
+            <label class="block mb-2 font-semibold text-white" data-key="label-duration">Thời lượng video:</label>
+            <div class="flex gap-2">
+              <button type="button" class="duration-btn px-4 py-2 rounded-lg bg-gray-600 text-white hover:bg-gray-500"
+                data-value="16" data-key="duration-16">16s</button>
+              <button type="button" class="duration-btn px-4 py-2 rounded-lg bg-gray-600 text-white hover:bg-gray-500"
+                data-value="24" data-key="duration-24">24s</button>
+              <button type="button" class="duration-btn px-4 py-2 rounded-lg bg-gray-600 text-white hover:bg-gray-500"
+                data-value="32" data-key="duration-32">32s</button>
+            </div>
+          </div>
+
+          <div class="section" id="productNameSection">
+            <label for="productName" data-key="label-product-name">Tên sản phẩm:</label>
+            <input class="text-black" type="text"  class="w-full px-4 py-2 rounded-lg border border-gray-600 
+              bg-gray-800 text-white focus:border-blue-500 
+              focus:ring focus:ring-blue-400 focus:ring-opacity-50" id="productName" data-key-placeholder="placeholder-product-name"
+              placeholder="Nhập tên sản phẩm..."
+              style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+            <button class="bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105" id="generateScriptBtn" style="margin-top: 10px; padding: 10px;" data-key="btn-generate-script">Sinh
+              kịch bản cho ảnh</button>
+            <p class="note" data-key="note-script">Kịch bản sẽ sinh dựa trên tên sản phẩm.</p>
+          </div>
+
+          <div class="section">
+            <button id="uploadBtn" data-key="btn-upload" class="bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105">📂 Chọn ảnh</button>
+            <input type="file" id="imageUpload" multiple accept="image/*" hidden>
+            <ul id="imageList" class="image-list"></ul>
+          </div>
+
+          <div class="section">
+            <button id="generateBtn" data-key="btn-generate-video" class="bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105">🚀 TẠO VIDEO</button>
+            <p id="statusLabel" class="note" data-key="status-ready">🟢 Sẵn sàng.</p>
+          </div>
+
+          <div class="section">
+            <label for="logOutput" data-key="label-log">📝 Log chạy:</label>
+            <textarea id="logOutput" class="bg-gray-600"   class="w-full px-4 py-2 rounded-lg border border-gray-600 
+              bg-gray-800 text-white focus:border-blue-500 
+              focus:ring focus:ring-blue-400 focus:ring-opacity-50" readonly></textarea>
+            <div class="btn-group">
+              <button id="clearBtn" data-key="btn-clear-log" class="bg-gradient-to-r from-blue-500 to-purple-500 
+               hover:from-blue-600 hover:to-purple-600 
+               px-5 py-2 rounded-lg text-white font-semibold 
+               shadow-lg transition-transform transform hover:scale-105">Xoá log</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="./js/create_video.js"></script>
+</body>
+
+</html>

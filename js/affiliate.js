@@ -107,7 +107,7 @@ function fillDataUser(user) {
         }
     }
 
-    if (userPlan) userPlan.textContent = highestPlan;
+    if (userPlan) userPlan.textContent = user.role;
     const userMoney = document.querySelector('[data-key="user-money"]');
     if (userMoney) if (!user.money) {
         userMoney.textContent = "Chưa có hoa hồng";
@@ -232,6 +232,36 @@ window.addEventListener("DOMContentLoaded", async () => {
         upgradeBtn.addEventListener("click", () => {
             window.location.href = "subscribe.html";
         });
+    }
+     const token = localStorage.getItem('jwt');
+    if (!token) {
+        window.location.href = "index.html";
+    } else {
+        // Gửi request xác thực token
+        fetch(`${API_BASE_URL}/api/user`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.success) {
+                    // ❌ Token không hợp lệ → xóa và về trang login
+                    localStorage.removeItem('jwt');
+                    localStorage.removeItem('auth_data');
+                    window.location.href = "index.html";
+                } else {
+                    // ✅ Token hợp lệ → tiếp tục
+                    fillDataUser(data.user);
+                }
+            })
+            .catch(err => {
+                console.error("Lỗi xác thực token:", err);
+                localStorage.removeItem('jwt');
+                localStorage.removeItem('auth_data');
+                window.location.href = "index.html";
+            });
     }
 });
 

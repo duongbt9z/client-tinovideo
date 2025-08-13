@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // ---- Hiển thị kết quả ----
       qrImg.src = qrUrl;
       qrContainer.classList.remove("hidden");           // hiện khối QR
-       pollPaymentStatus(reference);
+      //  pollPaymentStatus(reference);
 
     } catch (err) {
       console.error("VietQR API error:", err);
@@ -90,38 +90,38 @@ document.addEventListener("DOMContentLoaded", () => {
       vietqrOption.addEventListener("click", handleVietqrClick, { once: true });
     }
   }
- function pollPaymentStatus(reference, retries = 20, delay = 10000, initialDelay = 60000) {
-  let attempt = 0;
+//  function pollPaymentStatus(reference, retries = 20, delay = 10000, initialDelay = 60000) {
+//   let attempt = 0;
 
-  console.log(`⏱ Đợi ${initialDelay / 1000} giây trước khi kiểm tra thanh toán...`);
+//   console.log(`⏱ Đợi ${initialDelay / 1000} giây trước khi kiểm tra thanh toán...`);
 
-  setTimeout(() => {
-    const interval = setInterval(async () => {
-      attempt++;
-      console.log(`🔄 [Lần ${attempt}] Kiểm tra trạng thái thanh toán cho ${reference}...`);
+//   setTimeout(() => {
+//     const interval = setInterval(async () => {
+//       attempt++;
+//       console.log(`🔄 [Lần ${attempt}] Kiểm tra trạng thái thanh toán cho ${reference}...`);
 
-      try {
-        const res = await fetch(`${API_MAIN_BASE_URL}/api/status?reference=${reference}`);
-        if (!res.ok) throw new Error(`Status ${res.status}`);
-        const data = await res.json();
+//       try {
+//         const res = await fetch(`${API_MAIN_BASE_URL}/api/status?reference=${reference}`);
+//         if (!res.ok) throw new Error(`Status ${res.status}`);
+//         const data = await res.json();
 
-        if (data.paid) {
-          clearInterval(interval);
-          alert(`✅ Đã nhận ${data.amount.toLocaleString()}đ từ ${data.payer_name || 'người gửi'}!`);
-          return;
-        }
+//         if (data.paid) {
+//           clearInterval(interval);
+//           alert(`✅ Đã nhận ${data.amount.toLocaleString()}đ từ ${data.payer_name || 'người gửi'}!`);
+//           return;
+//         }
 
-        if (attempt >= retries) {
-          clearInterval(interval);
-          alert("⏱ Hết thời gian chờ chuyển khoản.");
-        }
-      } catch (err) {
-        console.error("❌ Lỗi kiểm tra trạng thái:", err);
-        if (attempt >= retries) clearInterval(interval);
-      }
-    }, delay);
-  }, initialDelay);
-}
+//         if (attempt >= retries) {
+//           clearInterval(interval);
+//           alert("⏱ Hết thời gian chờ chuyển khoản.");
+//         }
+//       } catch (err) {
+//         console.error("❌ Lỗi kiểm tra trạng thái:", err);
+//         if (attempt >= retries) clearInterval(interval);
+//       }
+//     }, delay);
+//   }, initialDelay);
+// }
 
 
 

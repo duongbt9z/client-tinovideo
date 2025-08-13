@@ -235,7 +235,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        if (userPlan) userPlan.textContent = highestPlan;
+        if (userPlan) userPlan.textContent = user.role;
         const userMoney = document.querySelector('[data-key="user-money"]');
         if (userMoney) if (!user.money) {
             userMoney.textContent = "Chưa có hoa hồng";

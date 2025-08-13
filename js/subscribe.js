@@ -56,7 +56,7 @@ function fillDataUser(user) {
         }
     }
 
-    if (userPlan) userPlan.textContent = highestPlan;
+    if (userPlan) userPlan.textContent = user.role;
 
     // console.log("✅ User đã fill:", user);
 }

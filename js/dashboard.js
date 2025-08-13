@@ -270,7 +270,6 @@ function toggleSidebar() {
 function switchLanguage(lang) {
     localStorage.setItem('tinovideo-language', lang);
     const t = dashboardTranslations[lang];
-    console.log(t);
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.dataset.lang === lang) {
@@ -2166,7 +2165,7 @@ function fillDataUser(user) {
         }
     }
 
-    if (userPlan) userPlan.textContent = highestPlan;
+    if (userPlan) userPlan.textContent = user.role;
 
     // console.log("✅ User đã fill:", user);
 }
@@ -2263,7 +2262,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     if (cached) {
         user = JSON.parse(cached);
-        console.log("hehe");
+      
         fillDataUser(user)
         try {
             user = JSON.parse(cached);
