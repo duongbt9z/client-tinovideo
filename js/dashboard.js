@@ -21,6 +21,7 @@ let allVoices = [];
 
 const dashboardTranslations = {
     "vi": {
+        "nav-create-veo": "Tạo video veo",
         "-vi-75cb": "🇻🇳 VI",
         "-en-1b8b": "🇺🇸 EN",
         "tinovideo-bd7c": "Tinovideo",
@@ -135,6 +136,7 @@ const dashboardTranslations = {
         "processing-desc": "AI đang tạo video cho bạn"
     },
     "en": {
+        "nav-create-veo": "Create Veo Video",
         "-vi-75cb": "🇻🇳 VI",
         "-en-1b8b": "🇺🇸 EN",
         "tinovideo-bd7c": "Tinovideo",
@@ -259,13 +261,13 @@ document.addEventListener("DOMContentLoaded", () => {
             switchLanguage(lang);
         });
     });
-    
+
 });
 function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  if (sidebar) {
-    sidebar.style.display = "none"; 
-  }
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar) {
+        sidebar.style.display = "none";
+    }
 }
 function switchLanguage(lang) {
     localStorage.setItem('tinovideo-language', lang);
@@ -733,7 +735,7 @@ const PROMPTS = [
         title: 'Review “Giải pháp cho vấn đề cấp bách”',
         text: 'Nêu vấn đề nhức nhối → giới thiệu giải pháp → kêu gọi hành động',
         icon: '/images/icons/icons8-qa-64.png',
-        gradient: 'gradient-ai-blue',      
+        gradient: 'gradient-ai-blue',
         textColor: 'text-white'
     },
     {
@@ -742,7 +744,7 @@ const PROMPTS = [
         title: 'Review “So sánh trước và sau”',
         text: 'Hiển thị bằng chứng trực quan (ảnh/video trước–sau) → nhấn mạnh thay đổi',
         icon: '/images/icons/ss.png',
-        gradient: 'gradient-ai-purple',   
+        gradient: 'gradient-ai-purple',
         textColor: 'text-white'
     },
     {
@@ -751,7 +753,7 @@ const PROMPTS = [
         title: 'Review “Chứng thực từ khách hàng thực”',
         text: 'Trích dẫn cảm nhận khách hàng, chèn cảnh sử dụng sản phẩm',
         icon: '/images/icons/dialogue.png',
-        gradient: 'gradient-ai-cyan',     
+        gradient: 'gradient-ai-cyan',
         textColor: 'text-black'
     },
     {
@@ -760,7 +762,7 @@ const PROMPTS = [
         title: 'Review “Thử thách thực tế”',
         text: 'Thực hiện thử thách/benchmark và trình bày kết quả ấn tượng',
         icon: '/images/icons/challenge.png',
-        gradient: 'bg-gradient-to-r from-green-500 to-blue-500',     
+        gradient: 'bg-gradient-to-r from-green-500 to-blue-500',
         textColor: 'text-black'
     },
     {
@@ -769,7 +771,7 @@ const PROMPTS = [
         title: 'Review “Hành trình khám phá sản phẩm”',
         text: 'Kể hành trình trải nghiệm từng bước, nêu điểm nhấn & cảm xúc',
         icon: '/images/icons/discover.png',
-        gradient: 'gradient-ai-indigo',   
+        gradient: 'gradient-ai-indigo',
         textColor: 'text-white'
     },
     {
@@ -2262,7 +2264,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     if (cached) {
         user = JSON.parse(cached);
-      
+
         fillDataUser(user)
         try {
             user = JSON.parse(cached);

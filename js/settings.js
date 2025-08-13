@@ -8,7 +8,7 @@ const settingsTranslations = {
     "nav-affiliate": "Affiliate",
     "nav-help": "Trợ giúp",
     "user-avatar": "",
-
+    "nav-create-veo": "Tạo video veo",
     "credits-remaining": "Credits còn lại:",
     "point": "100",
     "upgrade-btn": "Nâng cấp",
@@ -30,6 +30,7 @@ const settingsTranslations = {
   },
   "en": {
     "nav-settings": "Settings",
+    "nav-create-veo": "Create Veo Video",
     "tinovideo": "Tinovideo",
     "nav-create": "Create New Video",
     "nav-templates": "Edit Video",
@@ -140,9 +141,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const btn = document.getElementById("sidebar-toggle");
   const sidebar = document.getElementById("sidebar");
-btn.addEventListener("click", () => {
-  sidebar.classList.toggle("hidden");
-});
+  btn.addEventListener("click", () => {
+    sidebar.classList.toggle("hidden");
+  });
   // btn.addEventListener("click", () => {
   //   if (sidebar.style.display === "none") {
   //     sidebar.style.display = "block";
